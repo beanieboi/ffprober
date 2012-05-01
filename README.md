@@ -1,7 +1,7 @@
 # Ffprober
 
 a Ruby wrapper for ffprobe (part of ffmpeg)
-
+[![Build Status](https://secure.travis-ci.org/beanieboi/ffprober.png?branch=master)](http://travis-ci.org/beanieboi/ffprober)
 
 ## Installation
 
