@@ -1,6 +1,7 @@
 # Ffprober
 
-TODO: Write a gem description
+a Ruby wrapper for ffprobe (part of ffmpeg)
+
 
 ## Installation
 
@@ -18,7 +19,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    require 'ffprober'
+    ffprobe = Ffprober::Parser.from_file("my_awesome_video.mp4")
+    ffprobe.size #=> 44772490
+
+## FFMPEG version
+tested with ffprobe version 0.10.2
 
 ## Contributing
 
