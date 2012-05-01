@@ -1,10 +1,10 @@
 module Ffprober
   class Parser
-    @@ffprobe_path = `which ffprobe`
+    @@ffprobe_path = "/usr/local/bin/ffprobe"
     @@options = '-v quiet -print_format json -show_format -show_streams'
 
     def self.from_file(file_to_parse)
-      json_output = `#{@@ffprobe_path} #{@@options} #{@file_to_parse}`
+      json_output = `#{@@ffprobe_path} #{@@options} #{file_to_parse}`
       from_json(json_output)
     end
 
