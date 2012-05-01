@@ -1,0 +1,74 @@
+{
+    "streams": [
+        {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "codec_type": "video",
+            "codec_time_base": "1/180000",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 960,
+            "height": 600,
+            "has_b_frames": 2,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "8:5",
+            "pix_fmt": "yuv420p",
+            "level": 31,
+            "is_avc": "1",
+            "nal_length_size": "4",
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "320805000/44607683",
+            "time_base": "1/90000",
+            "start_time": "0.000000",
+            "duration": "991.281844",
+            "nb_frames": "7129",
+            "tags": {
+                "creation_time": "2011-11-21 06:45:09",
+                "language": "und",
+                "handler_name": ""
+            }
+        },
+        {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "Advanced Audio Coding",
+            "codec_type": "audio",
+            "codec_time_base": "1/48000",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "sample_fmt": "s16",
+            "sample_rate": "48000",
+            "channels": 1,
+            "bits_per_sample": 0,
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "375/8",
+            "time_base": "1/48000",
+            "start_time": "0.000000",
+            "duration": "991.338667",
+            "nb_frames": "46469",
+            "tags": {
+                "creation_time": "2011-11-21 06:45:09",
+                "language": "eng",
+                "handler_name": ""
+            }
+        }
+    ],
+    "format": {
+        "filename": "301-extracting-a-ruby-gem.mp4",
+        "nb_streams": 2,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime/MPEG-4/Motion JPEG 2000 format",
+        "start_time": "0.000000",
+        "duration": "991.338667",
+        "size": "44772490",
+        "bit_rate": "361309",
+        "tags": {
+            "major_brand": "mp42",
+            "minor_version": "0",
+            "compatible_brands": "mp42isomavc1",
+            "creation_time": "2011-11-21 06:45:09",
+            "encoder": "HandBrake 0.9.5 2011010300"
+        }
+    }
+}
