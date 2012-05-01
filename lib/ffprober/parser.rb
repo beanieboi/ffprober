@@ -3,6 +3,8 @@ module Ffprober
     @@options = '-v quiet -print_format json -show_format -show_streams'
 
     def self.from_file(file_to_parse)
+      raise ArgumentError.new("found unsupported ffprobe version") unless ffprobe_version_valid?
+
       json_output = `#{ffprobe_path} #{@@options} #{file_to_parse}`
       from_json(json_output)
     end
@@ -32,6 +34,14 @@ module Ffprober
       @video_json[:streams].select { |stream| stream[:codec_type] == 'audio'}.map do |s|
         Ffprober::AudioStream.new(s)
       end
+    end
+
+    def self.ffprobe_version_valid?
+      !(ffprobe_version =~ /ffprobe version 0.10.2/).nil?
+    end
+
+    def self.ffprobe_version
+      version = `#{ffprobe_path} -version`
     end
 
     def self.ffprobe_path

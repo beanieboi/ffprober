@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Ffprober do
-  describe "from_file" do
+  describe "from_file", :if => Ffprober::Parser.ffprobe_version_valid? do
     before :each do
       @ffprobe = Ffprober::Parser.from_file('spec/assets/301-extracting_a_ruby_gem.m4v')
     end

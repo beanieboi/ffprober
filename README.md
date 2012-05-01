@@ -23,6 +23,9 @@ Or install it yourself as:
     ffprobe = Ffprober::Parser.from_file("my_awesome_video.mp4")
     ffprobe.size #=> 44772490
 
+## TODOS
+a smarter way to determine the version of ffprobe
+
 ## FFMPEG version
 tested with ffprobe version 0.10.2
 
