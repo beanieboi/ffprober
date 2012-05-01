@@ -1,3 +1,4 @@
+before_script: "sudo aptitude -y -q install ffmpeg"
 language: ruby
 rvm:
   - 1.9.2
