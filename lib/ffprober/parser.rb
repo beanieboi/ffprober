@@ -1,10 +1,9 @@
 module Ffprober
   class Parser
-    @@ffprobe_path = "/usr/local/bin/ffprobe"
     @@options = '-v quiet -print_format json -show_format -show_streams'
 
     def self.from_file(file_to_parse)
-      json_output = `#{@@ffprobe_path} #{@@options} #{file_to_parse}`
+      json_output = `#{ffprobe_path} #{@@options} #{file_to_parse}`
       from_json(json_output)
     end
 
@@ -32,6 +31,19 @@ module Ffprober
     def audio_streams
       @video_json[:streams].select { |stream| stream[:codec_type] == 'audio'}.map do |s|
         Ffprober::AudioStream.new(s)
+      end
+    end
+
+    def self.ffprobe_path
+      name = 'ffprobe'
+
+      if File.executable? name
+        cmd
+      else
+        path = ENV['PATH'].split(File::PATH_SEPARATOR).find { |path|
+          File.executable? File.join(path, name)
+        }
+        path && File.expand_path(name, path)
       end
     end
   end
