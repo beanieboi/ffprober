@@ -37,11 +37,13 @@ module Ffprober
     end
 
     def self.ffprobe_version_valid?
-      !(ffprobe_version =~ /ffprobe version 0.10.2/).nil?
+      ffprobe_version[:minor] > 9
     end
 
     def self.ffprobe_version
-      version = `#{ffprobe_path} -version`
+      version = `#{ffprobe_path} -version`.match(/^ffprobe version (?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/)
+      major, minor, patch = version[1].to_i, version[2].to_i, version[3].to_i
+      {major: major, minor: minor, patch: patch}
     end
 
     def self.ffprobe_path
