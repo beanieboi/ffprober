@@ -1,6 +1,7 @@
 # FfprobeR
 
 a Ruby wrapper for ffprobe (which is part of ffmpeg)
+
 ffprobe gathers information from multimedia streams and prints it in human- and machine-readable fashion.
 
 
@@ -27,7 +28,8 @@ Or install it yourself as:
 ## FFMPEG version
 
 tested with ffprobe version 0.10.2 and 0.11.1
-according to [ffmpeg changelog](http://git.videolan.org/?p=ffmpeg.git;a=blob_plain;f=Changelog) json out was added in version 9
+
+according to [ffmpeg changelog](http://git.videolan.org/?p=ffmpeg.git;a=blob_plain;f=Changelog) json out was added in version 0.9
 
 ## Supported Rubies
 
