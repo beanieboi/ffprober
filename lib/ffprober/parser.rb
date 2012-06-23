@@ -3,7 +3,7 @@ module Ffprober
     @@options = '-v quiet -print_format json -show_format -show_streams'
 
     def self.from_file(file_to_parse)
-      raise ArgumentError.new("found unsupported ffprobe version") unless ffprobe_version_valid?
+      raise ArgumentError.new("no or unsupported ffprobe version found. (version: #{ffprobe_version})") unless ffprobe_version_valid?
 
       json_output = `#{ffprobe_path} #{@@options} #{file_to_parse}`
       from_json(json_output)
@@ -44,6 +44,8 @@ module Ffprober
       version = `#{ffprobe_path} -version`.match(/^ffprobe version (?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/)
       major, minor, patch = version[1].to_i, version[2].to_i, version[3].to_i
       {major: major, minor: minor, patch: patch}
+    rescue Errno::ENOENT => e
+      {major: 0, minor: 0, patch: 0}
     end
 
     def self.ffprobe_path

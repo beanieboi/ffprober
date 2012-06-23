@@ -20,7 +20,13 @@ describe Ffprober do
         @ffprobe.format.bit_rate.should eq("502669")
       end
     end
+  end
 
+  describe "if no ffprobe is found" do
+    it "should raise a exception" do
+      Ffprober::Parser.should_receive(:ffprobe_path).and_return("/dev/null")
+      lambda { @ffprobe = Ffprober::Parser.from_file('spec/assets/301-extracting_a_ruby_gem.m4v') }.should raise_error
+    end
   end
 
   describe "from_json" do
