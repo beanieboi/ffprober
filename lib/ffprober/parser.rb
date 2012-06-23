@@ -42,6 +42,7 @@ module Ffprober
 
     def self.ffprobe_version
       version = `#{ffprobe_path} -version`.match(/^ffprobe version (?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/)
+      raise Errno::ENOENT  if version.nil?
       major, minor, patch = version[1].to_i, version[2].to_i, version[3].to_i
       {major: major, minor: minor, patch: patch}
     rescue Errno::ENOENT => e
