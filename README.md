@@ -1,7 +1,8 @@
 # FfprobeR
 
-a Ruby wrapper for ffprobe (part of ffmpeg)
-[![Build Status](https://secure.travis-ci.org/beanieboi/ffprober.png?branch=master)](http://travis-ci.org/beanieboi/ffprober)
+a Ruby wrapper for ffprobe (which is part of ffmpeg)
+ffprobe gathers information from multimedia streams and prints it in human- and machine-readable fashion.
+
 
 ## Installation
 
@@ -27,6 +28,12 @@ Or install it yourself as:
 
 tested with ffprobe version 0.10.2 and 0.11.1
 according to [ffmpeg changelog](http://git.videolan.org/?p=ffmpeg.git;a=blob_plain;f=Changelog) json out was added in version 9
+
+## Supported Rubies
+
+OmniAuth Vimeo is tested under 1.9.2, 1.9.3, JRuby (1.9mode) and Rubinius (1.9mode).
+
+[![Build Status](https://secure.travis-ci.org/beanieboi/ffprober.png?branch=master)](http://travis-ci.org/beanieboi/ffprober)
 
 ## Contributing
 
