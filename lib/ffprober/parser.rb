@@ -2,17 +2,45 @@ module Ffprober
   class Parser
     @@options = '-v quiet -print_format json -show_format -show_streams'
 
-    def self.from_file(file_to_parse)
-      raise ArgumentError.new("no or unsupported ffprobe version found. (version: #{ffprobe_version})") unless ffprobe_version_valid?
+    class << self
+      def from_file(file_to_parse)
+        raise ArgumentError.new("no or unsupported ffprobe version found. (version: #{ffprobe_version})") unless ffprobe_version_valid?
 
-      json_output = `#{ffprobe_path} #{@@options} #{file_to_parse}`
-      from_json(json_output)
-    end
+        json_output = `#{ffprobe_path} #{@@options} #{file_to_parse}`
+        from_json(json_output)
+      end
 
-    def self.from_json(json_to_parse)
-      parser = self.new
-      parser.parse(json_to_parse)
-      parser
+      def from_json(json_to_parse)
+        parser = self.new
+        parser.parse(json_to_parse)
+        parser
+      end
+
+      def ffprobe_version_valid?
+        ffprobe_version[:minor] > 9 or ffprobe_version[:major] >= 1
+      end
+
+      def ffprobe_version
+        version = `#{ffprobe_path} -version`.match(/^ffprobe version (?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/)
+        raise Errno::ENOENT  if version.nil?
+        major, minor, patch = version[1].to_i, version[2].to_i, version[3].to_i
+        {major: major, minor: minor, patch: patch}
+      rescue Errno::ENOENT => e
+        {major: 0, minor: 0, patch: 0}
+      end
+
+      def ffprobe_path
+        name = 'ffprobe'
+
+        if File.executable? name
+          cmd
+        else
+          path = ENV['PATH'].split(File::PATH_SEPARATOR).find { |path|
+            File.executable? File.join(path, name)
+          }
+          path && File.expand_path(name, path)
+        end
+      end
     end
 
     def parse(json_to_parse)
@@ -36,30 +64,5 @@ module Ffprober
       end
     end
 
-    def self.ffprobe_version_valid?
-      ffprobe_version[:minor] > 9 or ffprobe_version[:major] >= 1
-    end
-
-    def self.ffprobe_version
-      version = `#{ffprobe_path} -version`.match(/^ffprobe version (?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/)
-      raise Errno::ENOENT  if version.nil?
-      major, minor, patch = version[1].to_i, version[2].to_i, version[3].to_i
-      {major: major, minor: minor, patch: patch}
-    rescue Errno::ENOENT => e
-      {major: 0, minor: 0, patch: 0}
-    end
-
-    def self.ffprobe_path
-      name = 'ffprobe'
-
-      if File.executable? name
-        cmd
-      else
-        path = ENV['PATH'].split(File::PATH_SEPARATOR).find { |path|
-          File.executable? File.join(path, name)
-        }
-        path && File.expand_path(name, path)
-      end
-    end
   end
 end
