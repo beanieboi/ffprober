@@ -37,7 +37,7 @@ module Ffprober
     end
 
     def self.ffprobe_version_valid?
-      ffprobe_version[:minor] > 9
+      ffprobe_version[:minor] > 9 or ffprobe_version[:major] >= 1
     end
 
     def self.ffprobe_version
