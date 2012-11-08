@@ -1,10 +1,14 @@
 module Ffprober
   class Parser
     @@options = '-v quiet -print_format json -show_format -show_streams'
+    @@version_regex = /^ffprobe version (?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/
 
     class << self
       def from_file(file_to_parse)
-        raise ArgumentError.new("no or unsupported ffprobe version found. (version: #{ffprobe_version})") unless ffprobe_version_valid?
+        unless ffprobe_version_valid?
+          raise ArgumentError.new("no or unsupported ffprobe version found.\
+                                  (version: #{ffprobe_version})")
+        end
 
         json_output = `#{ffprobe_path} #{@@options} #{file_to_parse}`
         from_json(json_output)
@@ -17,16 +21,23 @@ module Ffprober
       end
 
       def ffprobe_version_valid?
-        ffprobe_version[:minor] > 9 or ffprobe_version[:major] >= 1
+        valid_versions.include?(ffprobe_version)
       end
 
       def ffprobe_version
-        version = `#{ffprobe_path} -version`.match(/^ffprobe version (?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/)
+        version = `#{ffprobe_path} -version`.match(@@version_regex)
         raise Errno::ENOENT  if version.nil?
         major, minor, patch = version[1].to_i, version[2].to_i, version[3].to_i
         {major: major, minor: minor, patch: patch}
       rescue Errno::ENOENT => e
         {major: 0, minor: 0, patch: 0}
+      end
+
+      def valid_versions
+        [{major: 0, minor: 9, patch: 0},
+         {major: 0, minor: 10, patch: 0},
+         {major: 0, minor: 11, patch: 0},
+         {major: 1, minor: 0, patch: 0}]
       end
 
       def ffprobe_path
