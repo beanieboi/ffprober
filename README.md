@@ -27,13 +27,13 @@ Or install it yourself as:
 
 ## FFMPEG version
 
-tested with ffprobe version 0.10.2 and 0.11.1
+tested with ffprobe version 0.9, 0.10, 0.11 and 1.0
 
 according to [ffmpeg changelog](http://git.videolan.org/?p=ffmpeg.git;a=blob_plain;f=Changelog) json output was added in version 0.9
 
 ## Supported Rubies
 
-Ffprober is tested under 1.9.2, 1.9.3, JRuby (1.9mode) and Rubinius (1.9mode).
+Ffprober is tested under 1.9.2, 1.9.3, 2.0, JRuby (1.9mode) and Rubinius (1.9mode).
 
 [![Build Status](https://secure.travis-ci.org/beanieboi/ffprober.png?branch=master)](http://travis-ci.org/beanieboi/ffprober)
 
