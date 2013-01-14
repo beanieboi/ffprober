@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.rubyforge_project         = "ffprober"
 
   gem.add_development_dependency "rspec", "~> 2.9"
-  gem.add_development_dependency 'rake', '~> 0.9'
+  gem.add_development_dependency 'rake', '~> 10.0'
 
   gem.add_runtime_dependency 'multi_json', '~> 1.3'
 
