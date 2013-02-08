@@ -34,15 +34,17 @@ module Ffprober
       end
 
       def valid_versions
-        [ {major: 0, minor: 9, patch: 0},
+        [
+          {major: 0, minor: 9, patch: 0},
           {major: 0, minor: 10, patch: 0},
           {major: 0, minor: 11, patch: 0},
           {major: 1, minor: 0, patch: 0},
           {major: 1, minor: 0, patch: 1},
           {major: 1, minor: 1, patch: 0},
           {major: 1, minor: 1, patch: 1},
-          {major: 1, minor: 1, patch: 2}]
-	  end
+          {major: 1, minor: 1, patch: 2}
+        ]
+      end
 
       def ffprobe_path
         name = 'ffprobe'
