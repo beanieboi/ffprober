@@ -43,7 +43,9 @@ module Ffprober
           {major: 1, minor: 1, patch: 0},
           {major: 1, minor: 1, patch: 1},
           {major: 1, minor: 1, patch: 2},
-          {major: 1, minor: 1, patch: 3}
+          {major: 1, minor: 1, patch: 3},
+          {major: 1, minor: 1, patch: 4},
+          {major: 1, minor: 2, patch: 0}
         ]
       end
 
