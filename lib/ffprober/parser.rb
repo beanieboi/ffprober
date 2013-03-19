@@ -1,7 +1,7 @@
 module Ffprober
   class Parser
     @@options = '-v quiet -print_format json -show_format -show_streams'
-    @@version_regex = /^ffprobe version (?:(\d+)\.)?(?:(\d+)\.)?(\*|\d+)$/
+    @@version_regex = /^ffprobe version (\d+)\.?(\d+)\.?(|\d+)$/
 
     class << self
       def from_file(file_to_parse)
