@@ -11,6 +11,8 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version     = ">= 1.9.2"
   gem.rubyforge_project         = "ffprober"
 
+  gem.licenses      = ['MIT']
+
   gem.add_development_dependency "rspec", "~> 2.9"
   gem.add_development_dependency 'rake', '~> 10.0'
 
