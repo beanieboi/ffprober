@@ -1,4 +1,6 @@
-before_script: "sudo apt-get -y -q install ffmpeg"
+before_script:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq ffmpeg
 language: ruby
 rvm:
   - 1.9.2
