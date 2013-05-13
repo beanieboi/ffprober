@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{a Ruby wrapper for ffprobe (part of ffmpeg)}
   gem.homepage      = "https://github.com/beanieboi/ffprober"
 
-  gem.required_ruby_version     = ">= 1.9.2"
+  gem.required_ruby_version     = ">= 1.9.3"
   gem.rubyforge_project         = "ffprober"
 
   gem.licenses      = ['MIT']
