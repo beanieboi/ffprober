@@ -22,7 +22,7 @@ module Ffprober
 
     def parse(json_to_parse)
       raise ArgumentError.new("No JSON found") if json_to_parse.nil?
-      @video_json = JSON.parse(json_to_parse, :symbolize_names => true)
+      @video_json = JSON.parse(json_to_parse, symbolize_names: true)
     end
 
     def format
