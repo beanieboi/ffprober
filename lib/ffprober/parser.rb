@@ -22,24 +22,31 @@ module Ffprober
 
     def parse(json_to_parse)
       raise ArgumentError.new("No JSON found") if json_to_parse.nil?
-      @video_json = JSON.parse(json_to_parse, symbolize_names: true)
+      @json_to_parse = json_to_parse
+    end
+
+    def parsed_json
+      @parsed_json ||= JSON.parse(@json_to_parse, symbolize_names: true)
     end
 
     def format
-      Ffprober::Format.new(@video_json[:format])
+      Ffprober::Format.new(parsed_json[:format])
     end
 
     def video_streams
-      @video_json[:streams].select { |stream| stream[:codec_type] == 'video'}.map do |s|
+      streams.select { |stream| stream[:codec_type] == 'video'}.map do |s|
         Ffprober::VideoStream.new(s)
       end
     end
 
     def audio_streams
-      @video_json[:streams].select { |stream| stream[:codec_type] == 'audio'}.map do |s|
+      streams.select { |stream| stream[:codec_type] == 'audio'}.map do |s|
         Ffprober::AudioStream.new(s)
       end
     end
 
+    def streams
+      parsed_json[:streams]
+    end
   end
 end
