@@ -4,7 +4,7 @@ require "ffprober/format"
 require "ffprober/stream"
 require "ffprober/audio_stream"
 require "ffprober/video_stream"
-require 'multi_json'
+require "json"
 
 module Ffprober
 end
