@@ -1,16 +1,15 @@
 module Ffprober
   class Parser
     @@options = '-v quiet -print_format json -show_format -show_streams'
-    @@version_regex = /^ffprobe version (\d+)\.?(\d+)\.?(|\d+)$/
 
     class << self
       def from_file(file_to_parse)
-        unless ffprobe_version_valid?
+        unless FfprobeVersion.valid?
           raise ArgumentError.new("no or unsupported ffprobe version found.\
-                                  (version: #{ffprobe_version})")
+                                  (version: #{FfprobeVersion.parsed_version.to_s})")
         end
 
-        json_output = `#{ffprobe_path} #{@@options} #{file_to_parse}`
+        json_output = `#{Ffprober.path} #{@@options} #{file_to_parse}`
         from_json(json_output)
       end
 
@@ -18,48 +17,6 @@ module Ffprober
         parser = self.new
         parser.parse(json_to_parse)
         parser
-      end
-
-      def ffprobe_version_valid?
-        valid_versions.include?(ffprobe_version)
-      end
-
-      def ffprobe_version
-        version = `#{ffprobe_path} -version`.match(@@version_regex)
-        raise Errno::ENOENT  if version.nil?
-        major, minor, patch = version[1].to_i, version[2].to_i, version[3].to_i
-        {major: major, minor: minor, patch: patch}
-      rescue Errno::ENOENT => e
-        {major: 0, minor: 0, patch: 0}
-      end
-
-      def valid_versions
-        [
-          {major: 0, minor: 9, patch: 0},
-          {major: 0, minor: 10, patch: 0},
-          {major: 0, minor: 11, patch: 0},
-          {major: 1, minor: 0, patch: 0},
-          {major: 1, minor: 0, patch: 1},
-          {major: 1, minor: 1, patch: 0},
-          {major: 1, minor: 1, patch: 1},
-          {major: 1, minor: 1, patch: 2},
-          {major: 1, minor: 1, patch: 3},
-          {major: 1, minor: 1, patch: 4},
-          {major: 1, minor: 2, patch: 0}
-        ]
-      end
-
-      def ffprobe_path
-        name = 'ffprobe'
-
-        if File.executable? name
-          cmd
-        else
-          path = ENV['PATH'].split(File::PATH_SEPARATOR).find { |path|
-            File.executable? File.join(path, name)
-          }
-          path && File.expand_path(name, path)
-        end
       end
     end
 
