@@ -6,7 +6,7 @@ module Ffprober
     MAX_VERSION = Gem::Version.new("1.2.0")
 
     def self.valid?
-      MIN_VERSION <= parsed_version && parsed_version < MAX_VERSION
+      MIN_VERSION <= parsed_version && parsed_version <= MAX_VERSION
     end
 
     def self.parsed_version
