@@ -22,6 +22,32 @@ describe Ffprober do
     end
   end
 
+  describe "from invalid file", if: Ffprober::FfprobeVersion.valid? do
+    before :each do
+      @ffprobe = Ffprober::Parser.from_file('spec/assets/empty_file')
+    end
+
+    describe "format" do
+      it "should determine the correct filename" do
+        expect do
+          @ffprobe.format.filename.should eq("spec/assets/empty_file")
+        end.to raise_error
+      end
+
+      it "should find the correct size" do
+        expect do
+          @ffprobe.format.size.should eq("130694")
+        end.to raise_error
+      end
+
+      it "should find the correct bit_rate" do
+        expect do
+          @ffprobe.format.bit_rate.should eq("502669")
+        end.to raise_error
+      end
+    end
+  end
+
   describe "if no ffprobe is found" do
     it "should raise a exception" do
       Ffprober.stub(:path).and_return("nonexistant")
