@@ -28,7 +28,7 @@ module Ffprober
     def parsed_json
       @parsed_json ||=  begin
                           json = JSON.parse(@json_to_parse, symbolize_names: true)
-                          raise StandardError.new("Invalid input file") if json.empty?
+                          raise InvalidInputFileError.new("Invalid input file") if json.empty?
                           json
                         end
     end

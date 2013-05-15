@@ -20,4 +20,6 @@ module Ffprober
       path && File.expand_path(name, path)
     end
   end
+
+  class InvalidInputFileError < ::StandardError; end
 end
