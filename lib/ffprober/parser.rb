@@ -30,19 +30,19 @@ module Ffprober
     end
 
     def format
-      Ffprober::Format.new(parsed_json[:format])
+      @format ||= Ffprober::Format.new(parsed_json[:format])
     end
 
     def video_streams
-      streams.select { |stream| stream[:codec_type] == 'video'}.map do |s|
-        Ffprober::VideoStream.new(s)
-      end
+      @video_streams ||= stream_by_codec('video').map { |s| Ffprober::VideoStream.new(s) }
     end
 
     def audio_streams
-      streams.select { |stream| stream[:codec_type] == 'audio'}.map do |s|
-        Ffprober::AudioStream.new(s)
-      end
+      @audio_streams ||= stream_by_codec('audio').map { |s| Ffprober::AudioStream.new(s) }
+    end
+
+    def stream_by_codec(codec_type)
+      streams.select { |stream| stream[:codec_type] == codec_type }
     end
 
     def streams
