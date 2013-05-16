@@ -31,6 +31,8 @@ tested with ffprobe version 0.9, 0.10, 0.11, 1.0, 1.1 and 1.2
 
 according to [ffmpeg changelog](http://git.videolan.org/?p=ffmpeg.git;a=blob_plain;f=Changelog) json output was added in version 0.9
 
+[ffprobe documentation](http://www.ffmpeg.org/ffprobe.html)
+
 ## Supported Rubies
 
 Ffprober is tested under 1.9.3, 2.0, JRuby (1.9mode) and Rubinius (1.9mode) and ruby-head.
