@@ -3,7 +3,7 @@ module Ffprober
     @@version_regex = /^ffprobe version (\d+)\.?(\d+)\.?(|\d+)$/
 
     MIN_VERSION = Gem::Version.new("0.9.0")
-    MAX_VERSION = Gem::Version.new("1.2.0")
+    MAX_VERSION = Gem::Version.new("1.2.1")
 
     def self.valid?
       MIN_VERSION <= parsed_version && parsed_version <= MAX_VERSION
