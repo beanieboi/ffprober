@@ -6,7 +6,7 @@ describe Ffprober::FfprobeVersion do
   let(:one_zero)        { Gem::Version.new("1.0.0") }
   let(:one_one)         { Gem::Version.new("1.1.0") }
   let(:after_one_zero)  { Gem::Version.new("1.9.0") }
-  let(:latest)          { Gem::Version.new("1.2") }
+  let(:latest)          { Gem::Version.new("1.2.1") }
 
   context 'validates the ffprobe version' do
     it 'detects versions < 0.9' do
