@@ -11,14 +11,11 @@ module Ffprober
   def self.path
     name = 'ffprobe'
 
-    if File.executable? name
-      cmd
-    else
-      path = ENV['PATH'].split(File::PATH_SEPARATOR).find { |path|
-        File.executable? File.join(path, name)
-      }
-      path && File.expand_path(name, path)
+    path = ENV['PATH'].split(File::PATH_SEPARATOR).find do |path|
+      File.executable?(File.join(path, name))
     end
+
+    path && File.expand_path(name, path)
   end
 
   class InvalidInputFileError < ::StandardError; end
