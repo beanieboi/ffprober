@@ -1,16 +1,12 @@
-require 'singleton'
-
 module Ffprober
   class FfprobeVersion
-    include Singleton
-
-    @@version_regex = /^ffprobe version (\d+)\.?(\d+)\.?(|\d+)$/
+    @@version_regex = /^ffprobe version (\d+)\.?(\d+)\.?(\d+)*/
 
     MIN_VERSION = Gem::Version.new("0.9.0")
     MAX_VERSION = Gem::Version.new("1.2.1")
 
     def self.valid?
-      self.instance.valid?
+      self.new.valid?
     end
 
     def valid?
