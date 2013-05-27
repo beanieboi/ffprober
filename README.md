@@ -33,6 +33,14 @@ according to [ffmpeg changelog](http://git.videolan.org/?p=ffmpeg.git;a=blob_pla
 
 [ffprobe documentation](http://www.ffmpeg.org/ffprobe.html)
 
+## Improve FFMPEG version detection
+
+please help me if ffprober isn't detecting your ffmpeg version correctly
+
+1. run `ffprobe -version` on your system
+2. open an issue and send the output to me along with the expected version
+3. profit
+
 ## Supported Rubies
 
 Ffprober is tested under 1.9.3, 2.0, JRuby (1.9mode) and Rubinius (1.9mode) and ruby-head.
