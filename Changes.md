@@ -1,3 +1,7 @@
+unrelaesed
+-----------
+- refactor ffprobe version detection (+spec)
+
 0.2.3
 -----------
 - Raise error if input file is invalid (InvalidInputFileError)
