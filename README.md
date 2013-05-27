@@ -35,7 +35,7 @@ according to [ffmpeg changelog](http://git.videolan.org/?p=ffmpeg.git;a=blob_pla
 
 ## Improve FFMPEG version detection
 
-please help me if ffprober isn't detecting your ffmpeg version correctly
+help me collection various version outputs of fprobe/ffmpeg
 
 1. run `ffprobe -version` on your system
 2. open an issue and send the output to me along with the expected version
