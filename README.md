@@ -47,6 +47,11 @@ Ffprober is tested under 1.9.3, 2.0, JRuby (1.9mode) and Rubinius (1.9mode) and 
 
 [![Build Status](https://secure.travis-ci.org/beanieboi/ffprober.png?branch=master)](http://travis-ci.org/beanieboi/ffprober)
 
+## Contributors
+
+- Michael B. Kulik
+- rmoriz
+
 ## Contributing
 
 1. Fork it
