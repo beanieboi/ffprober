@@ -1,0 +1,10 @@
+avprobe version 0.8.6-6:0.8.6-1+rpi1, Copyright (c) 2007-2013 the Libav developers
+  built on Mar 31 2013 13:58:10 with gcc 4.6.3
+avprobe 0.8.6-6:0.8.6-1+rpi1
+libavutil    51. 22. 1 / 51. 22. 1
+libavcodec   53. 35. 0 / 53. 35. 0
+libavformat  53. 21. 1 / 53. 21. 1
+libavdevice  53.  2. 0 / 53.  2. 0
+libavfilter   2. 15. 0 /  2. 15. 0
+libswscale    2.  1. 0 /  2.  1. 0
+libpostproc  52.  0. 0 / 52.  0. 0

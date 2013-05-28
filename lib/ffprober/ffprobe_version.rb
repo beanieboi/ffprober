@@ -1,6 +1,6 @@
 module Ffprober
   class FfprobeVersion
-    @@version_regex = /^ffprobe version (\d+)\.?(\d+)\.?(\d+)*/
+    @@version_regex = /^(ffprobe|avprobe) version (\d+)\.?(\d+)\.?(\d+)*/
 
     MIN_VERSION = Gem::Version.new("0.9.0")
     MAX_VERSION = Gem::Version.new("1.2.1")
@@ -19,7 +19,7 @@ module Ffprober
         if _p.nil?
           [0, 0, 0]
         else
-          [_p[1].to_i, _p[2].to_i, _p[3].to_i]
+          [_p[2].to_i, _p[3].to_i, _p[4].to_i]
         end
       end
     end
