@@ -1,6 +1,7 @@
 module Ffprober
   class FfprobeVersion
-    @@version_regex = /^(ffprobe|avprobe) version (\d+)\.?(\d+)\.?(\d+)*/
+    @@version_regex = /^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/
+    @@nightly_regex = /^(ffprobe|avprobe|ffmpeg) version N-/
 
     MIN_VERSION = Gem::Version.new("0.9.0")
     MAX_VERSION = Gem::Version.new("1.2.1")
@@ -10,11 +11,11 @@ module Ffprober
     end
 
     def valid?
-      MIN_VERSION <= version && version <= MAX_VERSION
+      nightly? || (MIN_VERSION <= version && version <= MAX_VERSION)
     end
 
-    def parsed_version
-      @parsed_version ||= begin
+    def parse_version
+      @parse_version ||= begin
         _p = version_output.match(@@version_regex)
         if _p.nil?
           [0, 0, 0]
@@ -25,7 +26,11 @@ module Ffprober
     end
 
     def version
-      @version ||= Gem::Version.new(parsed_version.join("."))
+      @version ||= Gem::Version.new(parse_version.join("."))
+    end
+
+    def nightly?
+      !!(version_output =~ @@nightly_regex)
     end
 
     def version_output

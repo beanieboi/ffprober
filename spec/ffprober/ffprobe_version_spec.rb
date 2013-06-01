@@ -25,10 +25,16 @@ describe Ffprober::FfprobeVersion do
       os, expected_version = entry.split("-")
 
       it "on #{os} from #{expected_version}" do
-        Ffprober::FfprobeVersion.any_instance.stub(:version_output) { File.read("spec/assets/version_outputs/" + entry) }
-
+        version_output = File.read("spec/assets/version_outputs/" + entry)
+        Ffprober::FfprobeVersion.any_instance.stub(:version_output) { version_output }
         version_check = Ffprober::FfprobeVersion.new
-        version_check.version.should eq(Gem::Version.new(expected_version.gsub("_", ".")))
+
+        if expected_version == "nightly"
+          version_check.nightly?.should eq(true)
+          version_check.valid?.should eq(true)
+        else
+          version_check.version.should eq(Gem::Version.new(expected_version.gsub("_", ".")))
+        end
       end
     end
   end
