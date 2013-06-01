@@ -1,5 +1,7 @@
 unrelaesed
 -----------
+- correctly detect avprobe
+- detect nighlt builds
 - refactor ffprobe version detection (+spec)
 
 0.2.3
