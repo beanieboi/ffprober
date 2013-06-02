@@ -1,5 +1,6 @@
 unrelaesed
 -----------
+- correctly detect ffprobe path on windows
 - correctly detect avprobe
 - detect nighlt builds
 - refactor ffprobe version detection (+spec)
