@@ -20,7 +20,7 @@ module Ffprober
   end
 
   def self.windows?
-    RUBY_PLATFORM =~ /(mingw|mswin)/
+    !!(RUBY_PLATFORM =~ /(mingw|mswin)/)
   end
 
   class InvalidInputFileError < ::StandardError; end
