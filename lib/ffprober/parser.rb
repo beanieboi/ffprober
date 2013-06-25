@@ -6,7 +6,7 @@ module Ffprober
       def from_file(file_to_parse)
         unless FfprobeVersion.valid?
           raise ArgumentError.new("no or unsupported ffprobe version found.\
-                                  (version: #{FfprobeVersion.parsed_version.to_s})")
+                                  (version: #{FfprobeVersion.new.version.to_s})")
         end
 
         json_output = `#{Ffprober.path} #{@@options} #{file_to_parse}`
