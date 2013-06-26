@@ -1,7 +1,7 @@
 module Ffprober
   class FfprobeVersion
     @@version_regex = /^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/
-    @@nightly_regex = /^(ffprobe|avprobe|ffmpeg) version N-/
+    @@nightly_regex = /^(ffprobe|avprobe|ffmpeg) version (N|git)-/
 
     MIN_VERSION = Gem::Version.new("0.9.0")
     MAX_VERSION = Gem::Version.new("1.2.1")
