@@ -8,8 +8,8 @@ describe Ffprober::FfprobeVersion do
     { version: "1.1.0", pass: true },
     { version: "2.9.0", pass: false },
     { version: "1.2.1", pass: true },
-    { version: "2.0", pass: true}  
-    ]
+    { version: "2.0", pass: true}
+  ]
 
   context 'validates the ffprobe version' do
     VERSION_CHECKS.each do |check|
