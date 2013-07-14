@@ -1,4 +1,16 @@
-unrelaesed
+0.3.3
+-----------
+support for ffmpeg 2.0
+
+0.3.2
+-----------
+detect git-based installs of ffmpeg
+
+0.3.1
+-----------
+fixed version output call
+
+0.3.0
 -----------
 - correctly detect ffprobe path on windows
 - correctly detect avprobe
