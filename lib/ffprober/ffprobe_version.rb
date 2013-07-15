@@ -34,6 +34,7 @@ module Ffprober
     end
 
     def version_output
+      return "" if Ffprober.path.nil?
       @version_output ||= `#{Ffprober.path} -version`
     end
   end

@@ -38,5 +38,12 @@ describe Ffprober::FfprobeVersion do
         end
       end
     end
+
+    it "should not be valid if no ffprobe could be found in PATH" do
+      Ffprober.stub(:path).and_return(nil)
+      Ffprober::FfprobeVersion.new.version.to_s.should eq("0.0.0")
+      Ffprober::FfprobeVersion.valid?.should eq(false)
+    end
+
   end
 end
