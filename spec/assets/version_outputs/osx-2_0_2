@@ -1,0 +1,12 @@
+ffprobe version 2.0.2
+built on Oct 13 2013 13:38:28 with Apple LLVM version 5.0 (clang-500.2.75) (based on LLVM 3.3svn)
+configuration: --prefix=/usr/local/Cellar/ffmpeg/2.0.2 --enable-shared --enable-pthreads --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-avresample --enable-vda --cc=cc --host-cflags= --host-ldflags= --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libxvid --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libvo-aacenc --enable-libass
+libavutil      52. 38.100 / 52. 38.100
+libavcodec     55. 18.102 / 55. 18.102
+libavformat    55. 12.100 / 55. 12.100
+libavdevice    55.  3.100 / 55.  3.100
+libavfilter     3. 79.101 /  3. 79.101
+libavresample   1.  1.  0 /  1.  1.  0
+libswscale      2.  3.100 /  2.  3.100
+libswresample   0. 17.102 /  0. 17.102
+libpostproc    52.  3.100 / 52.  3.100
