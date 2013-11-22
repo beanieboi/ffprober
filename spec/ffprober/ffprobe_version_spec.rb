@@ -10,7 +10,8 @@ describe Ffprober::FfprobeVersion do
     { version: "1.2.1", pass: true },
     { version: "2.0", pass: true},
     { version: "2.0.1", pass: true },
-    { version: "2.0.2", pass: true }
+    { version: "2.0.2", pass: true },
+    { version: "2.1.1", pass: true}
   ]
 
   context 'validates the ffprobe version' do
