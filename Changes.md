@@ -1,3 +1,8 @@
+0.3.5
+-----------
+- support for ffmpeg 2.0.2
+- support for ffmpeg 2.1.1
+
 0.3.4
 -----------
 - fix exception when no ffprobe is installed
