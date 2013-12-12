@@ -9,7 +9,7 @@ module Ffprober
                                   (version: #{FfprobeVersion.new.version.to_s})")
         end
 
-        json_output = `#{Ffprober.path} #{@@options} #{file_to_parse}`
+        json_output = `#{Ffprober.path} #{@@options} '#{file_to_parse}'`
         from_json(json_output)
       end
 
