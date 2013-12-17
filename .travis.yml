@@ -1,7 +1,10 @@
+language: ruby
+cache: bundler
+
 before_script:
   - sudo apt-get update -qq
   - sudo apt-get install -qq ffmpeg
-language: ruby
+
 rvm:
   - 1.9.3
   - 2.0.0
