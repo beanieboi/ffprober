@@ -11,11 +11,13 @@ describe Ffprober::FfprobeVersion do
     { version: "2.0", pass: true}
   ]
 
+  subject(:ffprobe_version) { Ffprober::FfprobeVersion.new }
+
   context 'validates the ffprobe version' do
     VERSION_CHECKS.each do |check|
       it "detects version #{check[:version]}" do
-        Ffprober::FfprobeVersion.any_instance.stub(:version) { Gem::Version.new(check[:version]) }
-        Ffprober::FfprobeVersion.valid?.should be(check[:pass])
+        allow(ffprobe_version).to receive(:version).and_return(Gem::Version.new(check[:version]))
+        expect(ffprobe_version.valid?).to be(check[:pass])
       end
     end
   end
@@ -27,22 +29,22 @@ describe Ffprober::FfprobeVersion do
 
       it "on #{os} from #{expected_version}" do
         version_output = File.read("spec/assets/version_outputs/" + entry)
-        Ffprober::FfprobeVersion.any_instance.stub(:version_output) { version_output }
-        version_check = Ffprober::FfprobeVersion.new
+
+        allow(ffprobe_version).to receive(:version_output).and_return(version_output)
 
         if expected_version == "nightly"
-          version_check.nightly?.should eq(true)
-          version_check.valid?.should eq(true)
+          expect(ffprobe_version.nightly?).to eq(true)
+          expect(ffprobe_version.valid?).to eq(true)
         else
-          version_check.version.should eq(Gem::Version.new(expected_version.gsub("_", ".")))
+          expect(ffprobe_version.version).to eq(Gem::Version.new(expected_version.gsub("_", ".")))
         end
       end
     end
 
     it "should not be valid if no ffprobe could be found in PATH" do
-      Ffprober.stub(:path).and_return(nil)
-      Ffprober::FfprobeVersion.new.version.to_s.should eq("0.0.0")
-      Ffprober::FfprobeVersion.valid?.should eq(false)
+      allow(Ffprober).to receive(:path).and_return(nil)
+      expect(ffprobe_version.version.to_s).to eq("0.0.0")
+      expect(Ffprober::FfprobeVersion.valid?).to eq(false)
     end
 
   end
