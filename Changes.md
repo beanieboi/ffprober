@@ -1,3 +1,16 @@
+MASTER
+-----------
+- upgrade to rspec 3
+
+0.3.6
+-----------
+- switch to ruby 2.1 by default
+- remove rake
+- add codeclimate badge
+- update contributors
+- fix builds on Rubinius
+- wrap file path in quotes
+
 0.3.5
 -----------
 - support for ffmpeg 2.0.2
