@@ -1,5 +1,7 @@
 language: ruby
 
+script: rspec spec
+
 before_script:
   - sudo apt-get update -qq
   - sudo apt-get install -qq ffmpeg
