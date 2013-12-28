@@ -1,0 +1,177 @@
+{
+    "streams": [
+        {
+            "index": 0,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "codec_type": "audio",
+            "codec_time_base": "1/44100",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "sample_fmt": "fltp",
+            "sample_rate": "44100",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/44100",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 7168,
+            "duration": "0.162540",
+            "bit_rate": "73582",
+            "nb_frames": "7",
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0
+            },
+            "tags": {
+                "creation_time": "2013-12-28 21:17:44",
+                "language": "und",
+                "handler_name": "Core Media Audio"
+            }
+        },
+        {
+            "index": 1,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "Constrained Baseline",
+            "codec_type": "video",
+            "codec_time_base": "1/5000",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "width": 480,
+            "height": 272,
+            "has_b_frames": 0,
+            "sample_aspect_ratio": "0:1",
+            "display_aspect_ratio": "0:1",
+            "pix_fmt": "yuv420p",
+            "level": 21,
+            "r_frame_rate": "25/1",
+            "avg_frame_rate": "25/1",
+            "time_base": "1/2500",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 300,
+            "duration": "0.120000",
+            "bit_rate": "79066",
+            "nb_frames": "3",
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0
+            },
+            "tags": {
+                "creation_time": "2013-12-28 21:17:44",
+                "language": "und",
+                "handler_name": "Core Media Video"
+            }
+        },
+        {
+            "index": 2,
+            "codec_name": "mov_text",
+            "codec_long_name": "3GPP Timed Text subtitle",
+            "codec_type": "subtitle",
+            "codec_time_base": "1/1000",
+            "codec_tag_string": "text",
+            "codec_tag": "0x74786574",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/1000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 98,
+            "duration": "0.098000",
+            "bit_rate": "5690",
+            "nb_frames": "3",
+            "disposition": {
+                "default": 0,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0
+            },
+            "tags": {
+                "creation_time": "2013-12-28 21:28:08",
+                "language": "eng"
+            }
+        }
+    ],
+    "chapters": [
+        {
+            "id": 0,
+            "time_base": "1/1000",
+            "start": 0,
+            "start_time": "0.000000",
+            "end": 10,
+            "end_time": "0.010000",
+            "tags": {
+                "title": "Chapter 1"
+            }
+        },
+        {
+            "id": 1,
+            "time_base": "1/1000",
+            "start": 10,
+            "start_time": "0.010000",
+            "end": 20,
+            "end_time": "0.020000",
+            "tags": {
+                "title": "Chapter 2"
+            }
+        },
+        {
+            "id": 2,
+            "time_base": "1/1000",
+            "start": 20,
+            "start_time": "0.020000",
+            "end": 97,
+            "end_time": "0.097000",
+            "tags": {
+                "title": "Chapter 3"
+            }
+        }
+    ],
+    "format": {
+        "filename": "spec/assets/sample video.m4v",
+        "nb_streams": 3,
+        "nb_programs": 0,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime / MOV",
+        "start_time": "0.000000",
+        "duration": "0.097600",
+        "size": "4611",
+        "bit_rate": "377950",
+        "probe_score": 100,
+        "tags": {
+            "major_brand": "M4V ",
+            "minor_version": "1",
+            "compatible_brands": "M4V M4A mp42isom",
+            "creation_time": "2013-12-28 21:17:44"
+        }
+    }
+}
