@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe Ffprober::Parser do
 
-  describe "from_file with whitespace", if: Ffprober::FfprobeVersion.valid? do
+  context "from_file with whitespace", if: Ffprober::FfprobeVersion.valid? do
     let(:ffprobe) { Ffprober::Parser.from_file('spec/assets/301 extracting a ruby gem.m4v') }
 
     describe "format" do
@@ -21,7 +21,7 @@ describe Ffprober::Parser do
     end
   end
 
-  describe "from_file", if: Ffprober::FfprobeVersion.valid? do
+  context "from_file", if: Ffprober::FfprobeVersion.valid? do
     let(:ffprobe) { Ffprober::Parser.from_file('spec/assets/301-extracting_a_ruby_gem.m4v') }
 
     describe "format" do
@@ -39,7 +39,7 @@ describe Ffprober::Parser do
     end
   end
 
-  describe "from invalid file", if: Ffprober::FfprobeVersion.valid? do
+  context "from invalid file", if: Ffprober::FfprobeVersion.valid? do
     let(:ffprobe) { Ffprober::Parser.from_file('spec/assets/empty_file') }
 
     describe "format" do
