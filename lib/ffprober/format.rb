@@ -1,11 +1,13 @@
 module Ffprober
   class Format
-    attr_reader :filename, :nb_streams, :format_name,
-                :format_long_name, :start_time, :duration,
-                :size, :bit_rate
-
     def initialize(object_attribute_hash)
-      object_attribute_hash.each {|k,v| instance_variable_set("@#{k}",v)}
+      object_attribute_hash.each do |key, value|
+        instance_variable_set("@#{key}", value)
+
+        self.class.send(:define_method, key) do
+          instance_variable_get("@#{key}")
+        end
+      end
     end
   end
 end
