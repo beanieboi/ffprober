@@ -1,0 +1,336 @@
+{
+    "programs": [
+
+    ],
+    "streams": [
+        {
+            "index": 0,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "codec_type": "audio",
+            "codec_time_base": "1/44100",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "sample_fmt": "fltp",
+            "sample_rate": "44100",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/22050",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 281010176,
+            "duration": "12744.225669",
+            "bit_rate": "48000",
+            "nb_frames": "274424",
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0
+            },
+            "tags": {
+                "creation_time": "2013-12-11 23:50:34",
+                "language": "und",
+                "handler_name": "sound handler"
+            }
+        },
+        {
+            "index": 1,
+            "codec_name": "mov_text",
+            "codec_long_name": "3GPP Timed Text subtitle",
+            "codec_type": "subtitle",
+            "codec_time_base": "1/1000",
+            "codec_tag_string": "tx3g",
+            "codec_tag": "0x67337874",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/1000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 12744225,
+            "duration": "12744.225000",
+            "nb_frames": "13",
+            "disposition": {
+                "default": 0,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0
+            },
+            "tags": {
+                "creation_time": "2013-12-11 23:50:37",
+                "language": "eng",
+                "handler_name": "\"Chapter Titles\""
+            }
+        },
+        {
+            "index": 2,
+            "codec_name": "mjpeg",
+            "codec_long_name": "MJPEG (Motion JPEG)",
+            "codec_type": "video",
+            "codec_time_base": "1/1000",
+            "codec_tag_string": "jpeg",
+            "codec_tag": "0x6765706a",
+            "width": 1400,
+            "height": 1400,
+            "has_b_frames": 0,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "1:1",
+            "pix_fmt": "yuvj420p",
+            "level": -99,
+            "r_frame_rate": "40/509769",
+            "avg_frame_rate": "40/509769",
+            "time_base": "1/1000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 12744225,
+            "duration": "12744.225000",
+            "bit_rate": "276",
+            "nb_frames": "1",
+            "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0
+            },
+            "tags": {
+                "creation_time": "2013-12-11 23:50:38",
+                "language": "eng",
+                "handler_name": "ilst handler"
+            }
+        },
+        {
+            "index": 3,
+            "codec_name": "mjpeg",
+            "codec_long_name": "MJPEG (Motion JPEG)",
+            "codec_type": "video",
+            "codec_time_base": "1/90000",
+            "codec_tag_string": "[0][0][0][0]",
+            "codec_tag": "0x0000",
+            "width": 1400,
+            "height": 1400,
+            "has_b_frames": 0,
+            "sample_aspect_ratio": "1:1",
+            "display_aspect_ratio": "1:1",
+            "pix_fmt": "yuvj420p",
+            "level": -99,
+            "r_frame_rate": "90000/1",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/90000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 1146980250,
+            "duration": "12744.225000",
+            "disposition": {
+                "default": 0,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 1
+            }
+        }
+    ],
+    "chapters": [
+        {
+            "id": 0,
+            "time_base": "1/1000",
+            "start": 0,
+            "start_time": "0.000000",
+            "end": 204000,
+            "end_time": "204.000000",
+            "tags": {
+                "title": "Intro"
+            }
+        },
+        {
+            "id": 1,
+            "time_base": "1/1000",
+            "start": 204000,
+            "start_time": "204.000000",
+            "end": 970000,
+            "end_time": "970.000000",
+            "tags": {
+                "title": "Soundcloud"
+            }
+        },
+        {
+            "id": 2,
+            "time_base": "1/1000",
+            "start": 970000,
+            "start_time": "970.000000",
+            "end": 1766000,
+            "end_time": "1766.000000",
+            "tags": {
+                "title": "Schland unter"
+            }
+        },
+        {
+            "id": 3,
+            "time_base": "1/1000",
+            "start": 1766000,
+            "start_time": "1766.000000",
+            "end": 3553000,
+            "end_time": "3553.000000",
+            "tags": {
+                "title": "Layer-8-Probleme"
+            }
+        },
+        {
+            "id": 4,
+            "time_base": "1/1000",
+            "start": 3553000,
+            "start_time": "3553.000000",
+            "end": 5365000,
+            "end_time": "5365.000000",
+            "tags": {
+                "title": "Live aus dem Ableton-Kerker"
+            }
+        },
+        {
+            "id": 5,
+            "time_base": "1/1000",
+            "start": 5365000,
+            "start_time": "5365.000000",
+            "end": 6399000,
+            "end_time": "6399.000000",
+            "tags": {
+                "title": "Geschenke"
+            }
+        },
+        {
+            "id": 6,
+            "time_base": "1/1000",
+            "start": 6399000,
+            "start_time": "6399.000000",
+            "end": 7165000,
+            "end_time": "7165.000000",
+            "tags": {
+                "title": "Analoge Hobbys"
+            }
+        },
+        {
+            "id": 7,
+            "time_base": "1/1000",
+            "start": 7165000,
+            "start_time": "7165.000000",
+            "end": 8532000,
+            "end_time": "8532.000000",
+            "tags": {
+                "title": "Rechnerbau und ZFS"
+            }
+        },
+        {
+            "id": 8,
+            "time_base": "1/1000",
+            "start": 8532000,
+            "start_time": "8532.000000",
+            "end": 9023000,
+            "end_time": "9023.000000",
+            "tags": {
+                "title": "Kommandozeile"
+            }
+        },
+        {
+            "id": 9,
+            "time_base": "1/1000",
+            "start": 9023000,
+            "start_time": "9023.000000",
+            "end": 9961000,
+            "end_time": "9961.000000",
+            "tags": {
+                "title": "Bitcoin und IPv6"
+            }
+        },
+        {
+            "id": 10,
+            "time_base": "1/1000",
+            "start": 9961000,
+            "start_time": "9961.000000",
+            "end": 10768000,
+            "end_time": "10768.000000",
+            "tags": {
+                "title": "Apple-Klimbim"
+            }
+        },
+        {
+            "id": 11,
+            "time_base": "1/1000",
+            "start": 10768000,
+            "start_time": "10768.000000",
+            "end": 12261000,
+            "end_time": "12261.000000",
+            "tags": {
+                "title": "Wikidata (Shameless CRE-Selfplugging)"
+            }
+        },
+        {
+            "id": 12,
+            "time_base": "1/1000",
+            "start": 12261000,
+            "start_time": "12261.000000",
+            "end": 12744225,
+            "end_time": "12744.225000",
+            "tags": {
+                "title": "30C3"
+            }
+        }
+    ],
+    "format": {
+        "filename": "fs123-schland-unter.m4a",
+        "nb_streams": 4,
+        "nb_programs": 0,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime / MOV",
+        "start_time": "0.000000",
+        "duration": "12744.225000",
+        "size": "81285909",
+        "bit_rate": "51026",
+        "probe_score": 100,
+        "tags": {
+            "major_brand": "M4V ",
+            "minor_version": "1",
+            "compatible_brands": "isommp42dby1M4A M4V ",
+            "creation_time": "2013-12-11 23:50:34",
+            "title": "FS123 Schland unter",
+            "artist": "Metaebene Personal Media",
+            "album": "Freak Show",
+            "genre": "Podcast",
+            "date": "2013",
+            "encoder": "auphonic.com",
+            "lyrics": "Die letzte Sendung des Jahres 2013 ist wieder ein wilder Mix und dank tatkräftiger Bezuckerung durch die werte Hörerschaft gehen bis zum Schluss weder Themen noch Puste aus. Wir ranten über Soundcloud und Ableton Live und bringen dazu noch ein paar Home Stories über die Analoggewohnheiten der Freaks.",
+            "album_artist": "Metaebene Personal Media",
+            "description": "Soundcloud — Geschenke — Wetterstationen — Metaebene Bugfixing — Ableton Live Hell — Analogspass — ZFS — Command Line Tools — Wikidata",
+            "comment": "Soundcloud — Geschenke — Wetterstationen — Metaebene Bugfixing — Ableton Live Hell — Analogspass — ZFS — Command Line Tools — Wikidata",
+            "synopsis": "Die letzte Sendung des Jahres 2013 ist wieder ein wilder Mix und dank tatkräftiger Bezuckerung durch die werte Hörerschaft gehen bis zum Schluss weder Themen noch Puste aus. Wir ranten über Soundcloud und Ableton Live und bringen dazu noch ein paar Home Stories über die Analoggewohnheiten der Freaks."
+        }
+    }
+}
