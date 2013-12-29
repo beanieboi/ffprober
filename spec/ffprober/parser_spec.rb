@@ -24,7 +24,6 @@ def shared_specs
     it "should determine the correct sample rate of the first audio stream" do
       expect(ffprobe.audio_streams.first.sample_rate).to eq("44100")
     end
-
   end
 
   describe "video_streams" do

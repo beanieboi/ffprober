@@ -1,6 +1,8 @@
 MASTER
 -----------
 - upgrade to rspec 3
+- add support for chapters
+- dynamic getter to support all attributes
 
 0.3.6
 -----------

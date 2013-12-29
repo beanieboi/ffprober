@@ -10,6 +10,10 @@ module Ffprober
       self.new.valid?
     end
 
+    def self.version
+      self.new.version
+    end
+
     def valid?
       nightly? || (MIN_VERSION <= version && version <= MAX_VERSION)
     end

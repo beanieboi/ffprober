@@ -1,6 +1,5 @@
 module Ffprober
   class Parser
-    @@options = '-v quiet -print_format json -show_format -show_streams'
 
     def self.from_file(file_to_parse)
       unless FfprobeVersion.valid?
@@ -8,7 +7,7 @@ module Ffprober
                                 (version: #{FfprobeVersion.new.version.to_s})")
       end
 
-      json_output = `#{Ffprober.path} #{@@options} '#{file_to_parse}'`
+      json_output = `#{Ffprober.path} #{options} '#{file_to_parse}'`
       from_json(json_output)
     end
 
@@ -40,6 +39,12 @@ module Ffprober
     end
 
     private
+
+    def self.options
+      options = '-v quiet -print_format json -show_format -show_streams'
+      options << ' -show_chapters' if FfprobeVersion.version >= Gem::Version.new("2.0.0")
+      options
+    end
 
     def stream_by_codec(codec_type)
       streams.select { |stream| stream[:codec_type] == codec_type }
