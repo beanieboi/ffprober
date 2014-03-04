@@ -8,7 +8,11 @@ describe Ffprober::FfprobeVersion do
     { version: "1.1.0", pass: true },
     { version: "2.9.0", pass: false },
     { version: "1.2.1", pass: true },
-    { version: "2.0", pass: true}
+    { version: "2.0", 	pass: true},
+    { version: "2.0.1", pass: true },
+    { version: "2.0.2", pass: true },
+    { version: "2.1.1", pass: true },
+    { version: "2.1.2", pass: true }
   ]
 
   subject(:ffprobe_version) { Ffprober::FfprobeVersion.new }

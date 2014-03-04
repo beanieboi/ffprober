@@ -1,0 +1,11 @@
+ffprobe version 2.1.2-tessus
+built on Jan 13 2014 18:27:44 with llvm-gcc 4.2.1 (LLVM build 2336.1.00)
+configuration: --prefix=/Users/tessus/data/ext/ffmpeg/sw --as=yasm --extra-version=tessus --disable-shared --enable-static --disable-ffplay --enable-gpl --enable-pthreads --enable-postproc --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libxvid --enable-libspeex --enable-bzlib --enable-zlib --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libxavs --enable-version3 --enable-libvo-aacenc --enable-libvo-amrwbenc --enable-libvpx --enable-libgsm --enable-libopus --enable-fontconfig --enable-libfreetype --enable-libass --enable-libbluray --enable-filters --enable-runtime-cpudetect
+libavutil      52. 48.101 / 52. 48.101
+libavcodec     55. 39.101 / 55. 39.101
+libavformat    55. 19.104 / 55. 19.104
+libavdevice    55.  5.100 / 55.  5.100
+libavfilter     3. 90.100 /  3. 90.100
+libswscale      2.  5.101 /  2.  5.101
+libswresample   0. 17.104 /  0. 17.104
+libpostproc    52.  3.100 / 52.  3.100
