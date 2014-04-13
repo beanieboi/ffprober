@@ -3,18 +3,18 @@ require 'spec_helper'
 
 describe Ffprober::FfprobeVersion do
   VERSION_CHECKS = [
-    { version: "0.9.0", pass: true },
-    { version: "1.0.0", pass: true },
-    { version: "1.1.0", pass: true },
-    { version: "2.9.0", pass: false },
-    { version: "1.2.1", pass: true },
-    { version: "2.0", 	pass: true},
-    { version: "2.0.1", pass: true },
-    { version: "2.0.2", pass: true },
-    { version: "2.1.1", pass: true },
-    { version: "2.1.2", pass: true },
-    { version: "2.1.4", pass: true },
-    { version: "2.2",   pass: true }
+    { version: '0.9.0', pass: true },
+    { version: '1.0.0', pass: true },
+    { version: '1.1.0', pass: true },
+    { version: '2.9.0', pass: false },
+    { version: '1.2.1', pass: true },
+    { version: '2.0',   pass: true },
+    { version: '2.0.1', pass: true },
+    { version: '2.0.2', pass: true },
+    { version: '2.1.1', pass: true },
+    { version: '2.1.2', pass: true },
+    { version: '2.1.4', pass: true },
+    { version: '2.2',   pass: true }
   ]
 
   subject(:ffprobe_version) { Ffprober::FfprobeVersion.new }
@@ -29,27 +29,27 @@ describe Ffprober::FfprobeVersion do
   end
 
   describe 'detects the version of ffprobe' do
-    Dir.new("spec/assets/version_outputs").each do |entry|
-      next if [".", "..", ".DS_Store"].include?(entry)
-      os, expected_version = entry.split("-")
+    Dir.new('spec/assets/version_outputs').each do |entry|
+      next if ['.', '..', '.DS_Store'].include?(entry)
+      os, expected_version = entry.split('-')
 
       it "on #{os} from #{expected_version}" do
-        version_output = File.read("spec/assets/version_outputs/" + entry)
+        version_output = File.read('spec/assets/version_outputs/' + entry)
 
         allow(ffprobe_version).to receive(:version_output).and_return(version_output)
 
-        if expected_version == "nightly"
+        if expected_version == 'nightly'
           expect(ffprobe_version.nightly?).to eq(true)
           expect(ffprobe_version.valid?).to eq(true)
         else
-          expect(ffprobe_version.version).to eq(Gem::Version.new(expected_version.gsub("_", ".")))
+          expect(ffprobe_version.version).to eq(Gem::Version.new(expected_version.gsub('_', '.')))
         end
       end
     end
 
-    it "should not be valid if no ffprobe could be found in PATH" do
+    it 'should not be valid if no ffprobe could be found in PATH' do
       allow(Ffprober).to receive(:path).and_return(nil)
-      expect(ffprobe_version.version.to_s).to eq("0.0.0")
+      expect(ffprobe_version.version.to_s).to eq('0.0.0')
       expect(Ffprober::FfprobeVersion.valid?).to eq(false)
     end
 

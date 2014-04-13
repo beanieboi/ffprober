@@ -5,7 +5,7 @@ module Ffprober
                 :size, :bit_rate
 
     def initialize(object_attribute_hash)
-      object_attribute_hash.each {|k,v| instance_variable_set("@#{k}",v)}
+      object_attribute_hash.each { |k, v| instance_variable_set("@#{k}", v) }
     end
   end
 end

@@ -5,8 +5,8 @@ module Ffprober
     class << self
       def from_file(file_to_parse)
         unless FfprobeVersion.valid?
-          raise ArgumentError.new("no or unsupported ffprobe version found.\
-                                  (version: #{FfprobeVersion.new.version.to_s})")
+          fail ArgumentError.new("no or unsupported ffprobe version found.\
+                                  (version: #{FfprobeVersion.new.version})")
         end
 
         json_output = `#{Ffprober.path} #{@@options} '#{file_to_parse}'`
@@ -14,21 +14,21 @@ module Ffprober
       end
 
       def from_json(json_to_parse)
-        parser = self.new
+        parser = new
         parser.parse(json_to_parse)
         parser
       end
     end
 
     def parse(json_to_parse)
-      raise ArgumentError.new("No JSON found") if json_to_parse.nil?
+      fail ArgumentError.new('No JSON found') if json_to_parse.nil?
       @json_to_parse = json_to_parse
     end
 
     def parsed_json
       @parsed_json ||=  begin
                           json = JSON.parse(@json_to_parse, symbolize_names: true)
-                          raise InvalidInputFileError.new("Invalid input file") if json.empty?
+                          fail InvalidInputFileError.new('Invalid input file') if json.empty?
                           json
                         end
     end
