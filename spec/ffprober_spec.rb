@@ -8,7 +8,7 @@ describe Ffprober do
       allow(Ffprober).to receive(:path).and_return('nonexistant')
 
       expect do
-          Ffprober::Parser.from_file('spec/assets/301-extracting_a_ruby_gem.m4v')
+        Ffprober::Parser.from_file('spec/assets/301-extracting_a_ruby_gem.m4v')
       end.to raise_error
     end
 

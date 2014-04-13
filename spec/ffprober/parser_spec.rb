@@ -4,21 +4,19 @@ require 'spec_helper'
 describe Ffprober::Parser do
 
   describe 'from_file with whitespace', if: Ffprober::FfprobeVersion.valid? do
-    before :each do
-      @ffprobe = Ffprober::Parser.from_file('spec/assets/301 extracting a ruby gem.m4v')
-    end
+    let(:ffprobe) { Ffprober::Parser.from_file('spec/assets/301 extracting a ruby gem.m4v') }
 
     describe 'format' do
       it 'should determine the correct filename' do
-        @ffprobe.format.filename.should eq('spec/assets/301 extracting a ruby gem.m4v')
+        expect(ffprobe.format.filename).to eq('spec/assets/301 extracting a ruby gem.m4v')
       end
 
       it 'should find the correct size' do
-        @ffprobe.format.size.should eq('130694')
+        expect(ffprobe.format.size).to eq('130694')
       end
 
       it 'should find the correct bit_rate' do
-        @ffprobe.format.bit_rate.should eq('502669')
+        expect(ffprobe.format.bit_rate).to eq('502669')
       end
     end
   end

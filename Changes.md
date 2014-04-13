@@ -1,6 +1,11 @@
 MASTER
 -----------
+
+0.3.7
+-----------
 - upgrade to rspec 3
+- support for ffmpeg 2.1.4
+- support for ffmpeg 2.2.0
 
 0.3.6
 -----------
