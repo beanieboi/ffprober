@@ -3,11 +3,11 @@ module Ffprober
     @@version_regex = /^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/
     @@nightly_regex = /^(ffprobe|avprobe|ffmpeg) version (N|git)-/
 
-    MIN_VERSION = Gem::Version.new("0.9.0")
-    MAX_VERSION = Gem::Version.new("2.0.1")
+    MIN_VERSION = Gem::Version.new('0.9.0')
+    MAX_VERSION = Gem::Version.new('2.0.1')
 
     def self.valid?
-      self.new.valid?
+      new.valid?
     end
 
     def valid?
@@ -26,7 +26,7 @@ module Ffprober
     end
 
     def version
-      @version ||= Gem::Version.new(parse_version.join("."))
+      @version ||= Gem::Version.new(parse_version.join('.'))
     end
 
     def nightly?
@@ -34,7 +34,7 @@ module Ffprober
     end
 
     def version_output
-      return "" if Ffprober.path.nil?
+      return '' if Ffprober.path.nil?
       @version_output ||= `#{Ffprober.path} -version`
     end
   end
