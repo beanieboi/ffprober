@@ -1,9 +1,6 @@
 source 'https://rubygems.org'
 
-platforms :rbx do
-  gem 'rubysl', '~> 2.0'
-  gem 'rubysl-json', '~> 2.0'
-end
+gem 'pry'
 
 # group :profiling do
 #   gem 'stackprof'

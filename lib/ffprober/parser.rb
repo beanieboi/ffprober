@@ -21,6 +21,14 @@ module Ffprober
       @json = JSON.parse(json_to_parse, symbolize_names: true)
     end
 
+    def parsed_json
+      @parsed_json ||=  begin
+                          json = JSON.parse(@json_to_parse, symbolize_names: true)
+                          fail InvalidInputFileError.new('Invalid input file') if json.empty?
+                          json
+                        end
+    end
+
     def format
       @format ||= Ffprober::Format.new(@json[:format])
     end

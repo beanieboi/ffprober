@@ -1,8 +1,14 @@
 MASTER
 -----------
-- upgrade to rspec 3
 - add support for chapters
 - dynamic getter to support all attributes
+
+
+0.3.7
+-----------
+- upgrade to rspec 3
+- support for ffmpeg 2.1.4
+- support for ffmpeg 2.2.0
 
 0.3.6
 -----------
