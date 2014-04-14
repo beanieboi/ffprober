@@ -1,10 +1,9 @@
 module Ffprober
   class Parser
-
     def self.from_file(file_to_parse)
       unless FfprobeVersion.valid?
-        raise ArgumentError.new("no or unsupported ffprobe version found.\
-                                (version: #{FfprobeVersion.new.version.to_s})")
+        fail ArgumentError.new("no or unsupported ffprobe version found.\
+                                (version: #{FfprobeVersion.new.version})")
       end
 
       json_output = `#{Ffprober.path} #{options} '#{file_to_parse}'`
@@ -12,13 +11,13 @@ module Ffprober
     end
 
     def self.from_json(json_to_parse)
-      parser = self.new
+      parser = new
       parser.parse(json_to_parse)
       parser
     end
 
     def parse(json_to_parse)
-      raise ArgumentError.new("No JSON input data") if json_to_parse.nil?
+      fail ArgumentError.new('No JSON input data') if json_to_parse.nil?
       @json = JSON.parse(json_to_parse, symbolize_names: true)
     end
 
@@ -42,7 +41,7 @@ module Ffprober
 
     def self.options
       options = '-v quiet -print_format json -show_format -show_streams'
-      options << ' -show_chapters' if FfprobeVersion.version >= Gem::Version.new("2.0.0")
+      options << ' -show_chapters' if FfprobeVersion.version >= Gem::Version.new('2.0.0')
       options
     end
 
