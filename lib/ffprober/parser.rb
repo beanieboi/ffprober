@@ -1,14 +1,12 @@
 module Ffprober
   class Parser
-    @@options = '-v quiet -print_format json -show_format -show_streams'
-
     def self.from_file(file_to_parse)
       unless FfprobeVersion.valid?
         fail ArgumentError.new("no or unsupported ffprobe version found.\
                                 (version: #{FfprobeVersion.new.version})")
       end
 
-      json_output = `#{Ffprober.path} #{@@options} '#{file_to_parse}'`
+      json_output = `#{Ffprober.path} #{options} '#{file_to_parse}'`
       from_json(json_output)
     end
 
