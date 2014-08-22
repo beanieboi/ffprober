@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
 
   gem.licenses      = ['MIT']
 
-  gem.add_development_dependency "rspec", "~> 3.0.0.beta1"
+  gem.add_development_dependency "rspec", "~> 3.0"
 
   gem.files         = `git ls-files`.split("\n")
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

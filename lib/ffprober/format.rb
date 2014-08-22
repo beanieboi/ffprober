@@ -4,8 +4,10 @@ module Ffprober
       object_attribute_hash.each do |key, value|
         instance_variable_set("@#{key}", value)
 
-        self.class.send(:define_method, key) do
-          instance_variable_get("@#{key}")
+        unless self.class.method_defined?(key)
+          self.class.send(:define_method, key) do
+            instance_variable_get("@#{key}")
+          end
         end
       end
     end

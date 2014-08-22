@@ -1,8 +1,13 @@
-MASTER
------------
-- add support for chapters
-- dynamic getter to support all attributes
 
+n.n.n / 2014-08-22
+==================
+
+ * relax rspec dependency and add a sample spec_helper
+ * fix shadowing path in ffprober.rb:15
+ * enable rspec warnings
+ * add CONTRIBUTING.md
+ * Update README.md
+ * some code style fixes
 
 0.3.7
 -----------
