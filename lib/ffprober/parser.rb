@@ -6,6 +6,10 @@ module Ffprober
                                 (version: #{FfprobeVersion.new.version})")
       end
 
+      unless File.exist?(file_to_parse)
+        fail ArgumentError.new("File not found #{file_to_parse}")
+      end
+
       json_output = `#{Ffprober.path} #{options} '#{file_to_parse}'`
       from_json(json_output)
     end
@@ -19,14 +23,6 @@ module Ffprober
     def parse(json_to_parse)
       fail ArgumentError.new('No JSON input data') if json_to_parse.nil?
       @json = JSON.parse(json_to_parse, symbolize_names: true)
-    end
-
-    def parsed_json
-      @parsed_json ||=  begin
-                          json = JSON.parse(@json_to_parse, symbolize_names: true)
-                          fail InvalidInputFileError.new('Invalid input file') if json.empty?
-                          json
-                        end
     end
 
     def format
