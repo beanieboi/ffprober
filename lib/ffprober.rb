@@ -11,8 +11,8 @@ require 'pry'
 module Ffprober
   def self.path
     @path ||= begin
-      path = ENV['PATH'].split(File::PATH_SEPARATOR).find do |path|
-        File.executable?(File.join(path, executable_name))
+      path = ENV['PATH'].split(File::PATH_SEPARATOR).find do |path_to_check|
+        File.executable?(File.join(path_to_check, executable_name))
       end
 
       path && File.expand_path(executable_name, path)
