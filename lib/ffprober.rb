@@ -12,8 +12,8 @@ module Ffprober
     name = 'ffprobe'
     name << '.exe' if self.windows?
 
-    path = ENV['PATH'].split(File::PATH_SEPARATOR).find do |path|
-      File.executable?(File.join(path, name))
+    path = ENV['PATH'].split(File::PATH_SEPARATOR).find do |path_to_check|
+      File.executable?(File.join(path_to_check, name))
     end
 
     path && File.expand_path(name, path)
