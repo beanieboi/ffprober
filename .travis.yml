@@ -6,6 +6,10 @@ before_script:
   - sudo apt-get update -qq
   - sudo apt-get install -qq ffmpeg
 
+addons:
+  code_climate:
+    repo_token: e319ec7d18fb8e1f05b460c3ef8fac58af3844d7bfa3d44de6b82eb874bb3e31
+
 rvm:
   - 1.9.3
   - 2.0.0
