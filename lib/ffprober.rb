@@ -1,4 +1,5 @@
 require_relative 'ffprober/version'
+require_relative 'ffprober/dynamic_initializer'
 require_relative 'ffprober/parser'
 require_relative 'ffprober/format'
 require_relative 'ffprober/stream'
