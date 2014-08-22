@@ -37,8 +37,8 @@ module Ffprober
       @audio_streams ||= stream_by_codec('audio').map { |stream| Ffprober::AudioStream.new(stream) }
     end
 
-    def stream_by_codec(codec_type)
-      streams.select { |stream| stream[:codec_type] == codec_type }
+    def chapters
+      @chapters ||= @json[:chapters].map { |chapter| Ffprober::Chapter.new(chapter) }
     end
 
     private
@@ -47,6 +47,10 @@ module Ffprober
       options = '-v quiet -print_format json -show_format -show_streams'
       options << ' -show_chapters' if FfprobeVersion.version >= Gem::Version.new('2.0.0')
       options
+    end
+
+    def stream_by_codec(codec_type)
+      streams.select { |stream| stream[:codec_type] == codec_type }
     end
 
     def streams

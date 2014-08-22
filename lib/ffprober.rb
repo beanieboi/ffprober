@@ -4,9 +4,9 @@ require_relative 'ffprober/format'
 require_relative 'ffprober/stream'
 require_relative 'ffprober/audio_stream'
 require_relative 'ffprober/video_stream'
+require_relative 'ffprober/chapter'
 require_relative 'ffprober/ffprobe_version'
 require 'json'
-require 'pry'
 
 module Ffprober
   def self.path
