@@ -49,6 +49,8 @@ Ffprober is tested under 1.9.3, 2.0, 2.1, JRuby (1.9mode) and Rubinius (1.9mode)
 
 [![Code Climate](https://codeclimate.com/github/beanieboi/ffprober.png)](https://codeclimate.com/github/beanieboi/ffprober)
 
+[![Test Coverage](https://codeclimate.com/github/beanieboi/ffprober/badges/coverage.svg)](https://codeclimate.com/github/beanieboi/ffprober)
+
 ## Contributors
 
 - Michael B. Kulik
