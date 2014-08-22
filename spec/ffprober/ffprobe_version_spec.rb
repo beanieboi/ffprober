@@ -37,7 +37,7 @@ describe Ffprober::FfprobeVersion do
       it "on #{os} from #{expected_version}" do
         version_output = File.read('spec/assets/version_outputs/' + entry)
 
-        allow(ffprobe_version).to receive(:version_output).and_return(version_output)
+        allow(ffprobe_version).to receive(:ffprobe_version_output).and_return(version_output)
 
         if expected_version == 'nightly'
           expect(ffprobe_version.nightly?).to eq(true)
