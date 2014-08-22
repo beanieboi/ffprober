@@ -1,7 +1,22 @@
-
-n.n.n / 2014-08-22
+0.4.0 / 2014-08-22
 ==================
 
+ * update sample video
+ * set 2.3.2 as new max version
+ * Merge pull request #42 from beanieboi/feature/chapters-new
+ * warn if file to parse does not exist
+ * add Chapters
+ * Merge pull request #41 from beanieboi/feature/refator-specs
+ * update ruby-version to 2.1.2
+ * share specs and add sample json with chapters
+ * use self.options
+ * Merge pull request #40 from beanieboi/feature/refactor
+ * set max version to 2.2.2
+ * fix variable shadowing
+ * allow all object attributes, smaller cleanup
+ * Merge pull request #39 from beanieboi/feature/upgrade-rspec
+ * Merge pull request #38 from mbkulik/ffmpeg-2.2.2-support
+ * update Changes.md
  * relax rspec dependency and add a sample spec_helper
  * fix shadowing path in ffprober.rb:15
  * enable rspec warnings
