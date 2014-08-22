@@ -1,13 +1,17 @@
 module Ffprober
   class FfprobeVersion
-    @@version_regex = /^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/
-    @@nightly_regex = /^(ffprobe|avprobe|ffmpeg) version (N|git)-/
+    VERSION_REGEX = /^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/
+    NIGHTLY_REGEX = /^(ffprobe|avprobe|ffmpeg) version (N|git)-/
 
     MIN_VERSION = Gem::Version.new('0.9.0')
-    MAX_VERSION = Gem::Version.new('2.2.2')
+    MAX_VERSION = Gem::Version.new('2.2')
 
     def self.valid?
       new.valid?
+    end
+
+    def self.version
+      new.version
     end
 
     def valid?
@@ -16,12 +20,9 @@ module Ffprober
 
     def parse_version
       @parse_version ||= begin
-        _p = version_output.match(@@version_regex)
-        if _p.nil?
-          [0, 0, 0]
-        else
-          [_p[2].to_i, _p[3].to_i, _p[4].to_i]
-        end
+        ffprobe_version_output.match(VERSION_REGEX) do |match|
+          [match[2].to_i, match[3].to_i, match[4].to_i]
+        end || [0, 0, 0]
       end
     end
 
@@ -30,12 +31,11 @@ module Ffprober
     end
 
     def nightly?
-      !!(version_output =~ @@nightly_regex)
+      !!(ffprobe_version_output =~ NIGHTLY_REGEX)
     end
 
-    def version_output
-      return '' if Ffprober.path.nil?
-      @version_output ||= `#{Ffprober.path} -version`
+    def ffprobe_version_output
+      @ffprobe_version_output ||= Ffprober.path.nil? ? '' : `#{Ffprober.path} -version`
     end
   end
 end
