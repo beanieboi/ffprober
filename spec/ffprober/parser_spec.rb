@@ -39,24 +39,6 @@ def shared_specs
       expect(ffprobe.video_streams.count).to eq(1)
     end
   end
-
-  describe 'chapters' do
-    it 'should contain the chapters' do
-      expect(ffprobe.chapters.count).to eq(3)
-    end
-
-    describe 'chapter' do
-      subject(:chapter) { ffprobe.chapters.first }
-
-      it 'should contain id' do expect(chapter.id).to eq(0) end
-      it 'should contain time_base' do expect(chapter.time_base).to eq('1/1000') end
-      it 'should contain start' do expect(chapter.start).to eq(0) end
-      it 'should contain start_time' do expect(chapter.start_time).to eq('0.000000') end
-      it 'should contain end' do expect(chapter.end).to eq(10) end
-      it 'should contain end_time' do expect(chapter.end_time).to eq('0.010000') end
-      it 'should contain tags' do expect(chapter.tags).to eq(title: 'Chapter 1') end
-    end
-  end
 end
 
 describe Ffprober::Parser do
