@@ -1,7 +1,9 @@
 
-n.n.n / 2014-xx-xx
+0.4.1 / 2014-08-27
 ==================
 
+ * add support for ffmpeg 2.3.3
+ * update Changes.md
  * add code climate coverage
  * move recurring initialize into a module
 
