@@ -31,11 +31,11 @@ def shared_specs
       expect(ffprobe.subtitle_streams.first.duration_ts).to eq(98)
     end
 
-    it 'should determine the correct bitrate of the first subtitle streams' do
+    it 'should determine the correct bitrate of the first subtitle stream' do
       expect(ffprobe.subtitle_streams.first.bit_rate).to eq('5690')
     end
 
-    it 'should determine the correct language of the first subtitle streams' do
+    it 'should determine the correct language of the first subtitle stream' do
       expect(ffprobe.subtitle_streams.first.tags[:language]).to eq("eng")
     end
 
