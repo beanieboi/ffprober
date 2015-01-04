@@ -26,6 +26,24 @@ def shared_specs
     end
   end
 
+    describe 'subtitle_streams' do
+    it 'should determine the correct duration_ts of the first subtitle stream' do
+      expect(ffprobe.subtitle_streams.first.duration_ts).to eq(98)
+    end
+
+    it 'should determine the correct bitrate of the first subtitle streams' do
+      expect(ffprobe.subtitle_streams.first.bit_rate).to eq('5690')
+    end
+
+    it 'should determine the correct language of the first subtitle streams' do
+      expect(ffprobe.subtitle_streams.first.tags[:language]).to eq("eng")
+    end
+
+    it 'should determine the correct number of subtitle streams' do
+      expect(ffprobe.subtitle_streams.count).to eq(1)
+    end
+  end
+
   describe 'video_streams' do
     it 'should determine the correct width of the first video streams' do
       expect(ffprobe.video_streams.first.width).to eq(480)
