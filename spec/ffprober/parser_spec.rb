@@ -26,7 +26,7 @@ def shared_specs
     end
   end
 
-    describe 'subtitle_streams' do
+  describe 'subtitle_streams' do
     it 'should determine the correct duration_ts of the first subtitle stream' do
       expect(ffprobe.subtitle_streams.first.duration_ts).to eq(98)
     end
