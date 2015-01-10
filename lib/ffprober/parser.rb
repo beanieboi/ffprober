@@ -1,3 +1,5 @@
+require 'shellwords'
+
 module Ffprober
   class Parser
     def self.from_file(file_to_parse)
@@ -10,7 +12,7 @@ module Ffprober
         fail ArgumentError.new("File not found #{file_to_parse}")
       end
 
-      json_output = `#{Ffprober.path} #{options} '#{file_to_parse}'`
+      json_output = `#{Ffprober.path} #{options} #{Shellwords.escape(file_to_parse)}`
       from_json(json_output)
     end
 
