@@ -1,3 +1,8 @@
+master / 2015-01-10
+===================
+
+ * add support for subtitle streams
+ * update Changes.md
 
 0.4.1 / 2014-08-27
 ==================
