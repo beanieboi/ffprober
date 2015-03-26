@@ -15,7 +15,8 @@ describe Ffprober::FfprobeVersion do
     { version: '2.1.2', pass: true },
     { version: '2.1.4', pass: true },
     { version: '2.2',   pass: true },
-    { version: '2.2.2', pass: true }
+    { version: '2.2.2', pass: true },
+    { version: '2.5.4', pass: true }
   ]
 
   subject(:ffprobe_version) { Ffprober::FfprobeVersion.new }
@@ -53,6 +54,5 @@ describe Ffprober::FfprobeVersion do
       expect(ffprobe_version.version.to_s).to eq('0.0.0')
       expect(Ffprober::FfprobeVersion.valid?).to eq(false)
     end
-
   end
 end

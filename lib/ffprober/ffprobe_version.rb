@@ -4,7 +4,7 @@ module Ffprober
     NIGHTLY_REGEX = /^(ffprobe|avprobe|ffmpeg) version (N|git)-/
 
     MIN_VERSION = Gem::Version.new('0.9.0')
-    MAX_VERSION = Gem::Version.new('2.3.3')
+    MAX_VERSION = Gem::Version.new('2.5.4')
 
     def self.valid?
       new.valid?
