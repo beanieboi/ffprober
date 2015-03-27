@@ -1,6 +1,7 @@
-master / 2015-01-10
+0.4.2 / 2015-03-27
 ===================
 
+ * add support for ffmpeg 2.5.4
  * add support for subtitle streams
  * update Changes.md
 
