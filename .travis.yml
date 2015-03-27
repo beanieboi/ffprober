@@ -2,7 +2,7 @@ language: ruby
 
 script: rspec spec
 
-before_script:
+install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq ffmpeg
   - gem update bundler
