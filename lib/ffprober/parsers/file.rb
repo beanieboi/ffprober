@@ -1,7 +1,6 @@
 module Ffprober
   module Parsers
     class File
-
       def initialize(file_to_parse)
         unless ::File.exist?(file_to_parse)
           fail ArgumentError.new("File not found #{file_to_parse}")
@@ -18,8 +17,8 @@ module Ffprober
       private
 
       def options
-        options = '-v quiet -print_format json -show_format -show_streams'
-        options << ' -show_chapters' if ffprobe_version.version >= Gem::Version.new('2.0.0')
+        options = "-v quiet -print_format json -show_format -show_streams"
+        options << " -show_chapters" if ffprobe_version.version >= Gem::Version.new('2.0.0')
         options
       end
 

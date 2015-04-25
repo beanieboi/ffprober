@@ -2,7 +2,6 @@ require 'shellwords'
 
 module Ffprober
   class Parser
-
     def self.from_file(file_to_parse)
       unless FfprobeVersion.valid?
         fail ArgumentError.new("no or unsupported ffprobe version found. (version: #{Ffprober::Ffmpeg::Version.new})")
