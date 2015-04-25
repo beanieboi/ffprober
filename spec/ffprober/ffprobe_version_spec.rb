@@ -19,6 +19,7 @@ describe Ffprober::FfprobeVersion do
     { version: '2.5.4', pass: true }
   ]
 
+  let(:ffprobe_finder)      { Ffprober::Ffmpeg::Finder }
   subject(:ffprobe_version) { Ffprober::FfprobeVersion.new }
 
   context 'validates the ffprobe version' do
@@ -50,7 +51,7 @@ describe Ffprober::FfprobeVersion do
     end
 
     it 'should not be valid if no ffprobe could be found in PATH' do
-      allow(Ffprober).to receive(:path).and_return(nil)
+      allow(ffprobe_finder).to receive(:path).and_return(nil)
       expect(ffprobe_version.version.to_s).to eq('0.0.0')
       expect(Ffprober::FfprobeVersion.valid?).to eq(false)
     end

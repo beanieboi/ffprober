@@ -35,7 +35,11 @@ module Ffprober
     end
 
     def ffprobe_version_output
-      @ffprobe_version_output ||= Ffprober.path.nil? ? '' : `#{Ffprober.path} -version`
+      @ffprobe_version_output ||= ffprobe_finder.path.nil? ? '' : `#{ffprobe_finder.path} -version`
+    end
+
+    def ffprobe_finder
+      Ffprober::Ffmpeg::Finder
     end
   end
 end
