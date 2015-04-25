@@ -29,6 +29,10 @@ module Ffprober
       def ffprobe_finder
         Ffprober::Ffmpeg::Finder
       end
+
+      def to_s
+        parse_version.join('.')
+      end
     end
   end
 end
