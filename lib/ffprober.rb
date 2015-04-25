@@ -10,6 +10,8 @@ require_relative 'ffprober/chapter'
 require_relative 'ffprober/ffprobe_version'
 require_relative 'ffprober/errors'
 require_relative 'ffprober/ffmpeg/finder'
+require_relative 'ffprober/ffmpeg/version'
+require_relative 'ffprober/ffmpeg/version_validator'
 require 'json'
 
 module Ffprober

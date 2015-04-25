@@ -5,7 +5,7 @@ module Ffprober
     def self.from_file(file_to_parse)
       unless FfprobeVersion.valid?
         fail ArgumentError.new("no or unsupported ffprobe version found.\
-                                (version: #{FfprobeVersion.new.version})")
+                                (version: #{Ffprober::Ffmpeg::Version.new})")
       end
 
       unless File.exist?(file_to_parse)
