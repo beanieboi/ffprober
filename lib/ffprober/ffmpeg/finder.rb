@@ -12,7 +12,7 @@ module Ffprober
       end
 
       def self.executable_name
-        @executable_name ||= self.windows? ? 'ffprobe.exe' : 'ffprobe'
+        @executable_name ||= self.windows? ? "ffprobe.exe" : "ffprobe"
       end
 
       def self.windows?

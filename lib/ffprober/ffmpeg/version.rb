@@ -5,7 +5,7 @@ module Ffprober
       NIGHTLY_REGEX = /^(ffprobe|avprobe|ffmpeg) version (N|git)-/
 
       def version
-        @version ||= Gem::Version.new(parse_version.join('.'))
+        @version ||= Gem::Version.new(parse_version.join("."))
       end
 
       def nightly?
@@ -23,7 +23,7 @@ module Ffprober
       end
 
       def ffprobe_version_output
-        @ffprobe_version_output ||= ffprobe_finder.path.nil? ? '' : `#{ffprobe_finder.path} -version`
+        @ffprobe_version_output ||= ffprobe_finder.path.nil? ? "" : `#{ffprobe_finder.path} -version`
       end
 
       def ffprobe_finder
@@ -31,7 +31,7 @@ module Ffprober
       end
 
       def to_s
-        parse_version.join('.')
+        parse_version.join(".")
       end
     end
   end
