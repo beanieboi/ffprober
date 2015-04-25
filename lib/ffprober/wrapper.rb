@@ -9,11 +9,11 @@ module Ffprober
     end
 
     def video_streams
-      @video_streams ||= stream_by_codec('video').map { |data| Ffprober::VideoStream.new(data) }
+      @video_streams ||= stream_by_codec("video").map { |data| Ffprober::VideoStream.new(data) }
     end
 
     def audio_streams
-      @audio_streams ||= stream_by_codec('audio').map { |data| Ffprober::AudioStream.new(data) }
+      @audio_streams ||= stream_by_codec("audio").map { |data| Ffprober::AudioStream.new(data) }
     end
 
     def chapters
@@ -21,7 +21,7 @@ module Ffprober
     end
 
     def subtitle_streams
-      @subtitle_streams ||= stream_by_codec('subtitle').map { |stream| Ffprober::SubtitleStream.new(stream) }
+      @subtitle_streams ||= stream_by_codec("subtitle").map { |stream| Ffprober::SubtitleStream.new(stream) }
     end
 
     private
