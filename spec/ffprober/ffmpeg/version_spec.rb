@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ffprober::Ffmpeg::Version do
+RSpec.describe Ffprober::Ffmpeg::Version do
   let(:ffprobe_finder)      { Ffprober::Ffmpeg::Finder }
   subject(:ffprobe_version) { described_class.new }
 

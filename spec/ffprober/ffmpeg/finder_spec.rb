@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Ffprober::Ffmpeg::Finder do
+RSpec.describe Ffprober::Ffmpeg::Finder do
 
   describe 'if no ffprobe is found' do
     it 'should raise a exception if there is no ffmpeg' do

@@ -77,7 +77,7 @@ def shared_specs
   end
 end
 
-describe Ffprober::Parser do
+RSpec.describe Ffprober::Parser do
 
   context 'from_file', if: Ffprober::FfprobeVersion.valid? do
     let(:ffprobe) { Ffprober::Parser.from_file('spec/assets/sample video.m4v') }

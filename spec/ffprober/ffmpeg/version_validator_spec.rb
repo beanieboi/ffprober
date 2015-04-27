@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ffprober::Ffmpeg::VersionValidator do
+RSpec.describe Ffprober::Ffmpeg::VersionValidator do
   VERSION_CHECKS = [
     { version: '0.9.0', pass: true },
     { version: '1.0.0', pass: true },
