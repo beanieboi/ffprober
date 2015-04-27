@@ -18,7 +18,7 @@ module Ffprober
 
       def options
         options = "-v quiet -print_format json -show_format -show_streams"
-        options << " -show_chapters" if ffprobe_version.version >= Gem::Version.new('2.0.0')
+        options << " -show_chapters" if ffprobe_version.version >= Gem::Version.new("2.0.0")
         options
       end
 

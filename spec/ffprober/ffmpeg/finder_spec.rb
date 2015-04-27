@@ -1,7 +1,6 @@
 require "spec_helper"
 
 RSpec.describe Ffprober::Ffmpeg::Finder do
-
   describe "if no ffprobe is found" do
     it "should raise a exception if there is no ffmpeg" do
       allow(described_class).to receive(:path).and_return("nonexistant")
