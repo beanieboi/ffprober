@@ -3,9 +3,11 @@ require "spec_helper"
 
 RSpec.describe Ffprober::Parser do
   context "from_file", if: Ffprober::FfprobeVersion.valid? do
-    let(:ffprobe) { Ffprober::Parser.from_file("spec/assets/sample video.m4v") }
+    let(:ffprobe) do
+      Ffprober::Parser.from_file("spec/assets/sample video.m4v")
+    end
 
-    it 'parses the content' do
+    it "parses the content" do
       expect(ffprobe.format.filename).to eq("spec/assets/sample video.m4v")
       expect(ffprobe.format.size).to eq("4611")
       expect(ffprobe.format.bit_rate).to eq("377950")
@@ -34,9 +36,11 @@ RSpec.describe Ffprober::Parser do
   end
 
   context "from_json" do
-    let(:ffprobe) { Ffprober::Parser.from_json(File.read("spec/assets/sample video.json")) }
+    let(:ffprobe) do
+      Ffprober::Parser.from_json(File.read("spec/assets/sample video.json"))
+    end
 
-    it 'parses the content' do
+    it "parses the content" do
       expect(ffprobe.format.filename).to eq("spec/assets/sample video.m4v")
       expect(ffprobe.format.size).to eq("4611")
       expect(ffprobe.format.bit_rate).to eq("377950")
