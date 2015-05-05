@@ -3,7 +3,7 @@ module Ffprober
     class Finder
       def self.path
         @path ||= begin
-          path = ENV['PATH'].split(File::PATH_SEPARATOR).find do |path_to_check|
+          path = ENV["PATH"].split(File::PATH_SEPARATOR).detect do |path_to_check|
             File.executable?(File.join(path_to_check, executable_name))
           end
 

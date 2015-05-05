@@ -14,11 +14,13 @@ module Ffprober
 
       private
 
-      attr_reader :ffmpeg_version
-
       def version_requirement_statisfied?
         version = ffmpeg_version.version
         (MIN_VERSION <= version && version <= MAX_VERSION)
+      end
+
+      def ffmpeg_version
+        @ffmpeg_version
       end
     end
   end

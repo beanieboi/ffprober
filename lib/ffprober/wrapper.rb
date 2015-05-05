@@ -26,14 +26,16 @@ module Ffprober
 
     private
 
-    attr_reader :json
-
     def stream_by_codec(codec_type)
       streams.select { |stream| stream[:codec_type] == codec_type }
     end
 
     def streams
       json[:streams]
+    end
+
+    def json
+      @json
     end
   end
 end

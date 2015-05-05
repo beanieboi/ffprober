@@ -19,6 +19,8 @@ AllCops:
   - "vendor/**/*"
   - "db/schema.rb"
   - "db/migrate/*"
+  - "spec/spec_helper.rb"
+  - "ffprober.gemspec"
   RunRailsCops: true
   DisplayCopNames: true
   StyleGuideCopsOnly: false
