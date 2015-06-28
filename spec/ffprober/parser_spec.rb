@@ -4,11 +4,11 @@ require "spec_helper"
 RSpec.describe Ffprober::Parser do
   context "from_file", if: Ffprober::FfprobeVersion.valid? do
     let(:ffprobe) do
-      Ffprober::Parser.from_file("spec/assets/sample video.m4v")
+      Ffprober::Parser.from_file("spec/assets/s'ample video.m4v")
     end
 
     it "parses the content" do
-      expect(ffprobe.format.filename).to eq("spec/assets/sample video.m4v")
+      expect(ffprobe.format.filename).to eq("spec/assets/s'ample video.m4v")
       expect(ffprobe.format.size).to eq("4611")
       expect(ffprobe.format.bit_rate).to eq("377950")
 

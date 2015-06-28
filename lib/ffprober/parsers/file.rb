@@ -10,7 +10,7 @@ module Ffprober
       end
 
       def load
-        json_output = `#{ffprobe_finder.path} #{options} '#{@file_to_parse}'`
+        json_output = `#{ffprobe_finder.path} #{options} #{Shellwords.escape(@file_to_parse)}`
         Ffprober::Parsers::Json.new(json_output)
       end
 
