@@ -1,3 +1,8 @@
+0.4.4 / 2015-06-30
+===================
+
+* fix bug handling file with single quotes in the filename (thanks kaczowkad)
+
 0.4.3 / 2015-06-22
 ===================
 
