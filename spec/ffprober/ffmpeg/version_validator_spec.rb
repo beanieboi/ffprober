@@ -15,7 +15,8 @@ RSpec.describe Ffprober::Ffmpeg::VersionValidator do
     { version: "2.1.4", pass: true },
     { version: "2.2", pass: true },
     { version: "2.2.2", pass: true },
-    { version: "2.5.4", pass: true }
+    { version: "2.5.4", pass: true },
+    { version: "2.7.2", pass: true }
   ]
 
   context "validates the ffprobe version" do
