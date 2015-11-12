@@ -16,6 +16,10 @@ module Ffprober
       @audio_streams ||= stream_by_codec("audio").map { |data| Ffprober::AudioStream.new(data) }
     end
 
+    def data_streams
+      @data_streams ||= stream_by_codec("data").map { |data| Ffprober::DataStream.new(data) }
+    end
+
     def chapters
       @chapters ||= json[:chapters].map { |chapter| Ffprober::Chapter.new(chapter) }
     end
