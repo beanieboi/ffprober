@@ -60,7 +60,7 @@ RSpec.describe Ffprober::Parser do
     expect(ffprobe.chapters.first.tags).to eq(title: "Chapter 1")
   end
 
-  it 'parses data streams' do
+  it "parses data streams" do
     ffprobe = Ffprober::Parser.from_json(File.read("spec/assets/data_streams.json"))
 
     expect(ffprobe.data_streams.first.tags[:reel_name]).to eq("NO NAME")
