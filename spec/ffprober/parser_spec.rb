@@ -67,9 +67,6 @@ RSpec.describe Ffprober::Parser do
   end
 
   it "it raises an error if the file is invalid", if: Ffprober::FfprobeVersion.valid? do
-    ffprobe = Ffprober::Parser.from_file("spec/assets/empty_file")
-    expect { ffprobe.format.filename }.to raise_error
-    expect { ffprobe.format.size }.to raise_error
-    expect { ffprobe.format.bit_rate }.to raise_error
+    expect { Ffprober::Parser.from_file("spec/assets/empty_file") }.to raise_error(Ffprober::EmptyInput)
   end
 end

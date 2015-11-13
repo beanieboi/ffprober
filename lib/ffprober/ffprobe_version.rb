@@ -1,5 +1,9 @@
 module Ffprober
   class FfprobeVersion
+    def self.invalid?
+      !new.valid?
+    end
+
     def self.valid?
       new.valid?
     end
