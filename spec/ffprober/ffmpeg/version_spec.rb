@@ -17,7 +17,7 @@ RSpec.describe Ffprober::Ffmpeg::Version do
         if expected_version == "nightly"
           expect(ffprobe_version.nightly?).to eq(true)
         else
-          expect(ffprobe_version.version).to eq(Gem::Version.new(expected_version.gsub("_", ".")))
+          expect(ffprobe_version.version).to eq(Gem::Version.new(expected_version.tr("_", ".")))
         end
       end
     end
