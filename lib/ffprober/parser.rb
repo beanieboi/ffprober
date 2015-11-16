@@ -4,7 +4,7 @@ module Ffprober
   class Parser
     def self.from_file(file_to_parse)
       if FfprobeVersion.invalid?
-        fail UnsupportedVersion, "found version: #{Ffprober::Ffmpeg::Version.new}"
+        fail UnsupportedVersion, "found version: #{FfprobeVersion.version}"
       end
 
       if File.zero?(file_to_parse)

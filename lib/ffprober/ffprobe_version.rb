@@ -14,14 +14,18 @@ module Ffprober
       validator.valid?
     end
 
-    private
-
-    def validator
-      Ffprober::Ffmpeg::VersionValidator.new(version)
+    def self.version
+      new.version
     end
 
     def version
       Ffprober::Ffmpeg::Version.new
+    end
+
+    private
+
+    def validator
+      Ffprober::Ffmpeg::VersionValidator.new(version)
     end
   end
 end
