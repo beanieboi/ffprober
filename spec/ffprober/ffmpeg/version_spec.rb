@@ -1,7 +1,6 @@
 require "spec_helper"
 
 RSpec.describe Ffprober::Ffmpeg::Version do
-  let(:ffprobe_finder)      { Ffprober::Ffmpeg::Finder }
   subject(:ffprobe_version) { described_class.new }
 
   describe "detects the version of ffprobe" do
@@ -20,12 +19,6 @@ RSpec.describe Ffprober::Ffmpeg::Version do
           expect(ffprobe_version.version).to eq(Gem::Version.new(expected_version.tr("_", ".")))
         end
       end
-    end
-
-    it "should not be valid if no ffprobe could be found in PATH" do
-      allow(ffprobe_finder).to receive(:path).and_return(nil)
-      expect(ffprobe_version.version.to_s).to eq("0.0.0")
-      expect(Ffprober::FfprobeVersion.valid?).to eq(false)
     end
   end
 end

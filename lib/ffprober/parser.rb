@@ -1,9 +1,6 @@
 require "shellwords"
 
 module Ffprober
-  class UnsupportedVersion < StandardError; end
-  class EmptyInput < StandardError; end
-
   class Parser
     def self.from_file(file_to_parse)
       if FfprobeVersion.invalid?
