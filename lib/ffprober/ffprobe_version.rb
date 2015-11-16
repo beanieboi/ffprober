@@ -6,6 +6,8 @@ module Ffprober
 
     def self.valid?
       new.valid?
+    rescue NoFfprobeFound
+      false
     end
 
     def valid?
