@@ -1,6 +1,6 @@
 require_relative "ffprober/version"
 
-require "json"
+autoload :JSON, "json"
 
 module Ffprober
   class NoFfprobeFound < StandardError; end
