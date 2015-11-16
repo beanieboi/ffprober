@@ -1,3 +1,9 @@
+0.4.7 / 2015-11-XX
+===================
+
+* autoload, reduce initial object count by 3k
+* refactorings, clean up warnings etc.
+
 0.4.6 / 2015-11-12
 ===================
 
