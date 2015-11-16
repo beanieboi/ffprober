@@ -1,26 +1,33 @@
 require_relative "ffprober/version"
-require_relative "ffprober/dynamic_initializer"
-require_relative "ffprober/parser"
-require_relative "ffprober/format"
-require_relative "ffprober/stream"
-require_relative "ffprober/audio_stream"
-require_relative "ffprober/data_stream"
-require_relative "ffprober/video_stream"
-require_relative "ffprober/subtitle_stream"
-require_relative "ffprober/chapter"
-require_relative "ffprober/ffprobe_version"
-require_relative "ffprober/wrapper"
-require_relative "ffprober/errors"
 
-require_relative "ffprober/ffmpeg/finder"
-require_relative "ffprober/ffmpeg/version"
-require_relative "ffprober/ffmpeg/version_validator"
-require_relative "ffprober/parsers/file"
-require_relative "ffprober/parsers/json"
-require "json"
+autoload :JSON, "json"
 
 module Ffprober
   class NoFfprobeFound < StandardError; end
   class UnsupportedVersion < StandardError; end
   class EmptyInput < StandardError; end
+  class InvalidInputFileError < StandardError; end
+
+  autoload :DynamicInitializer, "ffprober/dynamic_initializer"
+  autoload :Parser, "ffprober/parser"
+  autoload :Format, "ffprober/format"
+  autoload :Stream, "ffprober/stream"
+  autoload :AudioStream, "ffprober/audio_stream"
+  autoload :VideoStream, "ffprober/video_stream"
+  autoload :DataStream, "ffprober/data_stream"
+  autoload :SubtitleStream, "ffprober/subtitle_stream"
+  autoload :Chapter, "ffprober/chapter"
+  autoload :FfprobeVersion, "ffprober/ffprobe_version"
+  autoload :Wrapper, "ffprober/wrapper"
+
+  module Ffmpeg
+    autoload :Finder, "ffprober/ffmpeg/finder"
+    autoload :Version, "ffprober/ffmpeg/version"
+    autoload :VersionValidator, "ffprober/ffmpeg/version_validator"
+  end
+
+  module Parsers
+    autoload :File, "ffprober/parsers/file"
+    autoload :Json, "ffprober/parsers/json"
+  end
 end
