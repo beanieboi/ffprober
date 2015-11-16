@@ -20,4 +20,7 @@ require_relative "ffprober/parsers/json"
 require "json"
 
 module Ffprober
+  class NoFfprobeFound < StandardError; end
+  class UnsupportedVersion < StandardError; end
+  class EmptyInput < StandardError; end
 end

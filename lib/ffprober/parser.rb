@@ -3,8 +3,12 @@ require "shellwords"
 module Ffprober
   class Parser
     def self.from_file(file_to_parse)
-      unless FfprobeVersion.valid?
-        fail ArgumentError.new("no or unsupported ffprobe version found. (version: #{Ffprober::Ffmpeg::Version.new})")
+      if FfprobeVersion.invalid?
+        fail UnsupportedVersion, "found version: #{FfprobeVersion.version}"
+      end
+
+      if File.zero?(file_to_parse)
+        fail EmptyInput, file_to_parse
       end
 
       file_parser = Ffprober::Parsers::File.new(file_to_parse)

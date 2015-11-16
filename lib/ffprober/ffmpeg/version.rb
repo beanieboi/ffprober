@@ -3,6 +3,7 @@ module Ffprober
     class Version
       VERSION_REGEX = /^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/
       NIGHTLY_REGEX = /^(ffprobe|avprobe|ffmpeg) version (N|git)-/
+      VERSION_FALLBACK = [0, 0, 0]
 
       def version
         @version ||= Gem::Version.new(parse_version.join("."))
@@ -18,7 +19,7 @@ module Ffprober
         @parse_version ||= begin
           ffprobe_version_output.match(VERSION_REGEX) do |match|
             [match[2].to_i, match[3].to_i, match[4].to_i]
-          end || [0, 0, 0]
+          end || VERSION_FALLBACK
         end
       end
 

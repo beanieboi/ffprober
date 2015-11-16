@@ -2,13 +2,8 @@ module Ffprober
   module Ffmpeg
     class Finder
       def self.path
-        @path ||= begin
-          path = ENV["PATH"].split(File::PATH_SEPARATOR).detect do |path_to_check|
-            File.executable?(File.join(path_to_check, executable_name))
-          end
-
-          path && File.expand_path(executable_name, path)
-        end
+        fail Ffprober::NoFfprobeFound if executable_path.nil?
+        @path ||= File.expand_path(executable_name, executable_path)
       end
 
       def self.executable_name
@@ -17,6 +12,14 @@ module Ffprober
 
       def self.windows?
         !!(RUBY_PLATFORM =~ /(mingw|mswin)/)
+      end
+
+      def self.executable_path
+        @@executable_path ||= begin
+          ENV["PATH"].split(File::PATH_SEPARATOR).detect do |path_to_check|
+            File.executable?(File.join(path_to_check, executable_name))
+          end
+        end
       end
     end
   end
