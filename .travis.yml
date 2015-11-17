@@ -1,6 +1,6 @@
 language: ruby
 
-script: rspec spec
+script: rake
 
 sudo: false
 

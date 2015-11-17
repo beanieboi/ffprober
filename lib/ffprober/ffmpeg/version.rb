@@ -1,6 +1,10 @@
 module Ffprober
   module Ffmpeg
     class Version
+      def initialize(ffprobe_exec=Ffprober::Ffmpeg::Exec.new)
+        @ffprobe_exec = ffprobe_exec
+      end
+
       VERSION_REGEX = /^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/
       NIGHTLY_REGEX = /^(ffprobe|avprobe|ffmpeg) version (N|git)-/
       VERSION_FALLBACK = [0, 0, 0]
@@ -24,11 +28,7 @@ module Ffprober
       end
 
       def ffprobe_version_output
-        @ffprobe_version_output ||= ffprobe_finder.path.nil? ? "" : `#{ffprobe_finder.path} -version`
-      end
-
-      def ffprobe_finder
-        Ffprober::Ffmpeg::Finder
+        @ffprobe_exec.ffprobe_version_output
       end
 
       def to_s
