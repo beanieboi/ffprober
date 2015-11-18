@@ -1,5 +1,8 @@
 language: ruby
 
+before_script:
+  - mv ~/beanieboi/ffprober/test/ffprobe /usr/bin
+
 script: rake
 
 sudo: false
