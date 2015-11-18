@@ -1,7 +1,7 @@
 language: ruby
 
 before_script:
-  - mv ~/beanieboi/ffprober/test/ffprobe /usr/bin
+  - cp beanieboi/ffprober/test/ffprobe /usr/bin/ffprobe
 
 script: rake
 
