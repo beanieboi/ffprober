@@ -2,7 +2,7 @@ language: ruby
 
 before_script:
   - echo $PATH
-  - cp test/ffprobe /usr/bin/ffprobe
+  - cp test/ffprobe /home/travis/bin
 
 script: rake
 
