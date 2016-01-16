@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "fake_version_output"
