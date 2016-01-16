@@ -20,8 +20,6 @@ class FfproberTest < Minitest::Test
   end
 
   def test_file_input
-    return unless Ffprober::FfprobeVersion.valid?
-
     ffprobe = Ffprober::Parser.from_file("test/assets/301 extracting a ruby gem.m4v")
 
     assert_equal "test/assets/301 extracting a ruby gem.m4v", ffprobe.format.filename
