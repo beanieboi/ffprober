@@ -2,7 +2,7 @@ module Ffprober
   module Ffmpeg
     class VersionValidator
       MIN_VERSION = Gem::Version.new("0.9.0")
-      MAX_VERSION = Gem::Version.new("2.8.4")
+      MAX_VERSION = Gem::Version.new("2.8.5")
 
       def initialize(ffmpeg_version)
         @ffmpeg_version = ffmpeg_version
