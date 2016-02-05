@@ -3,7 +3,7 @@
 
 * autoload, reduce initial object count by 3k
 * refactorings, clean up warnings etc.
-* support for ffmpeg 2.8.2
+* remove check for maximum ffprober version, makes upgrading ffmpeg way easier
 
 0.4.6 / 2015-11-12
 ===================
