@@ -1,5 +1,7 @@
 module Ffprober
   class Wrapper
+    attr_reader :json
+
     def initialize(json)
       @json = json
     end
@@ -36,10 +38,6 @@ module Ffprober
 
     def streams
       json[:streams]
-    end
-
-    def json
-      @json
     end
   end
 end
