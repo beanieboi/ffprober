@@ -1,9 +1,14 @@
-0.4.7 / 2015-11-XX
+0.5.1 / 2016-02-07
+===================
+
+* expose parsed json via ffprober.json
+
+0.5.0 / unreleased
 ===================
 
 * autoload, reduce initial object count by 3k
 * refactorings, clean up warnings etc.
-* support for ffmpeg 2.8.2
+* remove check for maximum ffprober version, makes upgrading ffmpeg way easier
 
 0.4.6 / 2015-11-12
 ===================

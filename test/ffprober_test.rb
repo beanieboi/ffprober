@@ -18,7 +18,9 @@ class FfproberTest < Minitest::Test
     assert_equal 480, ffprobe.video_streams.first.width
 
     assert_equal 3, ffprobe.chapters.count
-    assert_equal '1/1000', ffprobe.chapters.first.time_base
+    assert_equal "1/1000", ffprobe.chapters.first.time_base
+
+    assert_equal 3, ffprobe.json[:streams].count #json raw access
   end
 
   def test_file_input
@@ -42,5 +44,7 @@ class FfproberTest < Minitest::Test
     assert_equal 480, ffprobe.video_streams.first.width
 
     assert_equal 0, ffprobe.chapters.count
+
+    assert_equal 2, ffprobe.json[:streams].count #json raw access
   end
 end

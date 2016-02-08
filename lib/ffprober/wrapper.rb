@@ -1,5 +1,7 @@
 module Ffprober
   class Wrapper
+    attr_reader :json
+
     def initialize(json)
       @json = json
     end
