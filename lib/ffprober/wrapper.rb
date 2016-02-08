@@ -49,7 +49,5 @@ module Ffprober
     def streams
       json[:streams]
     end
-
-    attr_reader :json
   end
 end
