@@ -1,4 +1,4 @@
-0.5.7 / 2016-02-07
+0.5.1 / 2016-02-07
 ===================
 
 * expose parsed json via ffprober.json
