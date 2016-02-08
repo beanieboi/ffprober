@@ -1,4 +1,9 @@
-0.4.7 / 2015-11-XX
+0.5.1 / 2016-02-07
+===================
+
+* expose parsed json via ffprober.json
+
+0.5.0 / unreleased
 ===================
 
 * autoload, reduce initial object count by 3k
