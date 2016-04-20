@@ -11,23 +11,33 @@ module Ffprober
     end
 
     def video_streams
-      @video_streams ||= stream_by_codec("video").map { |data| Ffprober::VideoStream.new(data) }
+      @video_streams ||= stream_by_codec('video').map do |data|
+        Ffprober::VideoStream.new(data)
+      end
     end
 
     def audio_streams
-      @audio_streams ||= stream_by_codec("audio").map { |data| Ffprober::AudioStream.new(data) }
+      @audio_streams ||= stream_by_codec('audio').map do |data|
+        Ffprober::AudioStream.new(data)
+      end
     end
 
     def data_streams
-      @data_streams ||= stream_by_codec("data").map { |data| Ffprober::DataStream.new(data) }
+      @data_streams ||= stream_by_codec('data').map do |data|
+        Ffprober::DataStream.new(data)
+      end
     end
 
     def chapters
-      @chapters ||= json[:chapters].map { |chapter| Ffprober::Chapter.new(chapter) }
+      @chapters ||= json[:chapters].map do |chapter|
+        Ffprober::Chapter.new(chapter)
+      end
     end
 
     def subtitle_streams
-      @subtitle_streams ||= stream_by_codec("subtitle").map { |stream| Ffprober::SubtitleStream.new(stream) }
+      @subtitle_streams ||= stream_by_codec('subtitle').map do |stream|
+        Ffprober::SubtitleStream.new(stream)
+      end
     end
 
     private

@@ -1,4 +1,4 @@
-require "shellwords"
+require 'shellwords'
 
 module Ffprober
   class Parser
@@ -7,9 +7,7 @@ module Ffprober
         fail UnsupportedVersion, "found version: #{FfprobeVersion.version}"
       end
 
-      if File.zero?(file_to_parse)
-        fail EmptyInput, file_to_parse
-      end
+      fail EmptyInput, file_to_parse if File.zero?(file_to_parse)
 
       file_parser = Ffprober::Parsers::File.new(file_to_parse)
       json_parser = file_parser.load

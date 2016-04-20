@@ -17,9 +17,7 @@ module Ffprober
         MIN_VERSION <= ffmpeg_version.version
       end
 
-      def ffmpeg_version
-        @ffmpeg_version
-      end
+      attr_reader :ffmpeg_version
     end
   end
 end

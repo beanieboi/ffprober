@@ -1,7 +1,7 @@
 module Ffprober
   module Ffmpeg
     class Finder
-      SEARCH_PATHS = ENV["PATH"]
+      SEARCH_PATHS = ENV['PATH']
 
       def self.path
         fail Ffprober::NoFfprobeFound if executable_path.nil?
@@ -9,7 +9,7 @@ module Ffprober
       end
 
       def self.executable_name
-        @executable_name ||= self.windows? ? "ffprobe.exe" : "ffprobe"
+        @executable_name ||= windows? ? 'ffprobe.exe' : 'ffprobe'
       end
 
       def self.windows?
@@ -17,7 +17,7 @@ module Ffprober
       end
 
       def self.executable_path
-        @@executable_path ||= begin
+        @executable_path ||= begin
           SEARCH_PATHS.split(File::PATH_SEPARATOR).detect do |path_to_check|
             File.executable?(File.join(path_to_check, executable_name))
           end
