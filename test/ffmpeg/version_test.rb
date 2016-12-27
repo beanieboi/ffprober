@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/AbcSize
 require 'test_helper'
 
 module Ffprober
@@ -26,7 +28,10 @@ module Ffprober
           if expected_version == 'nightly'
             assert ffprobe_version.nightly?
           else
-            assert_equal Gem::Version.new(expected_version.tr('_', '.')), ffprobe_version.version
+            assert_equal(
+              Gem::Version.new(expected_version.tr('_', '.')),
+              ffprobe_version.version
+            )
           end
         end
       end

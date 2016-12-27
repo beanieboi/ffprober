@@ -1,5 +1,5 @@
 AllCops:
-  Includes:
+  Include:
     - Rakefile
     - config.ru
 Documentation:

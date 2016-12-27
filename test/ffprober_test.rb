@@ -1,9 +1,13 @@
 # frozen_string_literal: true
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/AbcSize
 require 'test_helper'
 
 class FfproberTest < Minitest::Test
   def test_json_input
-    ffprobe = Ffprober::Parser.from_json(File.read('test/assets/sample video.json'))
+    ffprobe = Ffprober::Parser.from_json(
+      File.read('test/assets/sample video.json')
+    )
 
     assert_equal 'test/assets/sample video.m4v', ffprobe.format.filename
 
@@ -25,9 +29,14 @@ class FfproberTest < Minitest::Test
   def test_file_input
     return unless Ffprober::FfprobeVersion.valid?
 
-    ffprobe = Ffprober::Parser.from_file('test/assets/301 extracting a ruby gem.m4v')
+    ffprobe = Ffprober::Parser.from_file(
+      'test/assets/301 extracting a ruby gem.m4v'
+    )
 
-    assert_equal 'test/assets/301 extracting a ruby gem.m4v', ffprobe.format.filename
+    assert_equal(
+      'test/assets/301 extracting a ruby gem.m4v',
+      ffprobe.format.filename
+    )
 
     assert_equal '44100', ffprobe.audio_streams.first.sample_rate
     assert_equal 1, ffprobe.audio_streams.count
