@@ -15,7 +15,7 @@ module Ffprober
       end
 
       def nightly?
-        !!(ffprobe_version_output =~ NIGHTLY_REGEX)
+        !(ffprobe_version_output =~ NIGHTLY_REGEX).nil?
       end
 
       private

@@ -14,7 +14,7 @@ module Ffprober
       end
 
       def self.windows?
-        !!(RUBY_PLATFORM =~ /(mingw|mswin)/)
+        !(RUBY_PLATFORM =~ /(mingw|mswin)/).nil?
       end
 
       def self.executable_path
