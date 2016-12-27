@@ -1,15 +1,14 @@
-require "shellwords"
+# frozen_string_literal: true
+require 'shellwords'
 
 module Ffprober
   class Parser
     def self.from_file(file_to_parse)
       if FfprobeVersion.invalid?
-        fail UnsupportedVersion, "found version: #{FfprobeVersion.version}"
+        raise UnsupportedVersion, "found version: #{FfprobeVersion.version}"
       end
 
-      if File.zero?(file_to_parse)
-        fail EmptyInput, file_to_parse
-      end
+      raise EmptyInput, file_to_parse if File.zero?(file_to_parse)
 
       file_parser = Ffprober::Parsers::File.new(file_to_parse)
       json_parser = file_parser.load

@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 module Ffprober
   module Ffmpeg
     class Exec
-      CHAPTER_SUPPORT = Gem::Version.new("2.0.0")
+      CHAPTER_SUPPORT = Gem::Version.new('2.0.0')
 
-      def initialize(ffprobe_finder=Ffprober::Ffmpeg::Finder)
+      def initialize(ffprobe_finder = Ffprober::Ffmpeg::Finder)
         @ffprobe_finder = ffprobe_finder
       end
 
@@ -14,7 +15,7 @@ module Ffprober
       def ffprobe_version_output
         @ffprobe_version_output ||= begin
           if @ffprobe_finder.path.nil?
-            ""
+            ''
           else
             `#{@ffprobe_finder.path} -version`
           end
@@ -22,8 +23,8 @@ module Ffprober
       end
 
       def ffprobe_options
-        options = "-v quiet -print_format json -show_format -show_streams"
-        options << " -show_chapters" if ffprobe_version.version >= CHAPTER_SUPPORT
+        options = '-v quiet -print_format json -show_format -show_streams'
+        options = options + ' -show_chapters' if ffprobe_version.version >= CHAPTER_SUPPORT
         options
       end
 
@@ -33,3 +34,4 @@ module Ffprober
     end
   end
 end
+

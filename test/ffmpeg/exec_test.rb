@@ -1,18 +1,17 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 class Ffprober::Ffmpeg::ExecTest < Minitest::Test
   class FakeFinder
     attr_writer :path
-    def path
-      @path
-    end
+    attr_reader :path
   end
 
   def test_output_without_ffmpeg
     finder = FakeFinder.new
     finder.path = nil
     exec = Ffprober::Ffmpeg::Exec.new(finder)
-    assert "", exec.ffprobe_version_output
+    assert '', exec.ffprobe_version_output
   end
 
   def test_output_with_ffmpeg
