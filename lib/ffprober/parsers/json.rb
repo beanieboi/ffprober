@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 module Ffprober
   module Parsers
-    class Json
+    class JsonParser
       def initialize(json_to_parse)
         raise ArgumentError, 'No JSON input data' if json_to_parse.nil?
         @json_to_parse = json_to_parse

@@ -29,7 +29,7 @@ module Ffprober
   end
 
   module Parsers
-    autoload :File, 'ffprober/parsers/file'
-    autoload :Json, 'ffprober/parsers/json'
+    autoload :FileParser, 'ffprober/parsers/file'
+    autoload :JsonParser, 'ffprober/parsers/json'
   end
 end
