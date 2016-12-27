@@ -5,7 +5,10 @@ module Ffprober
   module Parsers
     class FileParserTest < Minitest::Test
       class FakeExec
-        attr_writer :json_output
+        def initialize
+          @json_output = nil
+        end
+
         def json_output(_file_to_parse)
           @json_output || '{}'
         end
