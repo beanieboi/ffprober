@@ -18,7 +18,7 @@ module Ffprober
       end
 
       def self.executable_path
-        @@executable_path ||= begin
+        @executable_path ||= begin
           SEARCH_PATHS.split(File::PATH_SEPARATOR).detect do |path_to_check|
             File.executable?(File.join(path_to_check, executable_name))
           end
