@@ -1,0 +1,6 @@
+AllCops:
+  Includes:
+    - Rakefile
+    - config.ru
+Documentation:
+  Enabled: false
