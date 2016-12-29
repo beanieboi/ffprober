@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 source 'https://rubygems.org'
 
-# gem "pry"
-# gem "rubocop"
-# gem "codeclimate-test-reporter", require: false
-# gem 'simplecov', require: false
+group :test do
+  gem "simplecov"
+  gem "codeclimate-test-reporter", "~> 1.0.0"
+end
 
 # Specify your gem's dependencies in ffprober.gemspec
 gemspec
