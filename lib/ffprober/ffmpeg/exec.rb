@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'shellwords'
+
 module Ffprober
   module Ffmpeg
     class Exec
