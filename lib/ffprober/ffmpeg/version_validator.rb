@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 module Ffprober
   module Ffmpeg
     class VersionValidator
-      MIN_VERSION = Gem::Version.new("0.9.0")
+      MIN_VERSION = Gem::Version.new('0.9.0')
 
       def initialize(ffmpeg_version)
         @ffmpeg_version = ffmpeg_version
@@ -17,9 +18,7 @@ module Ffprober
         MIN_VERSION <= ffmpeg_version.version
       end
 
-      def ffmpeg_version
-        @ffmpeg_version
-      end
+      attr_reader :ffmpeg_version
     end
   end
 end

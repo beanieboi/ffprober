@@ -1,11 +1,16 @@
+# frozen_string_literal: true
 require 'test_helper'
 
-class Ffprober::Ffmpeg::FinderTest < Minitest::Test
-  def test_finder
-    finder = Ffprober::Ffmpeg::Finder.new
-  end
+module Ffprober
+  module Ffmpeg
+    class FinderTest < Minitest::Test
+      def test_finder
+        Ffprober::Ffmpeg::Finder.new
+      end
 
-  def test_executable_name
-    assert "ffprobe", Ffprober::Ffmpeg::Finder.executable_name
+      def test_executable_name
+        assert 'ffprobe', Ffprober::Ffmpeg::Finder.executable_name
+      end
+    end
   end
 end

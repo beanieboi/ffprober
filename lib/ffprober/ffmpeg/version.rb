@@ -1,20 +1,21 @@
+# frozen_string_literal: true
 module Ffprober
   module Ffmpeg
     class Version
-      def initialize(ffprobe_exec=Ffprober::Ffmpeg::Exec.new)
+      def initialize(ffprobe_exec = Ffprober::Ffmpeg::Exec.new)
         @ffprobe_exec = ffprobe_exec
       end
 
       VERSION_REGEX = /^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/
       NIGHTLY_REGEX = /^(ffprobe|avprobe|ffmpeg) version (N|git)-/
-      VERSION_FALLBACK = [0, 0, 0]
+      VERSION_FALLBACK = [0, 0, 0].freeze
 
       def version
-        @version ||= Gem::Version.new(parse_version.join("."))
+        @version ||= Gem::Version.new(parse_version.join('.'))
       end
 
       def nightly?
-        !!(ffprobe_version_output =~ NIGHTLY_REGEX)
+        !(ffprobe_version_output =~ NIGHTLY_REGEX).nil?
       end
 
       private
@@ -32,7 +33,7 @@ module Ffprober
       end
 
       def to_s
-        parse_version.join(".")
+        parse_version.join('.')
       end
     end
   end
