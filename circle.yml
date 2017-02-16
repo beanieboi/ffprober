@@ -2,4 +2,4 @@ dependencies:
   pre:
     - echo $PATH
     - cp test/ffprobe ~/bin
-    - gem install bundler
+    - gem update --system
