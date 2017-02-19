@@ -25,7 +25,8 @@ module Ffprober
       end
 
       def ffprobe_options
-        base_options = '-v quiet -print_format json -show_format -show_streams'
+        base_options = '-v quiet -print_format json -show_format'\
+                       ' -show_streams -show_error'
 
         if ffprobe_version.version >= CHAPTER_SUPPORT
           options = base_options + ' -show_chapters'
