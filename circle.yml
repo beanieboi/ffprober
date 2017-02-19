@@ -1,0 +1,5 @@
+dependencies:
+  pre:
+    - echo $PATH
+    - cp test/ffprobe ~/bin
+    - gem update --system
