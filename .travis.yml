@@ -27,9 +27,3 @@ rvm:
   - 2.4.0-rc1
   - ruby-head
   - jruby-head
-matrix:
-  allow_failures:
-    - rvm: rbx-2
-
-notifications:
-  webhooks: http://67f92215.ngrok.io
