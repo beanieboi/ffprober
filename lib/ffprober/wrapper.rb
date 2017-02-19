@@ -4,6 +4,7 @@ module Ffprober
     attr_reader :json
 
     def initialize(json)
+      raise FfprobeError, json[:error] if json[:error]
       @json = json
     end
 

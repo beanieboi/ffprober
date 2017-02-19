@@ -8,6 +8,11 @@ module Ffprober
   class InvalidInputFileError < StandardError; end
   class NoFfprobeFound < StandardError; end
   class UnsupportedVersion < StandardError; end
+  class FfprobeError < StandardError
+    def initialize(ff_err)
+      super("Ffprobe responded with: #{ff_err[:string]} (#{ff_err[:code]})")
+    end
+  end
 
   autoload :AudioStream, 'ffprober/audio_stream'
   autoload :Chapter, 'ffprober/chapter'
@@ -30,6 +35,7 @@ module Ffprober
 
   module Parsers
     autoload :FileParser, 'ffprober/parsers/file'
+    autoload :UrlParser, 'ffprober/parsers/url'
     autoload :JsonParser, 'ffprober/parsers/json'
   end
 end
