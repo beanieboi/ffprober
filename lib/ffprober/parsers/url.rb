@@ -1,10 +1,11 @@
 # frozen_string_literal: true
+
 require 'uri'
 
 module Ffprober
   module Parsers
     class UrlParser
-      VALID_URI_REGEX = /\A#{URI.regexp}\z/
+      VALID_URI_REGEX = /\A#{URI::DEFAULT_PARSER.make_regexp}\z/
 
       def initialize(url_to_parse, exec = Ffprober::Ffmpeg::Exec.new)
         unless valid_url?(url_to_parse)

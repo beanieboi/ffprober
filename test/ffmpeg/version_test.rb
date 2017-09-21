@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/AbcSize
 require 'test_helper'

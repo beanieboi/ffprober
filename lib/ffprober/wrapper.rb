@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Ffprober
   class Wrapper
     attr_reader :json

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Ffprober
   module DynamicInitializer
     def initialize(object_attribute_hash)

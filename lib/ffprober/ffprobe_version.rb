@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Ffprober
   class FfprobeVersion
     def self.invalid?
