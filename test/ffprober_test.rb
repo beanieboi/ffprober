@@ -2,6 +2,7 @@
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/AbcSize
 require 'test_helper'
+require 'uri'
 
 class FfproberTest < Minitest::Test
   def test_json_input
@@ -49,5 +50,38 @@ class FfproberTest < Minitest::Test
     assert_equal 0, ffprobe.chapters.count
 
     assert_equal 2, ffprobe.json[:streams].count # json raw access
+  end
+
+  def test_url_input
+    return unless Ffprober::FfprobeVersion.valid?
+
+    path = File.join(assets_path, '301 extracting a ruby gem.m4v')
+    url = "file://#{path}"
+
+    ffprobe = Ffprober::Parser.from_url(url)
+
+    assert_equal(url, ffprobe.format.filename)
+
+    assert_equal '44100', ffprobe.audio_streams.first.sample_rate
+    assert_equal 1, ffprobe.audio_streams.count
+
+    assert_equal 0, ffprobe.subtitle_streams.count
+
+    assert_equal 1, ffprobe.video_streams.count
+    assert_equal 480, ffprobe.video_streams.first.width
+
+    assert_equal 0, ffprobe.chapters.count
+
+    assert_equal 2, ffprobe.json[:streams].count # json raw access
+  end
+
+  def test_error_response
+    return unless Ffprober::FfprobeVersion.valid?
+
+    err = assert_raises Ffprober::FfprobeError do
+      Ffprober::Parser.from_url('http://localhost/notarealfile.mp4')
+    end
+    assert_equal(err.message, 'Ffprobe responded with: '\
+                              'Connection refused (-61)')
   end
 end

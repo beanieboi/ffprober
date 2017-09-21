@@ -1,3 +1,10 @@
+unreleased
+==========
+
+* exposes a from_url method that allows probing URLs
+* validates URL input and raises error if invalid URL
+* raises an error if ffprobe responses with an error message in the JSON
+
 0.5.1 / 2016-02-07
 ===================
 
