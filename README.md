@@ -27,7 +27,7 @@ Or install it yourself as:
 
 ## FFMPEG version
 
-tested with ffprobe version 0.9 upto 2.2
+tested with ffprobe version 0.9 upto 3.3
 
 according to [ffmpeg changelog](http://git.videolan.org/?p=ffmpeg.git;a=blob_plain;f=Changelog) json output was added in version 0.9
 
