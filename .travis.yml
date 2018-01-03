@@ -22,8 +22,8 @@ addons:
     repo_token: e319ec7d18fb8e1f05b460c3ef8fac58af3844d7bfa3d44de6b82eb874bb3e31
 
 rvm:
-  - 2.2.8
-  - 2.3.5
-  - 2.4.2
+  - 2.3.6
+  - 2.4.3
+  - 2.5.0
   - ruby-head
   - jruby-head
