@@ -1,4 +1,4 @@
-unreleased
+0.5.2 / 2017-01-18
 ==========
 
 * exposes a from_url method that allows probing URLs
