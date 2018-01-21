@@ -47,9 +47,9 @@ Ffprober is tested under 2.3, 2.4, 2.5, JRuby (head) and Rubinius and ruby-head.
 
 [![Build Status](https://secure.travis-ci.org/beanieboi/ffprober.png?branch=master)](http://travis-ci.org/beanieboi/ffprober)
 
-[![Code Climate](https://codeclimate.com/github/beanieboi/ffprober.png)](https://codeclimate.com/github/beanieboi/ffprober)
+[![Maintainability](https://api.codeclimate.com/v1/badges/34d393657d54b233ebbc/maintainability)](https://codeclimate.com/github/beanieboi/ffprober/maintainability)
 
-[![Test Coverage](https://codeclimate.com/github/beanieboi/ffprober/badges/coverage.svg)](https://codeclimate.com/github/beanieboi/ffprober)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/34d393657d54b233ebbc/test_coverage)](https://codeclimate.com/github/beanieboi/ffprober/test_coverage)
 
 ## Contributors
 
