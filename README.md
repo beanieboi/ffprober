@@ -45,7 +45,7 @@ help me collecting various version outputs of fprobe/ffmpeg
 
 Ffprober is tested under 2.3, 2.4, 2.5, JRuby (head) and Rubinius and ruby-head.
 
-[![Build Status](https://secure.travis-ci.org/beanieboi/ffprober.png?branch=master)](http://travis-ci.org/beanieboi/ffprober)
+[![Build Status](https://travis-ci.org/beanieboi/ffprober.svg?branch=master)](https://travis-ci.org/beanieboi/ffprober)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/34d393657d54b233ebbc/maintainability)](https://codeclimate.com/github/beanieboi/ffprober/maintainability)
 
