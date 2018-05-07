@@ -22,13 +22,13 @@ module Ffprober
       end
 
       def test_with_invalid_url
-        assert_raises ArgumentError do
+        assert_raises(ArgumentError) do
           UrlParser.new(INVALID_URL)
         end
       end
 
       def test_with_embedded_url
-        assert_raises ArgumentError do
+        assert_raises(ArgumentError) do
           UrlParser.new(EMBEDDED_URL)
         end
       end

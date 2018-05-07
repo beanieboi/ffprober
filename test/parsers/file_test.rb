@@ -16,7 +16,7 @@ module Ffprober
       end
 
       def test_without_file
-        assert_raises ArgumentError do
+        assert_raises(ArgumentError) do
           FileParser.new('not_found.mp4')
         end
       end
