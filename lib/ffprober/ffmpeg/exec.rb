@@ -33,7 +33,7 @@ module Ffprober
           options = base_options + ' -show_chapters'
         end
 
-        options
+        options || base_options
       end
 
       def ffprobe_version
