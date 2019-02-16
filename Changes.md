@@ -1,3 +1,8 @@
+0.5.3 / 2019-02-16
+==========
+
+* fixed running on older ffmpeg versions. (PR: https://github.com/beanieboi/ffprober/pull/83) thanks @sevilla
+
 0.5.2 / 2017-01-18
 ==========
 
