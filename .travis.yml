@@ -23,8 +23,8 @@ env:
     - CC_TEST_REPORTER_ID=e319ec7d18fb8e1f05b460c3ef8fac58af3844d7bfa3d44de6b82eb874bb3e31
 
 rvm:
-  - 2.4.5
-  - 2.5.3
-  - 2.6.1
+  - 2.4.6
+  - 2.5.5
+  - 2.6.3
   - ruby-head
   - jruby-head
