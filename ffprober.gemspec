@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '~> 2.0'
 
-  spec.add_development_dependency 'rake', '~> 12.3.3'
-  spec.add_development_dependency 'minitest'
-  spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'rake', '~> 12.3'
+  spec.add_development_dependency 'minitest', '~> 5'
+  spec.add_development_dependency 'rubocop', '~> 0.80'
 end
