@@ -1,7 +1,12 @@
+0.5.5 / 2020-03-28
+==========
+
+* no code changes, i had to release to to make sure that GitHub Actions are working
+
 0.5.4 / 2020-03-28
 ==========
 
-* bump minimum rake version to 12.3.3
+* due to security issues in rake, the minimum version is now 12.3.3
 
 0.5.3 / 2019-02-16
 ==========
