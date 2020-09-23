@@ -45,7 +45,7 @@ help me collecting various version outputs of fprobe/ffmpeg
 
 Ffprober is tested under 2.4, 2.5, 2.6 and 2.7.
 
-[![Build Status](https://github.com/beanieboi/ffprober/workflows/Ruby/badge.svg)
+[![Build Status](https://github.com/beanieboi/ffprober/workflows/Ruby/badge.svg)](https://github.com/beanieboi/ffprober/actions?query=workflow%3ARuby)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/34d393657d54b233ebbc/maintainability)](https://codeclimate.com/github/beanieboi/ffprober/maintainability)
 
