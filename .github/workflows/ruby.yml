@@ -9,14 +9,14 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-
+  test:
     strategy:
+      fail-fast: false
       matrix:
         os: [macos-latest, ubuntu-latest]
         ruby-version: [2.5, 2.6, 2.7, head]
-
+    runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ endsWith(matrix.ruby, 'head') }}
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby ${{ matrix.ruby-version }}
