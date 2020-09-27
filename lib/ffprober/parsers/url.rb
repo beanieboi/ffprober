@@ -23,7 +23,7 @@ module Ffprober
       private
 
       def valid_url?(url)
-        URI.escape(url) =~ VALID_URI_REGEX
+        url.gsub(' ', '%20') =~ VALID_URI_REGEX
       end
     end
   end
