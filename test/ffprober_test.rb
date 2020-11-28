@@ -92,3 +92,5 @@ class FfproberTest < Minitest::Test
                               'Connection refused (-61)')
   end
 end
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/AbcSize

@@ -11,9 +11,13 @@ autoload :JSON, 'json'
 
 module Ffprober
   class EmptyInput < StandardError; end
+
   class InvalidInputFileError < StandardError; end
+
   class NoFfprobeFound < StandardError; end
+
   class UnsupportedVersion < StandardError; end
+
   class FfprobeError < StandardError
     def initialize(ff_err)
       super("Ffprobe responded with: #{ff_err[:string]} (#{ff_err[:code]})")

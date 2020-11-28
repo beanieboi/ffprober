@@ -9,8 +9,7 @@ module Ffprober
       extend T::Sig
 
       class FakeFinder
-        attr_writer :path
-        attr_reader :path
+        attr_accessor :path
       end
 
       sig { returns(TrueClass) }
