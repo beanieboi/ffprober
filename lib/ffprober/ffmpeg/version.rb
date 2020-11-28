@@ -6,7 +6,7 @@ module Ffprober
     class Version
       extend T::Sig
 
-      sig { params(ffprobe_exec: T.any(Ffprober::Ffmpeg::Exec, Ffprober::Ffmpeg::VersionTest::FakeExec)).void }
+      sig { params(ffprobe_exec: T.any(Ffprober::Ffmpeg::Exec, T.untyped)).void }
       def initialize(ffprobe_exec = Ffprober::Ffmpeg::Exec.new)
         @ffprobe_exec = ffprobe_exec
         @version = T.let(nil, T.nilable(Gem::Version))
