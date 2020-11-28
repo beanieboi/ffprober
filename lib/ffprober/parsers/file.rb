@@ -9,7 +9,7 @@ module Ffprober
       sig do
         params(
           file_to_parse: String,
-          exec: T.any(Ffprober::Ffmpeg::Exec, Ffprober::Parsers::FileParserTest::FakeExec)
+          exec: T.any(Ffprober::Ffmpeg::Exec, T.untyped)
         ).void
       end
       def initialize(file_to_parse, exec = Ffprober::Ffmpeg::Exec.new)

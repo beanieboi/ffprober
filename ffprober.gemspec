@@ -16,7 +16,16 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/beanieboi/ffprober'
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = Dir[
+     'CODE_OF_CONDUCT.md',
+     'CONTRIBUTING.md',
+     'Changes.md',
+     'Gemfile',
+     'ffprober.gemspec',
+     'lib/**/*',
+     'LICENSE',
+     'README.md'
+    ]
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
@@ -29,6 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'rubocop', '~> 1'
   spec.add_development_dependency 'rubocop-minitest'
+  spec.add_development_dependency 'rubocop-packaging'
   spec.add_development_dependency 'rubocop-sorbet'
   spec.add_development_dependency 'simplecov', '~> 0.19'
 end

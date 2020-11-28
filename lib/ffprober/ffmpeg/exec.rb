@@ -10,7 +10,7 @@ module Ffprober
 
       CHAPTER_SUPPORT = T.let(Gem::Version.new('2.0.0'), Gem::Version)
 
-      sig { params(finder: T.any(Ffprober::Ffmpeg::Finder, Ffprober::Ffmpeg::ExecTest::FakeFinder)).void }
+      sig { params(finder: T.any(Ffprober::Ffmpeg::Finder, T.untyped)).void }
       def initialize(finder = Ffprober::Ffmpeg::Finder.new)
         @finder = finder
         @ffprobe_version_output = T.let(nil, T.nilable(String))

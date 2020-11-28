@@ -1,3 +1,9 @@
+1.0 / unreleased
+==========
+
+* added Sorbet types
+* added a bunch of Rubocops
+
 0.5.5 / 2020-03-28
 ==========
 
