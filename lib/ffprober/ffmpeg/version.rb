@@ -1,4 +1,4 @@
-# typed: strong
+# typed: strict
 # frozen_string_literal: true
 
 module Ffprober
@@ -13,8 +13,8 @@ module Ffprober
         @parse_version = T.let(nil, T.nilable(T::Array[Integer]))
       end
 
-      VERSION_REGEX = /^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/.freeze
-      NIGHTLY_REGEX = /^(ffprobe|avprobe|ffmpeg) version (N|git)-/.freeze
+      VERSION_REGEX = T.let(/^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/.freeze, Regexp)
+      NIGHTLY_REGEX = T.let(/^(ffprobe|avprobe|ffmpeg) version (N|git)-/.freeze, Regexp)
       VERSION_FALLBACK = T.let([0, 0, 0].freeze, T::Array[Integer])
 
       sig { returns(Gem::Version) }
