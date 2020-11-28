@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 # frozen_string_literal: true
 
 # rubocop:disable Metrics/MethodLength
@@ -8,6 +8,7 @@ require 'test_helper'
 module Ffprober
   module Ffmpeg
     class VersionTest < Minitest::Test
+      extend T::Sig
       class FakeExec
         attr_writer :output
         def ffprobe_version_output
@@ -15,6 +16,7 @@ module Ffprober
         end
       end
 
+      sig {returns(Dir)}
       def test_version_output
         exec = FakeExec.new
 
@@ -31,7 +33,7 @@ module Ffprober
             assert ffprobe_version.nightly?
           else
             assert_equal(
-              Gem::Version.new(expected_version.tr('_', '.')),
+              Gem::Version.new(T.must(expected_version).tr('_', '.')),
               ffprobe_version.version
             )
           end
