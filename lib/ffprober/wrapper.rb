@@ -10,6 +10,7 @@ module Ffprober
     sig { returns(Ffprober::Format) }
     attr_reader :format
 
+    # rubocop:disable Metrics/AbcSize
     sig { params(json: T::Hash[T.untyped, T.untyped]).void }
     def initialize(json)
       raise FfprobeError, json[:error] if json[:error]
@@ -22,6 +23,7 @@ module Ffprober
       @subtitle_streams = T.let(nil, T.nilable(T::Array[Ffprober::SubtitleStream]))
       @chapters = T.let(nil, T.nilable(T::Array[Ffprober::Chapter]))
     end
+    # rubocop:enable Metrics/AbcSize
 
     sig { returns(T::Array[Ffprober::VideoStream]) }
     def video_streams
