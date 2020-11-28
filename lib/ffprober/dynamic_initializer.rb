@@ -7,6 +7,7 @@ module Ffprober
         instance_variable_set("@#{key}", value)
 
         next if self.class.method_defined?(key)
+
         self.class.send(:define_method, key) do
           instance_variable_get("@#{key}")
         end

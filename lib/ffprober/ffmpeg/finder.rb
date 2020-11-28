@@ -7,6 +7,7 @@ module Ffprober
 
       def self.path
         raise Ffprober::NoFfprobeFound if executable_path.nil?
+
         @path ||= File.expand_path(executable_name, executable_path)
       end
 

@@ -7,8 +7,8 @@ module Ffprober
         @ffprobe_exec = ffprobe_exec
       end
 
-      VERSION_REGEX = /^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/
-      NIGHTLY_REGEX = /^(ffprobe|avprobe|ffmpeg) version (N|git)-/
+      VERSION_REGEX = /^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/.freeze
+      NIGHTLY_REGEX = /^(ffprobe|avprobe|ffmpeg) version (N|git)-/.freeze
       VERSION_FALLBACK = [0, 0, 0].freeze
 
       def version

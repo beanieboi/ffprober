@@ -6,8 +6,7 @@ module Ffprober
   module Ffmpeg
     class ExecTest < Minitest::Test
       class FakeFinder
-        attr_writer :path
-        attr_reader :path
+        attr_accessor :path
       end
 
       def test_output_without_ffmpeg

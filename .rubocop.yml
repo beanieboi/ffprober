@@ -1,0 +1,11 @@
+
+AllCops:
+  NewCops: enable
+
+Gemspec/RequiredRubyVersion:
+  Exclude:
+    - 'ffprober.gemspec'
+
+Style/Documentation:
+  Enabled: false
+
