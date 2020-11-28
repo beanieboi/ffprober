@@ -1,4 +1,6 @@
-require: rubocop-sorbet
+require:
+  - rubocop-sorbet
+  - rubocop-minitest
 
 AllCops:
   NewCops: enable
@@ -13,3 +15,12 @@ Style/Documentation:
 # This will mess with Sorbet signatures
 Style/AccessorGrouping:
   Enabled: false
+
+Sorbet/StrictSigil:
+  Exclude:
+    - 'lib/ffprober.rb'
+    - 'lib/ffprober/dynamic_initializer.rb'
+    - 'lib/ffprober/parsers/json.rb'
+    - 'lib/ffprober/parsers/url.rb'
+    - 'lib/ffprober/wrapper.rb'
+    - 'test/*'

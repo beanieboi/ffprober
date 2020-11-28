@@ -7,6 +7,7 @@ require 'test_helper'
 require 'uri'
 
 class FfproberTest < Minitest::Test
+  # rubocop:disable Minitest/MultipleAssertions
   def test_json_input
     ffprobe = Ffprober::Parser.from_json(
       File.read('test/assets/sample video.json')
@@ -28,7 +29,9 @@ class FfproberTest < Minitest::Test
 
     assert_equal 3, ffprobe.json[:streams].count # json raw access
   end
+  # rubocop:enable Minitest/MultipleAssertions
 
+  # rubocop:disable Minitest/MultipleAssertions
   def test_file_input
     return unless Ffprober::FfprobeVersion.valid?
 
@@ -53,7 +56,9 @@ class FfproberTest < Minitest::Test
 
     assert_equal 2, ffprobe.json[:streams].count # json raw access
   end
+  # rubocop:enable Minitest/MultipleAssertions
 
+  # rubocop:disable Minitest/MultipleAssertions
   def test_url_input
     return unless Ffprober::FfprobeVersion.valid?
 
@@ -76,6 +81,7 @@ class FfproberTest < Minitest::Test
 
     assert_equal 2, ffprobe.json[:streams].count # json raw access
   end
+  # rubocop:enable Minitest/MultipleAssertions
 
   def test_error_response
     return unless Ffprober::FfprobeVersion.valid?
@@ -83,8 +89,8 @@ class FfproberTest < Minitest::Test
     err = assert_raises Ffprober::FfprobeError do
       Ffprober::Parser.from_url('http://localhost/notarealfile.mp4')
     end
-    assert_equal(err.message, 'Ffprobe responded with: '\
-                              'Connection refused (-61)')
+    assert_equal('Ffprobe responded with: '\
+                              'Connection refused (-61)', err.message)
   end
 end
 # rubocop:enable Metrics/MethodLength

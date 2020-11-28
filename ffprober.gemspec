@@ -1,3 +1,4 @@
+# typed: strong
 # frozen_string_literal: true
 
 lib = File.expand_path('lib', __dir__)
@@ -27,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest', '~> 5'
   spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'rubocop', '~> 1'
-  spec.add_development_dependency 'rubocop-sorbet', '~> 0.5'
+  spec.add_development_dependency 'rubocop-minitest'
+  spec.add_development_dependency 'rubocop-sorbet'
   spec.add_development_dependency 'simplecov', '~> 0.19'
 end
