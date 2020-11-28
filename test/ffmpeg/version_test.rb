@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # rubocop:disable Metrics/MethodLength
-# rubocop:disable Metrics/AbcSize
 require 'test_helper'
 
 module Ffprober
@@ -9,6 +8,7 @@ module Ffprober
     class VersionTest < Minitest::Test
       class FakeExec
         attr_writer :output
+
         def ffprobe_version_output
           @output
         end
@@ -19,9 +19,10 @@ module Ffprober
 
         Dir.new('test/assets/version_outputs').each do |entry|
           next if ['.', '..', '.DS_Store'].include?(entry)
+
           _, expected_version = entry.split('-')
 
-          version_output = File.read('test/assets/version_outputs/' + entry)
+          version_output = File.read("test/assets/version_outputs/#{entry}")
           exec.output = version_output
 
           ffprobe_version = Ffprober::Ffmpeg::Version.new(exec)
@@ -39,3 +40,4 @@ module Ffprober
     end
   end
 end
+# rubocop:enable Metrics/MethodLength
