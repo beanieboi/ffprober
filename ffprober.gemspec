@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'ffprober/version'
 
@@ -24,7 +24,8 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'sorbet-runtime'
 
-  spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'minitest', '~> 5'
+  spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'rubocop', '~> 0.80'
+  spec.add_development_dependency 'simplecov', '~> 12.3'
 end
