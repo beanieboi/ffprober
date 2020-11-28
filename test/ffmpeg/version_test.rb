@@ -7,7 +7,6 @@ require 'test_helper'
 module Ffprober
   module Ffmpeg
     class VersionTest < Minitest::Test
-      extend T::Sig
       class FakeExec
         attr_writer :output
 
@@ -16,7 +15,6 @@ module Ffprober
         end
       end
 
-      sig { returns(Dir) }
       def test_version_output
         exec = FakeExec.new
 

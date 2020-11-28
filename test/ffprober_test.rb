@@ -7,8 +7,6 @@ require 'test_helper'
 require 'uri'
 
 class FfproberTest < Minitest::Test
-  extend T::Sig
-  sig { returns(TrueClass) }
   def test_json_input
     ffprobe = Ffprober::Parser.from_json(
       File.read('test/assets/sample video.json')
@@ -31,7 +29,6 @@ class FfproberTest < Minitest::Test
     assert_equal 3, ffprobe.json[:streams].count # json raw access
   end
 
-  sig { returns(T.nilable(TrueClass)) }
   def test_file_input
     return unless Ffprober::FfprobeVersion.valid?
 
@@ -57,7 +54,6 @@ class FfproberTest < Minitest::Test
     assert_equal 2, ffprobe.json[:streams].count # json raw access
   end
 
-  sig { returns(T.nilable(TrueClass)) }
   def test_url_input
     return unless Ffprober::FfprobeVersion.valid?
 
@@ -81,7 +77,6 @@ class FfproberTest < Minitest::Test
     assert_equal 2, ffprobe.json[:streams].count # json raw access
   end
 
-  sig { returns(T.nilable(TrueClass)) }
   def test_error_response
     return unless Ffprober::FfprobeVersion.valid?
 
