@@ -14,7 +14,12 @@ module Ffprober
     def initialize(json)
       raise FfprobeError, json[:error] if json[:error]
       @json = json
-      @format ||= T.let(Format.new(json[:format]), Ffprober::Format)
+      @format = T.let(Format.new(json[:format]), Ffprober::Format)
+      @video_streams = T.let(nil, T.nilable(T::Array[Ffprober::VideoStream]))
+      @audio_streams = T.let(nil, T.nilable(T::Array[Ffprober::AudioStream]))
+      @data_streams = T.let(nil, T.nilable(T::Array[Ffprober::DataStream]))
+      @subtitle_streams = T.let(nil, T.nilable(T::Array[Ffprober::SubtitleStream]))
+      @chapters = T.let(nil, T.nilable(T::Array[Ffprober::Chapter]))
     end
     
     sig { returns(T::Array[Ffprober::VideoStream]) }

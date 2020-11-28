@@ -13,6 +13,7 @@ module Ffprober
       sig {params(finder: T.any(Ffprober::Ffmpeg::Finder, Ffprober::Ffmpeg::ExecTest::FakeFinder)).void}
       def initialize(finder = Ffprober::Ffmpeg::Finder.new)
         @finder = finder
+        @ffprobe_version_output = T.let(nil, T.nilable(String))
       end
 
       sig {params(filename: String).returns(String)}

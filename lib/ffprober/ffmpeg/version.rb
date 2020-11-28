@@ -9,6 +9,8 @@ module Ffprober
       sig {params(ffprobe_exec: T.any(Ffprober::Ffmpeg::Exec, Ffprober::Ffmpeg::VersionTest::FakeExec)).void}
       def initialize(ffprobe_exec = Ffprober::Ffmpeg::Exec.new)
         @ffprobe_exec = ffprobe_exec
+        @version = T.let(nil, T.nilable(Gem::Version))
+        @parse_version = T.let(nil, T.nilable(T::Array[Integer]))
       end
 
       VERSION_REGEX = /^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/
@@ -29,11 +31,17 @@ module Ffprober
 
       sig { returns(T::Array[Integer]) }
       def parse_version
-        @parse_version ||= begin
-          ffprobe_version_output.match(VERSION_REGEX) do |match|
-            [match[2].to_i, match[3].to_i, match[4].to_i]
-          end || VERSION_FALLBACK
+        return @parse_version if @parse_version
+
+        match_data = ffprobe_version_output.match(VERSION_REGEX)
+
+        if match_data
+          @parse_version = [match_data[2].to_i, match_data[3].to_i, match_data[4].to_i]
+        else
+          @parse_version = VERSION_FALLBACK
         end
+
+        @parse_version
       end
 
       sig {returns(String)}

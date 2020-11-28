@@ -1,4 +1,4 @@
-# typed: strict
+# typed: strong
 # frozen_string_literal: true
 
 module Ffprober
@@ -12,7 +12,9 @@ module Ffprober
 
       sig {void}
       def initialize
-        @executable_name = windows? ? T.let('ffprobe.exe', String) : T.let('ffprobe', String)
+        @executable_path = T.let(nil, T.nilable(String))
+        @executable_name = T.let(executable_name_picker, String)
+        @path = T.let(nil, T.nilable(String))
       end
 
       sig {returns(String)}
@@ -24,6 +26,15 @@ module Ffprober
       sig {returns(T::Boolean)}
       def windows?
         !(RUBY_PLATFORM =~ /(mingw|mswin)/).nil?
+      end
+
+      sig {returns(String)}
+      def executable_name_picker
+        if windows?
+          T.let('ffprobe.exe', String)
+        else
+          T.let('ffprobe', String)
+        end
       end
 
       sig {returns(T.nilable(String))}
