@@ -23,15 +23,10 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby-version }}
-    - name: Build
+    - name: Build and test with Rake
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-    - name: Test
-      run: |
         bundle exec rake
-    - name: Lint
-      run: |
-        bundle exec rubocop
       env:
         CI: true
