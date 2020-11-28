@@ -2904,6 +2904,11 @@ class Ffprober::FfprobeVersion
   extend ::T::Private::Methods::SingletonMethodHooks
 end
 
+class Ffprober::Parser
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
 class Ffprober::Parsers::FileParser
   extend ::T::Private::Methods::MethodHooks
   extend ::T::Private::Methods::SingletonMethodHooks
