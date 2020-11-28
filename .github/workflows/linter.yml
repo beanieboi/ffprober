@@ -17,6 +17,7 @@ jobs:
         ruby-version: 2.7
     - name: Linter
       run: |
+        bundle config --global ignore_messages true
         gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec rubocop
