@@ -1,7 +1,10 @@
+# typed: true
 # frozen_string_literal: true
 
 module Ffprober
   module DynamicInitializer
+    include Kernel
+    
     def initialize(object_attribute_hash)
       object_attribute_hash.each do |key, value|
         instance_variable_set("@#{key}", value)
