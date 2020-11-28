@@ -15,12 +15,16 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.7
-    - name: Linter
+    - name: Build
       run: |
         bundle config --global ignore_messages true
         gem install bundler
         bundle install --jobs 4 --retry 3
+    - name: Rubocop
+      run: |
         bundle exec rubocop
+    - name: Sorbet
+      run: |
         bundle exec srb tc
       env:
         CI: true
