@@ -1,3 +1,4 @@
+require: rubocop-sorbet
 
 AllCops:
   NewCops: enable
@@ -9,3 +10,6 @@ Gemspec/RequiredRubyVersion:
 Style/Documentation:
   Enabled: false
 
+# This will mess with Sorbet signatures
+Style/AccessorGrouping:
+  Enabled: false

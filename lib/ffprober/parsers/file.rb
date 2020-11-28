@@ -5,9 +5,13 @@ module Ffprober
   module Parsers
     class FileParser
       extend T::Sig
-      T::Array[Integer]
 
-      sig { params(file_to_parse: String, exec: T.any(Ffprober::Ffmpeg::Exec, Ffprober::Parsers::FileParserTest::FakeExec)).void }
+      sig do
+        params(
+          file_to_parse: String,
+          exec: T.any(Ffprober::Ffmpeg::Exec, Ffprober::Parsers::FileParserTest::FakeExec)
+        ).void
+      end
       def initialize(file_to_parse, exec = Ffprober::Ffmpeg::Exec.new)
         raise ArgumentError, "File not found #{file_to_parse}" unless ::File.exist?(file_to_parse)
 

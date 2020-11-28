@@ -19,9 +19,7 @@ module Ffprober
 
       sig { returns(String) }
       def path
-        if executable_path.nil?
-          raise Ffprober::NoFfprobeFound, 'ffprobe executable not found'
-        end
+        raise Ffprober::NoFfprobeFound, 'ffprobe executable not found' if executable_path.nil?
 
         @path ||= File.expand_path(executable_name, executable_path)
       end
