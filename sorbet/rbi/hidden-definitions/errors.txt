@@ -1977,6 +1977,7 @@
 # wrong constant name <=>
 # uninitialized constant Gem::Specification::GENERICS
 # uninitialized constant Gem::Specification::GENERIC_CACHE
+# wrong constant name removed_method_calls
 # wrong constant name to_ruby
 # wrong constant name initialize
 # wrong constant name packaging
@@ -2011,6 +2012,8 @@
 # uninitialized constant GetoptLong
 # uninitialized constant GetoptLong
 # wrong constant name deconstruct_keys
+# wrong constant name ruby2_keywords_hash
+# wrong constant name ruby2_keywords_hash?
 # wrong constant name try_convert
 # wrong constant name <Class:ConsoleMode>
 # wrong constant name beep
@@ -2324,8 +2327,8 @@
 # uninitialized constant Parser::Ruby24::Racc_Runtime_Core_Version
 # Did you mean?  Parser::Ruby24::Racc_Runtime_Revision
 #                Parser::Ruby24::Racc_Runtime_Core_Revision
-#                Parser::Ruby24::Racc_Runtime_Core_Version_C
 #                Parser::Ruby24::Racc_Runtime_Core_Version_R
+#                Parser::Ruby24::Racc_Runtime_Core_Version_C
 #                Parser::Ruby24::Racc_Runtime_Core_Revision_C
 #                Parser::Ruby24::Racc_Runtime_Core_Revision_R
 #                Parser::Ruby24::Racc_Runtime_Version
