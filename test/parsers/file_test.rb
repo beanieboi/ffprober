@@ -9,7 +9,7 @@ module Ffprober
       extend T::Sig
       class FakeExec
         extend T::Sig
-        sig {void}
+        sig { void }
         def initialize
           @json_output = nil
         end
@@ -19,14 +19,14 @@ module Ffprober
         end
       end
 
-      sig {returns(TrueClass)}
+      sig { returns(TrueClass) }
       def test_without_file
         assert_raises ArgumentError do
           FileParser.new('not_found.mp4')
         end
       end
 
-      sig {returns(Ffprober::Parsers::JsonParser)}
+      sig { returns(Ffprober::Parsers::JsonParser) }
       def test_with_a_video_file
         fake_exec = FakeExec.new
         video_file = File.join(assets_path, '301 extracting a ruby gem.m4v')

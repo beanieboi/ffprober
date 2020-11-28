@@ -15,7 +15,7 @@ module Ffprober
 
       class FakeExec
         extend T::Sig
-        sig {void}
+        sig { void }
         def initialize
           @json_output = nil
         end
@@ -25,14 +25,14 @@ module Ffprober
         end
       end
 
-      sig {returns(TrueClass)}
+      sig { returns(TrueClass) }
       def test_with_invalid_url
         assert_raises ArgumentError do
           UrlParser.new(INVALID_URL)
         end
       end
 
-      sig {returns(TrueClass)}
+      sig { returns(TrueClass) }
       def test_with_embedded_url
         assert_raises ArgumentError do
           UrlParser.new(EMBEDDED_URL)

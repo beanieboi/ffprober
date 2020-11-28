@@ -16,12 +16,13 @@ module Ffprober
         end
       end
 
-      sig {returns(Dir)}
+      sig { returns(Dir) }
       def test_version_output
         exec = FakeExec.new
 
         Dir.new('test/assets/version_outputs').each do |entry|
           next if ['.', '..', '.DS_Store'].include?(entry)
+
           _, expected_version = entry.split('-')
 
           version_output = File.read('test/assets/version_outputs/' + entry)

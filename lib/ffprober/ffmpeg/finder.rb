@@ -7,28 +7,31 @@ module Ffprober
       extend T::Sig
       SEARCH_PATHS = T.let(ENV['PATH'], T.nilable(String))
 
-      sig {returns(String)}
+      sig { returns(String) }
       attr_reader :executable_name
 
-      sig {void}
+      sig { void }
       def initialize
         @executable_path = T.let(nil, T.nilable(String))
         @executable_name = T.let(executable_name_picker, String)
         @path = T.let(nil, T.nilable(String))
       end
 
-      sig {returns(String)}
+      sig { returns(String) }
       def path
-        raise Ffprober::NoFfprobeFound, 'ffprobe executable not found' if executable_path.nil?
+        if executable_path.nil?
+          raise Ffprober::NoFfprobeFound, 'ffprobe executable not found'
+        end
+
         @path ||= File.expand_path(executable_name, executable_path)
       end
 
-      sig {returns(T::Boolean)}
+      sig { returns(T::Boolean) }
       def windows?
         !(RUBY_PLATFORM =~ /(mingw|mswin)/).nil?
       end
 
-      sig {returns(String)}
+      sig { returns(String) }
       def executable_name_picker
         if windows?
           T.let('ffprobe.exe', String)
@@ -37,7 +40,7 @@ module Ffprober
         end
       end
 
-      sig {returns(T.nilable(String))}
+      sig { returns(T.nilable(String)) }
       def executable_path
         @executable_path ||= begin
           T.must(SEARCH_PATHS).split(File::PATH_SEPARATOR).detect do |path_to_check|

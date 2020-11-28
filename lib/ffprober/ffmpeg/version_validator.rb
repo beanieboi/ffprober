@@ -8,19 +8,19 @@ module Ffprober
 
       MIN_VERSION = T.let(Gem::Version.new('0.9.0'), Gem::Version)
 
-      sig {params(ffmpeg_version: Ffprober::Ffmpeg::Version).void}
+      sig { params(ffmpeg_version: Ffprober::Ffmpeg::Version).void }
       def initialize(ffmpeg_version)
         @ffmpeg_version = ffmpeg_version
       end
 
-      sig {returns(T::Boolean)}
+      sig { returns(T::Boolean) }
       def valid?
         ffmpeg_version.nightly? || version_requirement_statisfied?
       end
 
       private
 
-      sig {returns(T::Boolean)}
+      sig { returns(T::Boolean) }
       def version_requirement_statisfied?
         MIN_VERSION <= ffmpeg_version.version
       end
