@@ -1,6 +1,7 @@
 require:
   - rubocop-sorbet
   - rubocop-minitest
+  - rubocop-packaging
 
 AllCops:
   NewCops: enable
@@ -24,3 +25,7 @@ Sorbet/StrictSigil:
     - 'lib/ffprober/parsers/url.rb'
     - 'lib/ffprober/wrapper.rb'
     - 'test/*'
+
+Packaging/RequireRelativeHardcodingLib:
+  Exclude:
+    - 'examples/from_file.rb'
