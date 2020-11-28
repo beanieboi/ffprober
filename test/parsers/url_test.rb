@@ -6,7 +6,6 @@ require 'test_helper'
 module Ffprober
   module Parsers
     class UrlParserTest < Minitest::Test
-      extend T::Sig
       VALID_HTTP_URL = 'http://fakeurl.io/video.mp4'
       VALID_FILE_URL = 'file:///localhost/video.mp4'
       UNESCAPED_URL = 'file:///localhost/video name.mp4'
@@ -14,8 +13,6 @@ module Ffprober
       EMBEDDED_URL = 'NOT_A_URLhttp://fakeurl.io/video.mp4NOT_A_URL'
 
       class FakeExec
-        extend T::Sig
-        sig { void }
         def initialize
           @json_output = nil
         end
@@ -25,14 +22,12 @@ module Ffprober
         end
       end
 
-      sig { returns(TrueClass) }
       def test_with_invalid_url
         assert_raises ArgumentError do
           UrlParser.new(INVALID_URL)
         end
       end
 
-      sig { returns(TrueClass) }
       def test_with_embedded_url
         assert_raises ArgumentError do
           UrlParser.new(EMBEDDED_URL)
