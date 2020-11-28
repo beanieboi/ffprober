@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 require 'test_helper'
@@ -10,7 +11,7 @@ module Ffprober
       end
 
       def test_executable_name
-        assert 'ffprobe', Ffprober::Ffmpeg::Finder.executable_name
+        assert 'ffprobe', test_finder.executable_name
       end
     end
   end

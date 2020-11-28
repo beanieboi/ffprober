@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 require 'test_helper'
@@ -27,7 +28,7 @@ module Ffprober
         finder = FakeFinder.new
         finder.path = fake_ffprobe_output_path
         exec = Ffprober::Ffmpeg::Exec.new(finder)
-        assert_equal "fake_version_output\n", exec.json_output(nil)
+        assert_equal "fake_version_output\n", exec.json_output('')
       end
     end
   end

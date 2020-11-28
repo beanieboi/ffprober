@@ -1,5 +1,10 @@
+# typed: true
 # frozen_string_literal: true
 
+require 'bundler'
+Bundler.setup
+
+require 'sorbet-runtime'
 require_relative 'ffprober/version'
 
 autoload :JSON, 'json'
