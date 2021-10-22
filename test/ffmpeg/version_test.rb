@@ -18,8 +18,9 @@ module Ffprober
       def test_version_output
         exec = FakeExec.new
 
+        include_dirs = ['.', '..', '.DS_Store']
         Dir.new('test/assets/version_outputs').each do |entry|
-          next if ['.', '..', '.DS_Store'].include?(entry)
+          next if include_dirs.include?(entry)
 
           _, expected_version = entry.split('-')
 
