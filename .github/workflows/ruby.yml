@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-latest, ubuntu-latest]
-        ruby-version: [2.5, 2.6, 2.7, head]
+        ruby-version: [2.6, 2.7, 3.0]
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ endsWith(matrix.ruby, 'head') }}
     steps:
