@@ -15,7 +15,7 @@ module Ffprober
 
       VERSION_REGEX = T.let(/^(ffprobe|avprobe|ffmpeg) version (\d+)\.?(\d+)\.?(\d+)*/, Regexp)
       NIGHTLY_REGEX = T.let(/^(ffprobe|avprobe|ffmpeg) version (N|git)-/, Regexp)
-      VERSION_FALLBACK = T.let([0, 0, 0], T::Array[Integer])
+      VERSION_FALLBACK = T.let([0, 0, 0].freeze, T::Array[Integer])
 
       sig { returns(Gem::Version) }
       def version

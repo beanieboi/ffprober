@@ -40,10 +40,8 @@ module Ffprober
 
       sig { returns(T.nilable(String)) }
       def executable_path
-        @executable_path ||= begin
-          T.must(SEARCH_PATHS).split(File::PATH_SEPARATOR).detect do |path_to_check|
-            File.executable?(File.join(path_to_check, executable_name))
-          end
+        @executable_path ||= T.must(SEARCH_PATHS).split(File::PATH_SEPARATOR).detect do |path_to_check|
+          File.executable?(File.join(path_to_check, executable_name))
         end
       end
     end

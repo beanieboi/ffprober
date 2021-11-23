@@ -90,7 +90,7 @@ class FfproberTest < Minitest::Test
       Ffprober::Parser.from_url('http://localhost/notarealfile.mp4')
     end
     assert_equal('Ffprobe responded with: '\
-                              'Connection refused (-61)', err.message)
+                 'Connection refused (-61)', err.message)
   end
 end
 # rubocop:enable Metrics/MethodLength

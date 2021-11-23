@@ -41,4 +41,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-packaging'
   spec.add_development_dependency 'rubocop-sorbet'
   spec.add_development_dependency 'simplecov', '~> 0.19'
+  spec.metadata = {
+    'rubygems_mfa_required' => 'true'
+  }
 end

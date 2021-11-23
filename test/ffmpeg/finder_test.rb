@@ -11,7 +11,7 @@ module Ffprober
       end
 
       def test_executable_name
-        assert 'ffprobe', test_finder.executable_name
+        assert_equal 'ffprobe', test_finder.executable_name
       end
     end
   end

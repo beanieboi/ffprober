@@ -14,7 +14,7 @@ module Ffprober
         finder = FakeFinder.new
         finder.path = nil
         exec = Ffprober::Ffmpeg::Exec.new(finder)
-        assert '', exec.ffprobe_version_output
+        assert_equal '', exec.ffprobe_version_output
       end
 
       def test_output_with_ffmpeg

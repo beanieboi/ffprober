@@ -7,9 +7,12 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/parser/all/parser.rbi
 #
-# parser-2.7.0.5
+# parser-3.0.2.0
 
 module Parser
+end
+module Parser::Messages
+  def self.compile(reason, arguments); end
 end
 module Parser::Deprecation
   def warn_of_deprecation; end
@@ -58,7 +61,9 @@ class Parser::AST::Processor < AST::Processor
   def on_empty_else(node); end
   def on_ensure(node); end
   def on_erange(node); end
+  def on_find_pattern(node); end
   def on_for(node); end
+  def on_forward_arg(node); end
   def on_gvar(node); end
   def on_gvasgn(node); end
   def on_hash(node); end
@@ -74,6 +79,7 @@ class Parser::AST::Processor < AST::Processor
   def on_ivar(node); end
   def on_ivasgn(node); end
   def on_kwarg(node); end
+  def on_kwargs(node); end
   def on_kwbegin(node); end
   def on_kwoptarg(node); end
   def on_kwrestarg(node); end
@@ -85,6 +91,8 @@ class Parser::AST::Processor < AST::Processor
   def on_match_alt(node); end
   def on_match_as(node); end
   def on_match_current_line(node); end
+  def on_match_pattern(node); end
+  def on_match_pattern_p(node); end
   def on_match_rest(node); end
   def on_match_var(node); end
   def on_match_with_lvasgn(node); end
@@ -137,14 +145,17 @@ end
 module Parser::Source
 end
 class Parser::Source::Buffer
+  def bsearch(line_begins, position); end
   def column_for_position(position); end
   def decompose_position(position); end
   def first_line; end
-  def initialize(name, first_line = nil); end
+  def freeze; end
+  def initialize(name, first_line = nil, source: nil); end
+  def inspect; end
   def last_line; end
   def line_begins; end
-  def line_for(position); end
   def line_for_position(position); end
+  def line_index_for_position(position); end
   def line_range(lineno); end
   def name; end
   def raw_source=(input); end
@@ -172,7 +183,9 @@ class Parser::Source::Range
   def empty?; end
   def end; end
   def end_pos; end
+  def eql?(arg0); end
   def first_line; end
+  def hash; end
   def initialize(source_buffer, begin_pos, end_pos); end
   def inspect; end
   def intersect(other); end
@@ -189,6 +202,7 @@ class Parser::Source::Range
   def source_buffer; end
   def source_line; end
   def to_a; end
+  def to_range; end
   def to_s; end
   def with(begin_pos: nil, end_pos: nil); end
   include Comparable
@@ -202,6 +216,7 @@ class Parser::Source::Comment
   def loc; end
   def location; end
   def self.associate(ast, comments); end
+  def self.associate_by_identity(ast, comments); end
   def self.associate_locations(ast, comments); end
   def text; end
   def type; end
@@ -211,7 +226,9 @@ class Parser::Source::Comment::Associator
   def advance_through_directives; end
   def associate; end
   def associate_and_advance_comment(node); end
+  def associate_by_identity; end
   def associate_locations; end
+  def children_in_source_order(node); end
   def current_comment_before?(node); end
   def current_comment_before_end?(node); end
   def current_comment_decorates?(node); end
@@ -273,17 +290,26 @@ class Parser::Source::Rewriter::Action
   include Comparable
 end
 class Parser::Source::TreeRewriter
+  def action_root; end
+  def action_summary; end
+  def as_nested_actions; end
+  def as_replacements; end
   def check_policy_validity; end
   def check_range_validity(range); end
   def combine(range, attributes); end
   def diagnostics; end
+  def empty?; end
   def enforce_policy(event); end
+  def import!(foreign_rewriter, offset: nil); end
   def in_transaction?; end
   def initialize(source_buffer, crossing_deletions: nil, different_replacements: nil, swallowed_insertions: nil); end
   def insert_after(range, content); end
   def insert_after_multi(range, text); end
   def insert_before(range, content); end
   def insert_before_multi(range, text); end
+  def inspect; end
+  def merge!(with); end
+  def merge(with); end
   def process; end
   def remove(range); end
   def replace(range, content); end
@@ -294,22 +320,30 @@ class Parser::Source::TreeRewriter
   extend Parser::Deprecation
 end
 class Parser::Source::TreeRewriter::Action
+  def analyse_hierarchy(action); end
+  def bsearch_child_index(from = nil); end
   def call_enforcer_for_merge(action); end
+  def check_fusible(action, *fusible); end
+  def children; end
   def combine(action); end
+  def combine_children(more_children); end
+  def contract; end
   def do_combine(action); end
+  def empty?; end
   def fuse_deletions(action, fusible, other_sibblings); end
   def initialize(range, enforcer, insert_before: nil, replacement: nil, insert_after: nil, children: nil); end
   def insert_after; end
   def insert_before; end
   def insertion?; end
   def merge(action); end
+  def moved(source_buffer, offset); end
+  def nested_actions; end
   def ordered_replacements; end
   def place_in_hierarchy(action); end
   def range; end
-  def relationship_with(action); end
   def replacement; end
   def swallow(children); end
-  def with(range: nil, children: nil, insert_before: nil, replacement: nil, insert_after: nil); end
+  def with(range: nil, enforcer: nil, children: nil, insert_before: nil, replacement: nil, insert_after: nil); end
 end
 class Parser::Source::Map
   def ==(other); end
@@ -361,6 +395,14 @@ end
 class Parser::Source::Map::Definition < Parser::Source::Map
   def end; end
   def initialize(keyword_l, operator_l, name_l, end_l); end
+  def keyword; end
+  def name; end
+  def operator; end
+end
+class Parser::Source::Map::MethodDefinition < Parser::Source::Map
+  def assignment; end
+  def end; end
+  def initialize(keyword_l, operator_l, name_l, end_l, assignment_l, body_l); end
   def keyword; end
   def name; end
   def operator; end
@@ -455,6 +497,7 @@ class Parser::StaticEnvironment
   def declare_forward_args; end
   def declared?(name); end
   def declared_forward_args?; end
+  def empty?; end
   def extend_dynamic; end
   def extend_static; end
   def initialize; end
@@ -466,12 +509,14 @@ class Parser::Lexer
   def arg_or_cmdarg(cmd_state); end
   def cmdarg; end
   def cmdarg=(arg0); end
+  def cmdarg_stack; end
   def command_start; end
   def command_start=(arg0); end
   def comments; end
   def comments=(arg0); end
   def cond; end
   def cond=(arg0); end
+  def cond_stack; end
   def context; end
   def context=(arg0); end
   def dedent_level; end
@@ -490,8 +535,10 @@ class Parser::Lexer
   def in_kwarg; end
   def in_kwarg=(arg0); end
   def initialize(version); end
+  def lambda_stack; end
   def literal; end
   def next_state_for_literal(literal); end
+  def paren_nest; end
   def pop_cmdarg; end
   def pop_cond; end
   def pop_literal; end
@@ -663,13 +710,14 @@ class Parser::Builders::Default
   def case(case_t, expr, when_bodies, else_t, else_body, end_t); end
   def case_match(case_t, expr, in_bodies, else_t, else_body, end_t); end
   def character(char_t); end
-  def check_assignment_to_numparam(node); end
+  def check_assignment_to_numparam(name, loc); end
   def check_condition(cond); end
   def check_duplicate_arg(this_arg, map = nil); end
   def check_duplicate_args(args, map = nil); end
   def check_duplicate_pattern_key(name, loc); end
   def check_duplicate_pattern_variable(name, loc); end
   def check_lvar_name(name, loc); end
+  def check_reserved_for_numparam(name, loc); end
   def collapse_string_parts?(parts); end
   def collection_map(begin_t, parts, end_t); end
   def complex(complex_t); end
@@ -686,6 +734,8 @@ class Parser::Builders::Default
   def cvar(token); end
   def dedent_string(node, dedent_level); end
   def def_class(class_t, name, lt_t, superclass, body, end_t); end
+  def def_endless_method(def_t, name_t, args, assignment_t, body); end
+  def def_endless_singleton(def_t, definee, dot_t, name_t, args, assignment_t, body); end
   def def_method(def_t, name_t, args, body, end_t); end
   def def_module(module_t, name, body, end_t); end
   def def_sclass(class_t, lshft_t, expr, body, end_t); end
@@ -696,12 +746,15 @@ class Parser::Builders::Default
   def eh_keyword_map(compstmt_e, keyword_t, body_es, else_t, else_e); end
   def emit_file_line_as_literals; end
   def emit_file_line_as_literals=(arg0); end
+  def endless_definition_map(keyword_t, operator_t, name_t, assignment_t, body_e); end
   def expr_map(loc); end
   def false(false_t); end
+  def find_pattern(lbrack_t, elements, rbrack_t); end
   def float(float_t); end
   def for(for_t, iterator, in_t, iteratee, do_t, body, end_t); end
   def for_map(keyword_t, in_t, begin_t, end_t); end
-  def forward_args(begin_t, dots_t, end_t); end
+  def forward_arg(dots_t); end
+  def forward_only_args(begin_t, dots_t, end_t); end
   def forwarded_args(dots_t); end
   def guard_map(keyword_t, guard_body_e); end
   def gvar(token); end
@@ -722,6 +775,7 @@ class Parser::Builders::Default
   def keyword_mod_map(pre_e, keyword_t, post_e); end
   def kwarg(name_t); end
   def kwarg_map(name_t, value_e = nil); end
+  def kwargs?(node); end
   def kwnilarg(dstar_t, nil_t); end
   def kwoptarg(name_t, value); end
   def kwrestarg(dstar_t, name_t = nil); end
@@ -738,6 +792,8 @@ class Parser::Builders::Default
   def match_nil_pattern(dstar_t, nil_t); end
   def match_op(receiver, match_t, arg); end
   def match_pair(label_type, label, value); end
+  def match_pattern(lhs, match_t, rhs); end
+  def match_pattern_p(lhs, match_t, rhs); end
   def match_rest(star_t, name_t = nil); end
   def match_var(name_t); end
   def match_with_trailing_comma(match, comma_t); end
@@ -780,15 +836,22 @@ class Parser::Builders::Default
   def rescue_body_map(keyword_t, exc_list_e, assoc_t, exc_var_e, then_t, compstmt_e); end
   def restarg(star_t, name_t = nil); end
   def restarg_expr(star_t, expr = nil); end
+  def rewrite_hash_args_to_kwargs(args); end
   def self(token); end
   def self.emit_arg_inside_procarg0; end
   def self.emit_arg_inside_procarg0=(arg0); end
   def self.emit_encoding; end
   def self.emit_encoding=(arg0); end
+  def self.emit_forward_arg; end
+  def self.emit_forward_arg=(arg0); end
   def self.emit_index; end
   def self.emit_index=(arg0); end
+  def self.emit_kwargs; end
+  def self.emit_kwargs=(arg0); end
   def self.emit_lambda; end
   def self.emit_lambda=(arg0); end
+  def self.emit_match_pattern; end
+  def self.emit_match_pattern=(arg0); end
   def self.emit_procarg0; end
   def self.emit_procarg0=(arg0); end
   def self.modernize; end
@@ -820,6 +883,7 @@ class Parser::Builders::Default
   def undef_method(undef_t, names); end
   def unless_guard(unless_t, unless_body); end
   def unquoted_map(token); end
+  def validate_definee(definee); end
   def value(token); end
   def var_send_map(variable_e); end
   def variable_map(name_t); end
@@ -831,6 +895,7 @@ end
 class Parser::Context
   def class_definition_allowed?; end
   def dynamic_const_definition_allowed?; end
+  def empty?; end
   def in_block?; end
   def in_class?; end
   def in_dynamic_block?; end
@@ -844,6 +909,7 @@ class Parser::Context
   def stack; end
 end
 class Parser::MaxNumparamStack
+  def empty?; end
   def has_numparams?; end
   def has_ordinary_params!; end
   def has_ordinary_params?; end
@@ -856,6 +922,7 @@ class Parser::MaxNumparamStack
   def top; end
 end
 class Parser::CurrentArgStack
+  def empty?; end
   def initialize; end
   def pop; end
   def push(value); end
@@ -867,6 +934,7 @@ end
 class Parser::VariablesStack
   def declare(name); end
   def declared?(name); end
+  def empty?; end
   def initialize; end
   def pop; end
   def push; end
@@ -880,6 +948,7 @@ class Parser::Base < Racc::Parser
   def diagnostic(level, reason, arguments, location_t, highlights_ts = nil); end
   def diagnostics; end
   def initialize(builder = nil); end
+  def lexer; end
   def max_numparam_stack; end
   def next_token; end
   def on_error(error_token_id, error_value, value_stack); end
@@ -1077,16 +1146,16 @@ class Parser::Ruby24 < Parser::Base
   def _reduce_330(val, _values, result); end
   def _reduce_331(val, _values, result); end
   def _reduce_332(val, _values, result); end
-  def _reduce_336(val, _values, result); end
+  def _reduce_333(val, _values, result); end
+  def _reduce_337(val, _values, result); end
   def _reduce_34(val, _values, result); end
-  def _reduce_340(val, _values, result); end
-  def _reduce_342(val, _values, result); end
-  def _reduce_345(val, _values, result); end
+  def _reduce_341(val, _values, result); end
+  def _reduce_343(val, _values, result); end
   def _reduce_346(val, _values, result); end
   def _reduce_347(val, _values, result); end
   def _reduce_348(val, _values, result); end
+  def _reduce_349(val, _values, result); end
   def _reduce_35(val, _values, result); end
-  def _reduce_350(val, _values, result); end
   def _reduce_351(val, _values, result); end
   def _reduce_352(val, _values, result); end
   def _reduce_353(val, _values, result); end
@@ -1106,8 +1175,8 @@ class Parser::Ruby24 < Parser::Base
   def _reduce_366(val, _values, result); end
   def _reduce_367(val, _values, result); end
   def _reduce_368(val, _values, result); end
+  def _reduce_369(val, _values, result); end
   def _reduce_37(val, _values, result); end
-  def _reduce_370(val, _values, result); end
   def _reduce_371(val, _values, result); end
   def _reduce_372(val, _values, result); end
   def _reduce_373(val, _values, result); end
@@ -1115,7 +1184,7 @@ class Parser::Ruby24 < Parser::Base
   def _reduce_375(val, _values, result); end
   def _reduce_376(val, _values, result); end
   def _reduce_377(val, _values, result); end
-  def _reduce_379(val, _values, result); end
+  def _reduce_378(val, _values, result); end
   def _reduce_38(val, _values, result); end
   def _reduce_380(val, _values, result); end
   def _reduce_381(val, _values, result); end
@@ -1126,8 +1195,8 @@ class Parser::Ruby24 < Parser::Base
   def _reduce_386(val, _values, result); end
   def _reduce_387(val, _values, result); end
   def _reduce_388(val, _values, result); end
+  def _reduce_389(val, _values, result); end
   def _reduce_39(val, _values, result); end
-  def _reduce_390(val, _values, result); end
   def _reduce_391(val, _values, result); end
   def _reduce_392(val, _values, result); end
   def _reduce_393(val, _values, result); end
@@ -1165,13 +1234,13 @@ class Parser::Ruby24 < Parser::Base
   def _reduce_422(val, _values, result); end
   def _reduce_423(val, _values, result); end
   def _reduce_424(val, _values, result); end
-  def _reduce_426(val, _values, result); end
+  def _reduce_425(val, _values, result); end
   def _reduce_427(val, _values, result); end
   def _reduce_428(val, _values, result); end
+  def _reduce_429(val, _values, result); end
   def _reduce_43(val, _values, result); end
-  def _reduce_431(val, _values, result); end
-  def _reduce_433(val, _values, result); end
-  def _reduce_438(val, _values, result); end
+  def _reduce_432(val, _values, result); end
+  def _reduce_434(val, _values, result); end
   def _reduce_439(val, _values, result); end
   def _reduce_440(val, _values, result); end
   def _reduce_441(val, _values, result); end
@@ -1208,7 +1277,7 @@ class Parser::Ruby24 < Parser::Base
   def _reduce_470(val, _values, result); end
   def _reduce_471(val, _values, result); end
   def _reduce_472(val, _values, result); end
-  def _reduce_474(val, _values, result); end
+  def _reduce_473(val, _values, result); end
   def _reduce_475(val, _values, result); end
   def _reduce_476(val, _values, result); end
   def _reduce_477(val, _values, result); end
@@ -1268,7 +1337,7 @@ class Parser::Ruby24 < Parser::Base
   def _reduce_528(val, _values, result); end
   def _reduce_529(val, _values, result); end
   def _reduce_530(val, _values, result); end
-  def _reduce_532(val, _values, result); end
+  def _reduce_531(val, _values, result); end
   def _reduce_533(val, _values, result); end
   def _reduce_534(val, _values, result); end
   def _reduce_535(val, _values, result); end
@@ -1283,7 +1352,7 @@ class Parser::Ruby24 < Parser::Base
   def _reduce_544(val, _values, result); end
   def _reduce_545(val, _values, result); end
   def _reduce_546(val, _values, result); end
-  def _reduce_549(val, _values, result); end
+  def _reduce_547(val, _values, result); end
   def _reduce_55(val, _values, result); end
   def _reduce_550(val, _values, result); end
   def _reduce_551(val, _values, result); end
@@ -1292,30 +1361,31 @@ class Parser::Ruby24 < Parser::Base
   def _reduce_554(val, _values, result); end
   def _reduce_555(val, _values, result); end
   def _reduce_556(val, _values, result); end
-  def _reduce_559(val, _values, result); end
+  def _reduce_557(val, _values, result); end
   def _reduce_56(val, _values, result); end
   def _reduce_560(val, _values, result); end
-  def _reduce_563(val, _values, result); end
+  def _reduce_561(val, _values, result); end
   def _reduce_564(val, _values, result); end
   def _reduce_565(val, _values, result); end
-  def _reduce_567(val, _values, result); end
+  def _reduce_566(val, _values, result); end
   def _reduce_568(val, _values, result); end
+  def _reduce_569(val, _values, result); end
   def _reduce_57(val, _values, result); end
-  def _reduce_570(val, _values, result); end
   def _reduce_571(val, _values, result); end
   def _reduce_572(val, _values, result); end
   def _reduce_573(val, _values, result); end
   def _reduce_574(val, _values, result); end
   def _reduce_575(val, _values, result); end
-  def _reduce_588(val, _values, result); end
+  def _reduce_576(val, _values, result); end
   def _reduce_589(val, _values, result); end
   def _reduce_59(val, _values, result); end
-  def _reduce_594(val, _values, result); end
+  def _reduce_590(val, _values, result); end
   def _reduce_595(val, _values, result); end
-  def _reduce_599(val, _values, result); end
+  def _reduce_596(val, _values, result); end
   def _reduce_6(val, _values, result); end
   def _reduce_60(val, _values, result); end
-  def _reduce_603(val, _values, result); end
+  def _reduce_600(val, _values, result); end
+  def _reduce_604(val, _values, result); end
   def _reduce_61(val, _values, result); end
   def _reduce_62(val, _values, result); end
   def _reduce_63(val, _values, result); end

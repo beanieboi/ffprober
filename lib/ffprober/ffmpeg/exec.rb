@@ -23,13 +23,11 @@ module Ffprober
 
       sig { returns(String) }
       def ffprobe_version_output
-        @ffprobe_version_output ||= begin
-          if @finder.path.nil?
-            ''
-          else
-            `#{@finder.path} -version`
-          end
-        end
+        @ffprobe_version_output ||= if @finder.path.nil?
+                                      ''
+                                    else
+                                      `#{@finder.path} -version`
+                                    end
       end
 
       sig { returns(String) }

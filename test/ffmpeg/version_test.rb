@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 # rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/AbcSize
 require 'test_helper'
 
 module Ffprober
@@ -18,8 +19,9 @@ module Ffprober
       def test_version_output
         exec = FakeExec.new
 
+        include_dirs = ['.', '..', '.DS_Store']
         Dir.new('test/assets/version_outputs').each do |entry|
-          next if ['.', '..', '.DS_Store'].include?(entry)
+          next if include_dirs.include?(entry)
 
           _, expected_version = entry.split('-')
 
@@ -42,3 +44,4 @@ module Ffprober
   end
 end
 # rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/AbcSize
