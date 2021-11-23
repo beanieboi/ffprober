@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 # rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/AbcSize
 require 'test_helper'
 
 module Ffprober
@@ -43,3 +44,4 @@ module Ffprober
   end
 end
 # rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/AbcSize
