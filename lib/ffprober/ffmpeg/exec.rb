@@ -32,7 +32,7 @@ module Ffprober
 
       sig { returns(String) }
       def ffprobe_options
-        base_options = '-v quiet -print_format json -show_format'\
+        base_options = '-v quiet -print_format json -show_format' \
                        ' -show_streams -show_error'
 
         options = "#{base_options} -show_chapters" if ffprobe_version.version >= CHAPTER_SUPPORT

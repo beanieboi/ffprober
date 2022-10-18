@@ -2,7 +2,6 @@
 # frozen_string_literal: true
 
 # rubocop:disable Metrics/MethodLength
-# rubocop:disable Metrics/AbcSize
 require 'test_helper'
 
 module Ffprober
@@ -31,7 +30,7 @@ module Ffprober
           ffprobe_version = Ffprober::Ffmpeg::Version.new(exec)
 
           if expected_version == 'nightly'
-            assert ffprobe_version.nightly?
+            assert_predicate ffprobe_version, :nightly?
           else
             assert_equal(
               Gem::Version.new(T.must(expected_version).tr('_', '.')),
@@ -44,4 +43,3 @@ module Ffprober
   end
 end
 # rubocop:enable Metrics/MethodLength
-# rubocop:enable Metrics/AbcSize
