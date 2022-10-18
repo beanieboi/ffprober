@@ -89,7 +89,7 @@ class FfproberTest < Minitest::Test
     err = assert_raises Ffprober::FfprobeError do
       Ffprober::Parser.from_url('http://localhost/notarealfile.mp4')
     end
-    assert_equal('Ffprobe responded with: '\
+    assert_equal('Ffprobe responded with: ' \
                  'Connection refused (-61)', err.message)
   end
 end

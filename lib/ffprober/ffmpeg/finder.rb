@@ -5,7 +5,7 @@ module Ffprober
   module Ffmpeg
     class Finder
       extend T::Sig
-      SEARCH_PATHS = T.let(ENV['PATH'], T.nilable(String))
+      SEARCH_PATHS = T.let(ENV.fetch('PATH', nil), T.nilable(String))
 
       sig { returns(String) }
       attr_reader :executable_name
