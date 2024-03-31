@@ -5,6 +5,8 @@ require:
 
 AllCops:
   NewCops: enable
+  Exclude:
+    - 'bin/tapioca'
 
 Gemspec/RequiredRubyVersion:
   Exclude:
