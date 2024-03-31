@@ -6,7 +6,7 @@ require 'uri'
 module Ffprober
   module Parsers
     class UrlParser
-      VALID_URI_REGEX = /\A#{URI::DEFAULT_PARSER.make_regexp}\z/
+      VALID_URI_REGEX = /\A#{URI::DEFAULT_PARSER.make_regexp}\z/.freeze
 
       def initialize(url_to_parse, exec = Ffprober::Ffmpeg::Exec.new)
         raise ArgumentError, "#{url_to_parse} is not a valid URL" unless valid_url?(url_to_parse)

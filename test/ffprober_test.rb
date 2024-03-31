@@ -33,7 +33,7 @@ class FfproberTest < Minitest::Test
 
   # rubocop:disable Minitest/MultipleAssertions
   def test_file_input
-    return unless Ffprober::FfprobeVersion.valid?
+    skip unless Ffprober::FfprobeVersion.valid?
 
     ffprobe = Ffprober::Parser.from_file(
       'test/assets/301 extracting a ruby gem.m4v'
@@ -60,7 +60,7 @@ class FfproberTest < Minitest::Test
 
   # rubocop:disable Minitest/MultipleAssertions
   def test_url_input
-    return unless Ffprober::FfprobeVersion.valid?
+    skip unless Ffprober::FfprobeVersion.valid?
 
     path = File.join(assets_path, '301 extracting a ruby gem.m4v')
     url = "file://#{path}"
@@ -84,7 +84,7 @@ class FfproberTest < Minitest::Test
   # rubocop:enable Minitest/MultipleAssertions
 
   def test_error_response
-    return unless Ffprober::FfprobeVersion.valid?
+    skip unless Ffprober::FfprobeVersion.valid?
 
     err = assert_raises Ffprober::FfprobeError do
       Ffprober::Parser.from_url('http://localhost/notarealfile.mp4')

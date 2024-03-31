@@ -38,6 +38,7 @@ module Ffprober
         fake_exec = FakeExec.new
         http_url = VALID_HTTP_URL
         url = UrlParser.new(http_url, fake_exec)
+
         assert_instance_of JsonParser, url.load
       end
 
@@ -45,6 +46,7 @@ module Ffprober
         fake_exec = FakeExec.new
         http_url = UNESCAPED_URL
         url = UrlParser.new(http_url, fake_exec)
+
         assert_instance_of JsonParser, url.load
       end
 
@@ -52,6 +54,7 @@ module Ffprober
         fake_exec = FakeExec.new
         file_url = VALID_FILE_URL
         url = UrlParser.new(file_url, fake_exec)
+
         assert_instance_of JsonParser, url.load
       end
     end
