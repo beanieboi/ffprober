@@ -15,6 +15,7 @@ group :development do
   gem 'rubocop-minitest'
   gem 'rubocop-packaging'
   gem 'rubocop-sorbet'
+  gem 'tapioca'
 end
 
 # Specify your gem's dependencies in ffprober.gemspec
