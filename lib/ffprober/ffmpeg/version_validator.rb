@@ -22,7 +22,7 @@ module Ffprober
 
       sig { returns(T::Boolean) }
       def version_requirement_statisfied?
-        MIN_VERSION <= ffmpeg_version.version
+        ffmpeg_version.version >= MIN_VERSION
       end
 
       sig { returns(Ffprober::Ffmpeg::Version) }

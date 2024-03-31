@@ -9,7 +9,7 @@ module Ffprober
     def self.from_file(file_to_parse)
       check_version
 
-      raise EmptyInput, file_to_parse if File.zero?(file_to_parse)
+      raise EmptyInput, file_to_parse if File.empty?(file_to_parse)
 
       file_parser = Parsers::FileParser.new(file_to_parse)
       json_parser = file_parser.load
