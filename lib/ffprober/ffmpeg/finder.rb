@@ -4,43 +4,36 @@
 module Ffprober
   module Ffmpeg
     class Finder
-      extend T::Sig
-      SEARCH_PATHS = T.let(ENV.fetch('PATH', nil), T.nilable(String))
+      SEARCH_PATHS = ENV.fetch('PATH', nil)
 
-      sig { returns(String) }
       attr_reader :executable_name
 
-      sig { void }
       def initialize
-        @executable_path = T.let(nil, T.nilable(String))
-        @executable_name = T.let(executable_name_picker, String)
-        @path = T.let(nil, T.nilable(String))
+        @executable_path = nil
+        @executable_name = executable_name_picker
+        @path = nil
       end
 
-      sig { returns(String) }
       def path
         raise Ffprober::NoFfprobeFound, 'ffprobe executable not found' if executable_path.nil?
 
         @path ||= File.expand_path(executable_name, executable_path)
       end
 
-      sig { returns(T::Boolean) }
       def windows?
         !(RUBY_PLATFORM =~ /(mingw|mswin)/).nil?
       end
 
-      sig { returns(String) }
       def executable_name_picker
         if windows?
-          T.let('ffprobe.exe', String)
+          'ffprobe.exe'
         else
-          T.let('ffprobe', String)
+          'ffprobe'
         end
       end
 
-      sig { returns(T.nilable(String)) }
       def executable_path
-        @executable_path ||= T.must(SEARCH_PATHS).split(File::PATH_SEPARATOR).detect do |path_to_check|
+        @executable_path ||= SEARCH_PATHS.split(File::PATH_SEPARATOR).detect do |path_to_check|
           File.executable?(File.join(path_to_check, executable_name))
         end
       end
