@@ -3,55 +3,44 @@
 
 module Ffprober
   class Wrapper
-    extend T::Sig
-
     attr_reader :json
 
-    sig { returns(Ffprober::Format) }
     attr_reader :format
 
-    # rubocop:disable Metrics/AbcSize
-    sig { params(json: T::Hash[T.untyped, T.untyped]).void }
     def initialize(json)
       raise FfprobeError, json[:error] if json[:error]
 
       @json = json
-      @format = T.let(Format.new(json[:format]), Ffprober::Format)
-      @video_streams = T.let(nil, T.nilable(T::Array[Ffprober::VideoStream]))
-      @audio_streams = T.let(nil, T.nilable(T::Array[Ffprober::AudioStream]))
-      @data_streams = T.let(nil, T.nilable(T::Array[Ffprober::DataStream]))
-      @subtitle_streams = T.let(nil, T.nilable(T::Array[Ffprober::SubtitleStream]))
-      @chapters = T.let(nil, T.nilable(T::Array[Ffprober::Chapter]))
+      @format = Format.new(json[:format])
+      @video_streams = nil
+      @audio_streams = nil
+      @data_streams = nil
+      @subtitle_streams = nil
+      @chapters = nil
     end
-    # rubocop:enable Metrics/AbcSize
 
-    sig { returns(T::Array[Ffprober::VideoStream]) }
     def video_streams
       @video_streams ||= stream_by_codec('video').map do |data|
         VideoStream.new(data)
       end
     end
 
-    sig { returns(T::Array[Ffprober::AudioStream]) }
     def audio_streams
       @audio_streams ||= stream_by_codec('audio').map do |data|
         AudioStream.new(data)
       end
     end
 
-    sig { returns(T::Array[Ffprober::DataStream]) }
     def data_streams
       @data_streams ||= stream_by_codec('data').map do |data|
         DataStream.new(data)
       end
     end
 
-    sig { returns(T::Array[Ffprober::Chapter]) }
     def chapters
       @chapters ||= json[:chapters].map { |chapter| Chapter.new(chapter) }
     end
 
-    sig { returns(T::Array[Ffprober::SubtitleStream]) }
     def subtitle_streams
       @subtitle_streams ||= stream_by_codec('subtitle').map do |stream|
         SubtitleStream.new(stream)
