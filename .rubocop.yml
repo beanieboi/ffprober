@@ -1,12 +1,11 @@
-require:
-  - rubocop-sorbet
+plugins:
   - rubocop-minitest
+
+require:
   - rubocop-packaging
 
 AllCops:
   NewCops: enable
-  Exclude:
-    - 'bin/tapioca'
 
 Gemspec/RequiredRubyVersion:
   Exclude:
@@ -18,15 +17,6 @@ Style/Documentation:
 # This will mess with Sorbet signatures
 Style/AccessorGrouping:
   Enabled: false
-
-Sorbet/StrictSigil:
-  Exclude:
-    - 'lib/ffprober.rb'
-    - 'lib/ffprober/dynamic_initializer.rb'
-    - 'lib/ffprober/parsers/json.rb'
-    - 'lib/ffprober/parsers/url.rb'
-    - 'lib/ffprober/wrapper.rb'
-    - 'test/*'
 
 Packaging/RequireRelativeHardcodingLib:
   Exclude:

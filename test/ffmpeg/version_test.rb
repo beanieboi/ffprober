@@ -33,7 +33,7 @@ module Ffprober
             assert_predicate ffprobe_version, :nightly?
           else
             assert_equal(
-              Gem::Version.new(T.must(expected_version).tr('_', '.')),
+              Gem::Version.new(expected_version.tr('_', '.')),
               ffprobe_version.version
             )
           end

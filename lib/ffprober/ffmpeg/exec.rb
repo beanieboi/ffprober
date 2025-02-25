@@ -10,7 +10,7 @@ module Ffprober
 
       def initialize(finder = Ffprober::Ffmpeg::Finder.new)
         @finder = finder
-        @ffprobe_version_output = T.let(nil, T.nilable(String))
+        @ffprobe_version_output = nil
       end
 
       def json_output(filename)
