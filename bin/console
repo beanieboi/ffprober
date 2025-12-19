@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# typed: strong
 # frozen_string_literal: true
 
 require 'bundler/setup'
