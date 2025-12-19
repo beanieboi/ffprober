@@ -13,6 +13,7 @@ group :development do
   gem 'rubocop'
   gem 'rubocop-minitest'
   gem 'rubocop-packaging'
+  gem 'rubocop-rake'
 end
 
 # Specify your gem's dependencies in ffprober.gemspec

@@ -1,6 +1,7 @@
 plugins:
   - rubocop-minitest
   - rubocop-packaging
+  - rubocop-rake
 
 AllCops:
   NewCops: enable
