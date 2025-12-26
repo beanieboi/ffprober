@@ -1,3 +1,12 @@
+2.0 / 2025-12-26
+==========
+
+* added Ruby 4.0 support
+* added Ruby 3.x support
+* removed Sorbet types
+* dropped support for older Ruby versions
+* updated rake dependency to ~> 13.0
+
 1.0 / 2020-11-28
 ==========
 
