@@ -9,6 +9,25 @@ require_relative 'ffprober/version'
 autoload :JSON, 'json'
 
 module Ffprober
+  # Sentinel for "no allowed_schemes argument was passed". Lets us tell the
+  # difference between "caller didn't pass the kwarg" (fall back to the
+  # global) and "caller explicitly passed nil" (reject loudly).
+  module NoScheme; end
+
+  class << self
+    def allowed_url_schemes
+      @allowed_url_schemes if defined?(@allowed_url_schemes)
+    end
+
+    def allowed_url_schemes=(value)
+      raise ArgumentError, 'allowed_url_schemes cannot be nil' if value.nil?
+      raise ArgumentError, "allowed_url_schemes must be an Array, got #{value.class}" unless value.is_a?(Array)
+      raise ArgumentError, 'allowed_url_schemes cannot be empty' if value.empty?
+
+      @allowed_url_schemes = value.dup.freeze
+    end
+  end
+
   class EmptyInput < StandardError; end
 
   class InvalidInputFileError < StandardError; end

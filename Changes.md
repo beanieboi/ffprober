@@ -1,3 +1,13 @@
+Unreleased
+==========
+
+* **Breaking:** `Parser.from_url` now requires an explicit URL-scheme
+  allowlist and raises `ArgumentError` when none is configured. Previously
+  any scheme ffprobe supported was accepted, which allowed SSRF and local
+  file disclosure when callers passed untrusted input. Configure once at
+  boot with `Ffprober.allowed_url_schemes = %w[http https]`, or pass
+  `allowed_schemes:` per call (the per-call kwarg replaces the global).
+
 2.0 / 2025-12-26
 ==========
 

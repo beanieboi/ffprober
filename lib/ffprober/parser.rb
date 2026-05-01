@@ -13,10 +13,10 @@ module Ffprober
       Ffprober::Wrapper.new(json_parser.json)
     end
 
-    def self.from_url(url_to_parse)
+    def self.from_url(url_to_parse, allowed_schemes: Ffprober::NoScheme)
       check_version
 
-      url_parser = Parsers::UrlParser.new(url_to_parse)
+      url_parser = Parsers::UrlParser.new(url_to_parse, allowed_schemes: allowed_schemes)
       json_parser = url_parser.load
       Ffprober::Wrapper.new(json_parser.json)
     end

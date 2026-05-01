@@ -65,7 +65,7 @@ class FfproberTest < Minitest::Test
     path = File.join(assets_path, '301 extracting a ruby gem.m4v')
     url = "file://#{path}"
 
-    ffprobe = Ffprober::Parser.from_url(url)
+    ffprobe = Ffprober::Parser.from_url(url, allowed_schemes: %w[file])
 
     assert_equal(url, ffprobe.format.filename)
 
@@ -87,7 +87,7 @@ class FfproberTest < Minitest::Test
     skip unless Ffprober::FfprobeVersion.valid?
 
     err = assert_raises Ffprober::FfprobeError do
-      Ffprober::Parser.from_url('http://localhost/notarealfile.mp4')
+      Ffprober::Parser.from_url('http://localhost/notarealfile.mp4', allowed_schemes: %w[http])
     end
     assert_equal('Ffprobe responded with: ' \
                  'Connection refused (-61)', err.message)
